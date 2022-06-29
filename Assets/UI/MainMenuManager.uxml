@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MainMenuView" src="project://database/Assets/UI/MainMenuView.uxml?fileID=9197481963319205126&amp;guid=2082fdf9ba74aac4ea48f2a0fda3f519&amp;type=3#MainMenuView" />
+    <Style src="project://database/Assets/UI/MainMenuUI.uss?fileID=7433441132597879392&amp;guid=94a1b36e95ff2834ea340b9274e414c1&amp;type=3#MainMenuUI" />
+    <MainMenuManager name="MainMenuManager" class="screen">
+        <ui:Instance template="MainMenuView" name="MainMenuView" class="screen" style="background-color: rgb(0, 0, 0);" />
+    </MainMenuManager>
+</ui:UXML>
