@@ -17,6 +17,7 @@ public class MainMenuManager : VisualElement
         MainMenuView = this.Q("MainMenuView");
 
         MainMenuView?.Q("start-game-button")?.RegisterCallback<ClickEvent>(ev => StartGameScene());
+        MainMenuView?.Q("quit-game-button")?.RegisterCallback<ClickEvent>(ev => QuitGame());
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -25,5 +26,16 @@ public class MainMenuManager : VisualElement
     {
         GameObject.FindObjectOfType<AudioManager>().audioData.Stop();
         SceneManager.LoadSceneAsync("GameScene");
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }

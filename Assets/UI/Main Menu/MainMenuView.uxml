@@ -1,9 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/MainMenuUI.uss?fileID=7433441132597879392&amp;guid=94a1b36e95ff2834ea340b9274e414c1&amp;type=3#MainMenuUI" />
+    <Style src="project://database/Assets/UI/Main%20Menu/MainMenuUI.uss?fileID=7433441132597879392&amp;guid=94a1b36e95ff2834ea340b9274e414c1&amp;type=3#MainMenuUI" />
     <ui:VisualElement name="screen" class="screen" style="background-color: rgb(51, 64, 84);">
-        <ui:Label text="Main Menu" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; font-size: 32px; -unity-font: none; height: 137px; color: rgba(255, 255, 255, 255);" />
+        <ui:Label text="Main Menu" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; font-size: 32px; -unity-font: none; height: 137px; color: rgb(255, 255, 255);" />
         <ui:VisualElement style="justify-content: center; align-items: center;">
             <ui:Button text="New Game" display-tooltip-when-elided="true" name="start-game-button" style="height: 41px; width: 134px; -unity-text-align: middle-center; white-space: nowrap;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="justify-content: center; align-items: center;">
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="quit-game-button" style="height: 41px; width: 134px; -unity-text-align: middle-center; white-space: nowrap;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
