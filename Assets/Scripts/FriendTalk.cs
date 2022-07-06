@@ -8,6 +8,8 @@ public class FriendTalk : MonoBehaviour
     public float textSpeed;
     public string[] dialogue;
     public string[] dialogue2;
+    public AudioManager audioManager;
+    public AudioClip audioClip;
     
     private int dialogueLine;
     private bool isTalking;
@@ -15,6 +17,7 @@ public class FriendTalk : MonoBehaviour
     private bool canProceed;
     private bool alreadyTalked;
     private GameObject player;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class FriendTalk : MonoBehaviour
         sayNext = true;
         canProceed = false;
         alreadyTalked = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +76,10 @@ public class FriendTalk : MonoBehaviour
         foreach (char c in text.ToCharArray())
         {
             GameMenuManager.Instance.AddToDialogue(c);
+            if (char.IsLetterOrDigit(c))
+            {
+                audioSource.PlayOneShot(audioClip);
+            }
             yield return new WaitForSeconds(0.5f/textSpeed);
         }
         GameMenuManager.Instance.ShowContinuePrompt();

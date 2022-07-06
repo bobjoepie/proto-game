@@ -2480,7 +2480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb4a9990cb36084e8844a5de83f6b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioData: {fileID: 0}
+  backgroundMusic: {fileID: 0}
 --- !u!1 &2060825195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,6 +2888,10 @@ PrefabInstance:
       propertyPath: textSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6835982021018641308, guid: 23bf9b248eb439d42b9343d9aa086ddd, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1932971878}
     - target: {fileID: 6835982021018641308, guid: 23bf9b248eb439d42b9343d9aa086ddd, type: 3}
       propertyPath: dialogue.Array.data[3]
       value: Don't peek into my closet...

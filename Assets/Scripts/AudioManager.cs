@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioData;
+    //public AudioSource audioData;
+    public AudioSource backgroundMusic;
     // Start is called before the first frame update
     void Start()
     {
-        audioData = GetComponent<AudioSource>();
-        audioData.Play();
+        backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.Play();
+    }
+
+    public void PlaySound(AudioSource audio)
+    {
+        audio.Play();
     }
 }
