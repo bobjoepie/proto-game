@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class MainMenuManager : VisualElement
 {
-    VisualElement MainMenuView;
+    private VisualElement MainMenuView;
     public new class UxmlFactory : UxmlFactory<MainMenuManager, UxmlTraits> { }
 
     public MainMenuManager()
@@ -12,7 +12,7 @@ public class MainMenuManager : VisualElement
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
 
-    void OnGeometryChange(GeometryChangedEvent evt)
+    private void OnGeometryChange(GeometryChangedEvent evt)
     {
         MainMenuView = this.Q("MainMenuView");
 
@@ -24,7 +24,7 @@ public class MainMenuManager : VisualElement
 
     public void StartGameScene()
     {
-        GameObject.FindObjectOfType<AudioManager>().backgroundMusic.Stop();
+        Object.FindObjectOfType<AudioManager>().backgroundMusic.Stop();
         SceneManager.LoadSceneAsync("GameScene");
     }
 

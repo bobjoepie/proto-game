@@ -13,8 +13,8 @@ public class AudioManager : MonoBehaviour
         backgroundMusic.Play();
     }
 
-    public void PlaySound(AudioSource audio)
+    public void PlaySound(AudioSource audioSource)
     {
-        audio.Play();
+        audioSource.Play();
     }
 }

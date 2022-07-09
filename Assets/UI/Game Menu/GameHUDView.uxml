@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Game%20Menu/GameMenuUI.uss?fileID=7433441132597879392&amp;guid=e320e857c0386414ba3fffcbedf9cbe4&amp;type=3#GameMenuUI" />
+    <ui:VisualElement name="game-hud-screen" class="screen">
+        <ui:VisualElement name="game-toolbar-top" style="position: relative; height: 100px; width: 775px; background-color: rgba(22, 22, 22, 0.39); margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 1%; flex-direction: row; justify-content: flex-start; align-items: center;">
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgba(250, 250, 250, 255); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+            <ui:VisualElement name="game-hud-slot" style="background-color: rgb(250, 250, 250); width: 50px; height: 50px; margin-left: 25px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

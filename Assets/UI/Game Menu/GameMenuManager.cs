@@ -4,10 +4,11 @@ using UnityEngine.UIElements;
 public class GameMenuManager : VisualElement
 {
     public static GameMenuManager Instance { get; private set; }
-    VisualElement DialogueView;
-    VisualElement dialogueBox;
-    Label dialogueText;
-    Label continuePrompt;
+    private VisualElement DialogueView;
+    private VisualElement GameHudView;
+    private VisualElement DialogueBox;
+    private Label DialogueText;
+    private Label ContinuePrompt;
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
 
     public GameMenuManager()
@@ -19,12 +20,13 @@ public class GameMenuManager : VisualElement
     void OnGeometryChange(GeometryChangedEvent evt)
     {
         DialogueView = this.Q("DialogueView");
-        
-        dialogueText = (Label)this.Q("dialogue-text");
-        dialogueBox = (VisualElement)this.Q("dialogue-box");
-        dialogueBox.visible = false;
-        continuePrompt = (Label)this.Q("continue-prompt");
-        continuePrompt.visible = false;
+        GameHudView = this.Q("GameHUDView");
+
+        DialogueText = (Label)this.Q("dialogue-text");
+        DialogueBox = this.Q("dialogue-box");
+        DialogueBox.visible = false;
+        ContinuePrompt = (Label)this.Q("continue-prompt");
+        ContinuePrompt.visible = false;
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -32,36 +34,50 @@ public class GameMenuManager : VisualElement
     public void ShowDialogue()
     {
         this.Q("DialogueView").visible = true;
-        dialogueBox.visible = true;
-        dialogueText.text = string.Empty;
+
+        DialogueView.style.display = DisplayStyle.Flex;
+        GameHudView.style.display = DisplayStyle.None;
+
+        DialogueBox.visible = true;
+        DialogueText.text = string.Empty;
     }
 
     public void HideDialogue()
     {
         this.Q("DialogueView").visible = false;
-        dialogueBox.visible = false;
-        continuePrompt.visible = false;
-        dialogueText.text = string.Empty;
+
+        GameHudView.style.display = DisplayStyle.Flex;
+        DialogueView.style.display = DisplayStyle.None;
+
+        DialogueBox.visible = false;
+        ContinuePrompt.visible = false;
+        DialogueText.text = string.Empty;
     }
 
     public void ClearDialogue()
     {
-        dialogueText.text = string.Empty;
+        DialogueText.text = string.Empty;
     }
 
     public void AddToDialogue(char c)
     {
         //dialogueText = (Label)this.Q("dialogue-text");
-        dialogueText.text += c;
+        DialogueText.text += c;
     }
 
     public void ShowContinuePrompt()
     {
-        continuePrompt.visible = true;
+        ContinuePrompt.visible = true;
     }
 
     public void HideContinuePrompt()
     {
-        continuePrompt.visible = false;
+        ContinuePrompt.visible = false;
+    }
+
+    public void ShowGameHudView()
+    {
+        GameHudView.style.display = DisplayStyle.Flex;
+        DialogueView.style.display = DisplayStyle.None;
     }
 }

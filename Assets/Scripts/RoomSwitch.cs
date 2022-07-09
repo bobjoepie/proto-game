@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class RoomSwitch : MonoBehaviour
 {
-    private Camera camera;
+    private Camera MainCamera;
     public Vector3 position;
     private void Start()
     {
-        camera = Camera.main;
+        MainCamera = Camera.main;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            camera.transform.position = position;
+            MainCamera.transform.position = position;
         }
     }
 }
