@@ -9,6 +9,9 @@ public class GameMenuManager : VisualElement
     private VisualElement DialogueBox;
     private Label DialogueText;
     private Label ContinuePrompt;
+
+    private VisualElement HealthBar;
+    private Label HealthBarText;
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
 
     public GameMenuManager()
@@ -27,6 +30,10 @@ public class GameMenuManager : VisualElement
         DialogueBox.visible = false;
         ContinuePrompt = (Label)this.Q("continue-prompt");
         ContinuePrompt.visible = false;
+
+        HealthBar = this.Q("health-bar-foreground");
+        HealthBarText = (Label)this.Q("health-bar-label");
+        SetHealthBar(100, 100);
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -79,5 +86,11 @@ public class GameMenuManager : VisualElement
     {
         GameHudView.style.display = DisplayStyle.Flex;
         DialogueView.style.display = DisplayStyle.None;
+    }
+
+    public void SetHealthBar(int curHealth, int maxHealth)
+    {
+        HealthBarText.text = curHealth + "/" + maxHealth;
+        HealthBar.style.width = Length.Percent(100f * (float)curHealth / (float)maxHealth);
     }
 }

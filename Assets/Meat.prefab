@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5314039534081832106}
   - component: {fileID: 5314039534081832107}
   - component: {fileID: -3935130513349997399}
+  - component: {fileID: 4833525644056277330}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Enemy
@@ -171,3 +172,16 @@ MonoBehaviour:
   childSprite: {fileID: 4196911195036768619}
   health: 5
   knockbackDist: 0.5
+--- !u!114 &4833525644056277330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314039534081832102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856121e214d3cd447aac00c523743d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
