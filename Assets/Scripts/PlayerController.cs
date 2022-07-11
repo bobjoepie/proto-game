@@ -15,6 +15,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 origPos;
     private Color origColor;
     private SpriteRenderer childSpriteRenderer;
+    private List<string> pickupList;
+    private List<InventoryItem> inventoryList;
+
+    public struct InventoryItem
+    {
+        private Sprite icon;
+        private string name;
+        private int amount;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
         childSpriteRenderer = childSprite.GetComponent<SpriteRenderer>();
         origColor = childSpriteRenderer.color;
+
+        pickupList = new List<string>();
     }
 
     // Update is called once per frame
@@ -61,6 +72,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         childSprite.transform.localPosition = origPos;
         childSpriteRenderer.color = origColor;
+    }
+
+    public void PickupItem(string item, SpriteRenderer spriteRenderer)
+    {
+        pickupList.Add(item);
+        Debug.Log($"Picked up {item}");
+        GameMenuManager.Instance.SetInventoryItem(0, item, spriteRenderer);
     }
 
 }

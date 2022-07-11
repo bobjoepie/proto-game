@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +12,9 @@ public class GameMenuManager : VisualElement
     private Label DialogueText;
     private Label ContinuePrompt;
 
+    private VisualElement InventoryBar;
+    private List<Label> InventoryList;
+
     private VisualElement HealthBar;
     private Label HealthBarText;
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
@@ -18,6 +23,7 @@ public class GameMenuManager : VisualElement
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
         Instance = this;
+        //InventoryList = new List<Label>();
     }
 
     void OnGeometryChange(GeometryChangedEvent evt)
@@ -34,6 +40,18 @@ public class GameMenuManager : VisualElement
         HealthBar = this.Q("health-bar-foreground");
         HealthBarText = (Label)this.Q("health-bar-label");
         SetHealthBar(100, 100);
+
+        InventoryBar = this.Q("game-toolbar-top");
+        InventoryList = InventoryBar
+            .Children()
+            .Where(e => e.name == "game-hud-slot")
+            .Select(x => x
+                .Children()
+                .Where(c => c is Label)
+                .Cast<Label>()
+                .FirstOrDefault()
+            )
+            .ToList();
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -92,5 +110,23 @@ public class GameMenuManager : VisualElement
     {
         HealthBarText.text = curHealth + "/" + maxHealth;
         HealthBar.style.width = Length.Percent(100f * (float)curHealth / (float)maxHealth);
+    }
+
+    public void ClearInventoryList()
+    {
+        foreach (var item in InventoryList)
+        {
+            item.text = string.Empty;
+        }
+    }
+
+    public void SetInventoryItem(int index, string text, SpriteRenderer spriteRenderer)
+    {
+        if (index < InventoryList.Count)
+        {
+            InventoryList[index].text = text;
+            InventoryList[index].style.backgroundImage = new StyleBackground(spriteRenderer.sprite);
+            InventoryList[index].style.unityBackgroundImageTintColor = spriteRenderer.color;
+        }
     }
 }
