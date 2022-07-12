@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df52ba81377f824db528dd516c16a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePickup: {fileID: 11400000, guid: dcf53bee2ce2db7428257a0c4dc50b9b, type: 2}
 --- !u!58 &16525500584300140
 CircleCollider2D:
   m_ObjectHideFlags: 0

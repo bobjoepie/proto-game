@@ -934,7 +934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993a94bfe44b9d646b2781a4995adf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1001 &537098334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2092,6 +2091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5749074884580890335, guid: bb047f86003fea240a77195143763420, type: 3}
+      propertyPath: itemToSpawn
+      value: 
+      objectReference: {fileID: 8310671449323089756, guid: c72d53c28148612488204a2c766db7b5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb047f86003fea240a77195143763420, type: 3}
 --- !u!1 &1059803963
@@ -4003,5 +4006,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7812359856586780467, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 11400000, guid: e65c5c5e5011e7b42bd4373a5fecb10e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 768513cec7ca12441a487560bfc6476d, type: 3}

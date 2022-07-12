@@ -1,10 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+[Serializable]
+public class InventoryItem
+{
+    public Sprite sprite;
+    public Color color;
+    public string name;
+    public int amount;
+    public ProjectileAttackScriptableObject projectile;
+}
 
 public class PlayerController : MonoBehaviour
 {
-    
     public float speed;
     public int health;
     public int maxHealth;
@@ -18,12 +30,9 @@ public class PlayerController : MonoBehaviour
     private List<string> pickupList;
     private List<InventoryItem> inventoryList;
 
-    public struct InventoryItem
-    {
-        private Sprite icon;
-        private string name;
-        private int amount;
-    }
+    [SerializeField] 
+    private InventoryItem EquippedItem;
+    private PlayerActionsController PlayerActions;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +45,9 @@ public class PlayerController : MonoBehaviour
         origColor = childSpriteRenderer.color;
 
         pickupList = new List<string>();
+        inventoryList = new List<InventoryItem>();
+
+        PlayerActions = GetComponent<PlayerActionsController>();
     }
 
     // Update is called once per frame
@@ -45,6 +57,8 @@ public class PlayerController : MonoBehaviour
         var vertical = Input.GetAxis("Vertical");
 
         transform.position += new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0);
+
+        CheckEquipmentInputs();
     }
 
     public void TakeDamage(int damage, Vector2 closestPoint)
@@ -74,11 +88,141 @@ public class PlayerController : MonoBehaviour
         childSpriteRenderer.color = origColor;
     }
 
-    public void PickupItem(string item, SpriteRenderer spriteRenderer)
+    public void PickupItem(string item, SpriteRenderer spriteRenderer, ProjectileAttackScriptableObject projectilePickup = null)
     {
-        pickupList.Add(item);
+        //pickupList.Add(item);
         Debug.Log($"Picked up {item}");
-        GameMenuManager.Instance.SetInventoryItem(0, item, spriteRenderer);
+        //GameMenuManager.Instance.SetInventoryItem(0, item, spriteRenderer);
+        var newItem = new InventoryItem
+        {
+            name = item,
+            sprite = spriteRenderer.sprite,
+            color = spriteRenderer.color,
+            amount = 1,
+            projectile = projectilePickup
+        };
+        if (inventoryList.Select(i => i.name).ToList().Contains(newItem.name)) return;
+        inventoryList.Add(newItem);
+        GameMenuManager.Instance.SetInventoryItem2(inventoryList);
+    }
+
+    public void CheckEquipmentInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(0) != null)
+            {
+                EquippedItem = inventoryList[0];
+                GameMenuManager.Instance.SelectItem(0);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(1) != null)
+            {
+                EquippedItem = inventoryList[1];
+                GameMenuManager.Instance.SelectItem(1);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(2) != null)
+            {
+                EquippedItem = inventoryList[2];
+                GameMenuManager.Instance.SelectItem(2);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(3) != null)
+            {
+                EquippedItem = inventoryList[3];
+                GameMenuManager.Instance.SelectItem(3);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(4) != null)
+            {
+                EquippedItem = inventoryList[4];
+                GameMenuManager.Instance.SelectItem(4);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(5) != null)
+            {
+                EquippedItem = inventoryList[5];
+                GameMenuManager.Instance.SelectItem(5);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(6) != null)
+            {
+                EquippedItem = inventoryList[6];
+                GameMenuManager.Instance.SelectItem(6);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(7) != null)
+            {
+                EquippedItem = inventoryList[7];
+                GameMenuManager.Instance.SelectItem(7);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(8) != null)
+            {
+                EquippedItem = inventoryList[8];
+                GameMenuManager.Instance.SelectItem(8);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            GameMenuManager.Instance.ClearSelectedItem();
+            EquippedItem = null;
+            if (inventoryList.ElementAtOrDefault(9) != null)
+            {
+                EquippedItem = inventoryList[9];
+                GameMenuManager.Instance.SelectItem(9);
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        PlayerActions.equippedProjectile = null;
+        if (EquippedItem != null)
+        {
+            if (EquippedItem.projectile != null)
+            {
+                PlayerActions.equippedProjectile = EquippedItem.projectile;
+                Debug.Log("projectile equipped");
+            }
+            Debug.Log($"Equipped {EquippedItem.name}");
+        }
     }
 
 }

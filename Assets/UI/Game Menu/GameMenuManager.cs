@@ -23,7 +23,6 @@ public class GameMenuManager : VisualElement
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
         Instance = this;
-        //InventoryList = new List<Label>();
     }
 
     void OnGeometryChange(GeometryChangedEvent evt)
@@ -52,6 +51,7 @@ public class GameMenuManager : VisualElement
                 .FirstOrDefault()
             )
             .ToList();
+        ClearInventoryList();
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -127,6 +127,42 @@ public class GameMenuManager : VisualElement
             InventoryList[index].text = text;
             InventoryList[index].style.backgroundImage = new StyleBackground(spriteRenderer.sprite);
             InventoryList[index].style.unityBackgroundImageTintColor = spriteRenderer.color;
+        }
+    }
+
+    public void SetInventoryItem2(List<InventoryItem> inventory)
+    {
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            InventoryItem item = inventory[i];
+            var inventorySlot = InventoryList[i];
+            inventorySlot.text = item.name;
+            inventorySlot.style.backgroundImage = new StyleBackground(item.sprite);
+            inventorySlot.style.unityBackgroundImageTintColor = item.color;
+        }
+    }
+
+    public void SelectItem(int index)
+    {
+        InventoryList[index].style.borderBottomColor = Color.red;
+        InventoryList[index].style.borderLeftColor = Color.red;
+        InventoryList[index].style.borderRightColor = Color.red;
+        InventoryList[index].style.borderTopColor = Color.red;
+        InventoryList[index].style.borderBottomWidth = new StyleFloat(2f);
+        InventoryList[index].style.borderLeftWidth = new StyleFloat(2f);
+        InventoryList[index].style.borderRightWidth = new StyleFloat(2f);
+        InventoryList[index].style.borderTopWidth = new StyleFloat(2f);
+
+    }
+
+    public void ClearSelectedItem()
+    {
+        foreach (var slot in InventoryList)
+        {
+            slot.style.borderBottomWidth = new StyleFloat(0f);
+            slot.style.borderLeftWidth = new StyleFloat(0f);
+            slot.style.borderRightWidth = new StyleFloat(0f);
+            slot.style.borderTopWidth = new StyleFloat(0f);
         }
     }
 }

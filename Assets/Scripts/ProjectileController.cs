@@ -24,7 +24,6 @@ public class ProjectileController : MonoBehaviour
         var step = speed * Time.deltaTime;
         transform.position += -transform.right * step;
         ElapsedTime += Time.deltaTime;
-
         if (ElapsedTime > lifeTime)
         {
             Destroy(gameObject);
