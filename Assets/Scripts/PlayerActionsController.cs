@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerActionsController : MonoBehaviour
 {
-    public float attackCooldown;
-    public ProjectileAttackScriptableObject projectile;
-    public int bulletDamage;
     private Camera MainCamera;
     private bool CanAttack;
 
@@ -17,7 +15,6 @@ public class PlayerActionsController : MonoBehaviour
     {
         MainCamera = Camera.main;
         CanAttack = true;
-        equippedProjectile = projectile;
     }
 
     // Update is called once per frame
@@ -45,13 +42,19 @@ public class PlayerActionsController : MonoBehaviour
         Vector2 mousePos = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
         var dir = playerPos - mousePos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        var projectileObj = equippedProjectile.attackParts[0].projectileGameObject;
-        var projInstance = Instantiate(projectileObj);
+
+        var projObj = equippedProjectile.attackParts[0];
+        var projInstance = Instantiate(projObj.projectileGameObject);
         projInstance.transform.position = transform.position;
         projInstance.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        //projInstance.GetComponent<ProjectileController>().damage = bulletDamage;
+        var projProp = projInstance.GetComponent<ProjectileController>();
+        projProp.damage = projObj.damage;
+        projProp.speed = projObj.speed;
+        projProp.lifeTime = projObj.lifeTime;
+        projProp.cooldown = projObj.cooldown;
+        projProp.rotation = projObj.rotation;
 
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(projProp.cooldown);
         CanAttack = true;
     }
 }

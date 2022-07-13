@@ -8,6 +8,8 @@ public class ProjectileController : MonoBehaviour
     public float speed;
     public float lifeTime;
     public int damage;
+    public float cooldown;
+    public bool rotation;
 
     private float ElapsedTime;
     private Collider2D ProjectileCollider;
@@ -23,6 +25,10 @@ public class ProjectileController : MonoBehaviour
     {
         var step = speed * Time.deltaTime;
         transform.position += -transform.right * step;
+        if (rotation)
+        {
+            transform.Rotate(0, 0, 150f * Time.deltaTime);
+        }
         ElapsedTime += Time.deltaTime;
         if (ElapsedTime > lifeTime)
         {

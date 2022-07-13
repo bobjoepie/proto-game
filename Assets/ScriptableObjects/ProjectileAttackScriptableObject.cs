@@ -10,6 +10,11 @@ public struct AttackPart
     //public List<AttackPart> attackParts;
     public GameObject projectileGameObject;
     public int amount;
+    public int damage;
+    public float speed;
+    public float lifeTime;
+    public float cooldown;
+    public bool rotation;
 }
 
 [CreateAssetMenu(fileName = "Attack", menuName = "ScriptableObjects/Attack")]

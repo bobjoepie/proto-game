@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.5
-  projectile: {fileID: 11400000, guid: e65c5c5e5011e7b42bd4373a5fecb10e, type: 2}
+  baseProjectile: {fileID: 11400000, guid: e65c5c5e5011e7b42bd4373a5fecb10e, type: 2}
   bulletDamage: 1
   equippedProjectile: {fileID: 0}
 --- !u!50 &4023816079027052672

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Attack2
   m_EditorClassIdentifier: 
   attackParts:
-  - attackParts: []
-    projectileGameObject: {fileID: 6375080909173914051, guid: 4685c29b4ef0ce64fbf45f5df30f47f8, type: 3}
+  - projectileGameObject: {fileID: 6375080909173914051, guid: 4685c29b4ef0ce64fbf45f5df30f47f8, type: 3}
     amount: 1
+    damage: 5
+    speed: 5
+    lifeTime: 2
+    cooldown: 0.25
