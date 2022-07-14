@@ -9,13 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ee7c0b8e5ae0442b5140433a16a313, type: 3}
-  m_Name: Attack0
+  m_Script: {fileID: 11500000, guid: 97c546545f3ef2d4499f4c7ad93a5b7c, type: 3}
+  m_Name: CustomAttack_basic
   m_EditorClassIdentifier: 
+  name: Basic
+  description: Basic single shot
+  cooldown: 0.5
   attackParts:
-  - projectileGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
-    amount: 1
+  - label: 
+    projectileGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
     speed: 10
     lifeTime: 1
-    cooldown: 0.5
+    direction: 0
+    rotation: 0
+    homing: 0

@@ -9,27 +9,74 @@ public class ProjectileController : MonoBehaviour
     public float lifeTime;
     public int damage;
     public float cooldown;
-    public bool rotation;
+    public float rotation;
+    public Camera mainCamera;
+
+    public bool isHoming;
+    public float prepSpeed;
+    public float prepTime = 0f;
 
     private float ElapsedTime;
-    private Collider2D ProjectileCollider;
+    
+    public bool hasDestinationPos;
+    private Vector2 destinationPos;
+
+    //private Collider2D ProjectileCollider;
     // Start is called before the first frame update
     void Start()
     {
         ElapsedTime = 0f;
-        ProjectileCollider = GetComponent<Collider2D>();
+        mainCamera = Camera.main;
+        destinationPos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        if (isHoming)
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
+        //ProjectileCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var step = speed * Time.deltaTime;
-        transform.position += -transform.right * step;
-        if (rotation)
+        if (!isHoming)
         {
-            transform.Rotate(0, 0, 150f * Time.deltaTime);
+            var step = speed * Time.deltaTime;
+            transform.position += -transform.right * step;
+            if (rotation != 0f)
+            {
+                transform.Rotate(0, 0, rotation * Time.deltaTime);
+            }
+            ElapsedTime += Time.deltaTime;
         }
-        ElapsedTime += Time.deltaTime;
+        else if (prepTime <= 0f)
+        {
+            if (!hasDestinationPos)
+            {
+                Vector2 bulletPos = transform.position;
+                //Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                var dir = bulletPos - destinationPos;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+
+                GetComponent<Collider2D>().enabled = true;
+                hasDestinationPos = true;
+            }
+
+            var step = speed * Time.deltaTime;
+            transform.position += -transform.right * step;
+            ElapsedTime += Time.deltaTime;
+        }
+        else
+        {
+            var step = prepSpeed * Time.deltaTime;
+            transform.position += -transform.right * step;
+            if (rotation != 0f)
+            {
+                transform.Rotate(0, 0, rotation * Time.deltaTime);
+            }
+            prepTime -= Time.deltaTime;
+        }
+
         if (ElapsedTime > lifeTime)
         {
             Destroy(gameObject);

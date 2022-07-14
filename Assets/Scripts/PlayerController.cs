@@ -12,7 +12,7 @@ public class InventoryItem
     public Color color;
     public string name;
     public int amount;
-    public ProjectileAttackScriptableObject projectile;
+    public CustomProjectileAttack projectile2;
 }
 
 public class PlayerController : MonoBehaviour
@@ -88,18 +88,18 @@ public class PlayerController : MonoBehaviour
         childSpriteRenderer.color = origColor;
     }
 
-    public void PickupItem(string item, SpriteRenderer spriteRenderer, ProjectileAttackScriptableObject projectilePickup = null)
+    public void PickupItem2(string item, SpriteRenderer spriteRenderer, CustomProjectileAttack projectilePickup = null)
     {
         //pickupList.Add(item);
-        Debug.Log($"Picked up {item}");
+        Debug.Log($"Picked up {projectilePickup.name}");
         //GameMenuManager.Instance.SetInventoryItem(0, item, spriteRenderer);
         var newItem = new InventoryItem
         {
-            name = item,
+            name = projectilePickup.name,
             sprite = spriteRenderer.sprite,
             color = spriteRenderer.color,
             amount = 1,
-            projectile = projectilePickup
+            projectile2 = projectilePickup
         };
         if (inventoryList.Select(i => i.name).ToList().Contains(newItem.name)) return;
         inventoryList.Add(newItem);
@@ -213,12 +213,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        PlayerActions.equippedProjectile = null;
+        PlayerActions.equippedProjectile2 = null;
         if (EquippedItem != null)
         {
-            if (EquippedItem.projectile != null)
+            if (EquippedItem.projectile2 != null)
             {
-                PlayerActions.equippedProjectile = EquippedItem.projectile;
+                PlayerActions.equippedProjectile2 = EquippedItem.projectile2;
                 Debug.Log("projectile equipped");
             }
             Debug.Log($"Equipped {EquippedItem.name}");

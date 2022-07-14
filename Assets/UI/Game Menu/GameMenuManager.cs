@@ -120,16 +120,6 @@ public class GameMenuManager : VisualElement
         }
     }
 
-    public void SetInventoryItem(int index, string text, SpriteRenderer spriteRenderer)
-    {
-        if (index < InventoryList.Count)
-        {
-            InventoryList[index].text = text;
-            InventoryList[index].style.backgroundImage = new StyleBackground(spriteRenderer.sprite);
-            InventoryList[index].style.unityBackgroundImageTintColor = spriteRenderer.color;
-        }
-    }
-
     public void SetInventoryItem2(List<InventoryItem> inventory)
     {
         for (int i = 0; i < inventory.Count; i++)

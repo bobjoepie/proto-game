@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c546545f3ef2d4499f4c7ad93a5b7c, type: 3}
+  m_Name: CustomAttack_magicmissile
+  m_EditorClassIdentifier: 
+  name: Magic Missile
+  description: 4 bolts homing to mouse for now
+  cooldown: 1
+  attackParts:
+  - label: 
+    projectileGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    speed: 20
+    lifeTime: 0.5
+    direction: 90
+    rotation: 0
+    homing: 1
+  - label: 
+    projectileGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    speed: 20
+    lifeTime: 0.5
+    direction: 120
+    rotation: 0
+    homing: 1
+  - label: 
+    projectileGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    speed: 20
+    lifeTime: 0.5
+    direction: -90
+    rotation: 0
+    homing: 1
+  - label: 
+    projectileGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    speed: 20
+    lifeTime: 0.5
+    direction: -120
+    rotation: 0
+    homing: 1
