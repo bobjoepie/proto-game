@@ -8,7 +8,7 @@ public class PlayerActionsController : MonoBehaviour
     private Camera MainCamera;
     private bool CanAttack;
     
-    public CustomProjectileAttack equippedProjectile2;
+    public WeaponSO equippedWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class PlayerActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && equippedProjectile2 != null)
+        if (Input.GetKey(KeyCode.Mouse0) && equippedWeapon != null)
         {
             PerformAttack();
         }
@@ -42,38 +42,22 @@ public class PlayerActionsController : MonoBehaviour
         Vector2 mousePos = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
         var dir = playerPos - mousePos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        //var projObj = equippedProjectile.attackParts[0];
-        //var projInstance = Instantiate(projObj.projectileGameObject);
-        //projInstance.transform.position = transform.position;
-        //projInstance.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        //var projProp = projInstance.GetComponent<ProjectileController>();
-        //projProp.damage = projObj.damage;
-        //projProp.speed = projObj.speed;
-        //projProp.lifeTime = projObj.lifeTime;
-        //projProp.cooldown = projObj.cooldown;
-        //projProp.rotation = projObj.rotation;
-
-        var projObj = equippedProjectile2;
-        var cooldown = projObj.cooldown;
-        var attackParts = equippedProjectile2.attackParts;
-        foreach (var part in attackParts)
+        
+        switch (equippedWeapon)
         {
-            var projInstance = Instantiate(part.projectileGameObject);
-            projInstance.transform.position = transform.position;
-            projInstance.transform.rotation = Quaternion.Euler(0f, 0f, angle + part.direction);
-            var projProp = projInstance.GetComponent<ProjectileController>();
-            projProp.damage = part.damage;
-            projProp.speed = part.speed;
-            projProp.lifeTime = part.lifeTime;
-            projProp.rotation = part.rotation;
+            case ProjectileWepSO projObj:
+                var weaponParts = projObj.weaponParts;
+                foreach (var part in weaponParts)
+                {
+                    var projInstance = Instantiate(part.weaponGameObject);
+                    projInstance.transform.position = transform.position;
+                    projInstance.transform.rotation = Quaternion.Euler(0f, 0f, angle + part.pre_direction);
 
-            projProp.isHoming = part.homing;
-            projProp.prepTime = part.prepTime;
-            projProp.prepSpeed = part.prepSpeed;
+                    part.UpdateValues(projInstance.GetComponent<ProjectileController>());
+                }
+                yield return new WaitForSeconds(projObj.cooldown);
+                break;
         }
-
-        yield return new WaitForSeconds(cooldown);
         CanAttack = true;
     }
 }

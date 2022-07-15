@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
+  m_Name: proj_magicMissile
+  m_EditorClassIdentifier: 
+  name: Magic Missile
+  description: 4 bolts homing to mouse for now
+  cooldown: 1
+  weaponParts:
+  - label: Shot 1
+    weaponType: 0
+    collisionType: 0
+    weaponGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    cur_hasCollision: 1
+    cur_lifeTime: 0.5
+    cur_speed: 20
+    cur_direction: 0
+    cur_spread: 0
+    cur_rotation: 0
+    cur_rotationSpeed: 0
+    cur_targetType: 3
+    pre_hasCollision: 0
+    pre_lifeTime: 0.25
+    pre_speed: 5
+    pre_direction: 90
+    pre_spread: 0
+    pre_rotation: -180
+    pre_rotationSpeed: 0
+    post_subWeapon: {fileID: 0}
+  - label: Shot 2
+    weaponType: 0
+    collisionType: 0
+    weaponGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    cur_hasCollision: 1
+    cur_lifeTime: 0.5
+    cur_speed: 20
+    cur_direction: 0
+    cur_spread: 0
+    cur_rotation: 0
+    cur_rotationSpeed: 0
+    cur_targetType: 3
+    pre_hasCollision: 0
+    pre_lifeTime: 0.5
+    pre_speed: 5
+    pre_direction: 120
+    pre_spread: 0
+    pre_rotation: -90
+    pre_rotationSpeed: 0
+    post_subWeapon: {fileID: 0}
+  - label: Shot 3
+    weaponType: 0
+    collisionType: 0
+    weaponGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    cur_hasCollision: 1
+    cur_lifeTime: 0.5
+    cur_speed: 20
+    cur_direction: 0
+    cur_spread: 0
+    cur_rotation: 0
+    cur_rotationSpeed: 0
+    cur_targetType: 3
+    pre_hasCollision: 0
+    pre_lifeTime: 0.35
+    pre_speed: 5
+    pre_direction: -90
+    pre_spread: 0
+    pre_rotation: 180
+    pre_rotationSpeed: 0
+    post_subWeapon: {fileID: 0}
+  - label: Shot 4
+    weaponType: 0
+    collisionType: 0
+    weaponGameObject: {fileID: 6375080909173914051, guid: b595b58c49086ee4baaeab5448e8c0d9, type: 3}
+    damage: 1
+    cur_hasCollision: 1
+    cur_lifeTime: 0.5
+    cur_speed: 20
+    cur_direction: 0
+    cur_spread: 0
+    cur_rotation: 0
+    cur_rotationSpeed: 0
+    cur_targetType: 3
+    pre_hasCollision: 0
+    pre_lifeTime: 0.6
+    pre_speed: 5
+    pre_direction: -120
+    pre_spread: 0
+    pre_rotation: 90
+    pre_rotationSpeed: 0
+    post_subWeapon: {fileID: 0}

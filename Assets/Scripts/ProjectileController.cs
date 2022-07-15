@@ -5,53 +5,121 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    public float speed;
-    public float lifeTime;
+    [Header("Properties")]
+    public WeaponType weaponType;
+    public CollisionType collisionType;
+    public GameObject weaponGameObject;
     public int damage;
-    public float cooldown;
-    public float rotation;
-    public Camera mainCamera;
 
-    public bool isHoming;
-    public float prepSpeed;
-    public float prepTime = 0f;
+    [Header("Projectile Properties")]
+    public bool cur_hasCollision;
+    [Range(0, 5)] public float cur_lifeTime;
+    [Range(0, 20)] public float cur_speed;
+    [Range(-360, 360)] public float cur_direction;
+    [Range(0, 90)] public float cur_spread;
+    [Range(-360, 360)] public float cur_rotation;
+    [Range(0, 200)] public float cur_rotationSpeed;
+    public TargetType cur_targetType;
+
+    [Header("Pre-Attack")]
+    public bool pre_hasCollision;
+    [Range(0, 5)] public float pre_lifeTime;
+    [Range(0, 20)] public float pre_speed;
+    [Range(-360, 360)] public float pre_direction;
+    [Range(0, 90)] public float pre_spread;
+    [Range(-360, 360)] public float pre_rotation;
+    [Range(0, 200)] public float pre_rotationSpeed;
+
+    [Header("Post-Attack")]
+    public WeaponSO post_subWeapon;
+
+    public Camera mainCamera;
 
     private float ElapsedTime;
     
     public bool hasDestinationPos;
     private Vector2 destinationPos;
 
-    //private Collider2D ProjectileCollider;
+    private Quaternion initDir;
+    private Vector2 initPos;
+
+    private bool isPrepped;
+    private bool isFinished;
+    
     // Start is called before the first frame update
     void Start()
     {
         ElapsedTime = 0f;
         mainCamera = Camera.main;
         destinationPos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        if (isHoming)
-        {
-            GetComponent<Collider2D>().enabled = false;
-        }
-        //ProjectileCollider = GetComponent<Collider2D>();
+        //GetComponent<Collider2D>().enabled = pre_hasCollision;
+
+        initDir = transform.rotation;
+        initPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isHoming)
+        if (!isPrepped)
         {
-            var step = speed * Time.deltaTime;
-            transform.position += -transform.right * step;
-            if (rotation != 0f)
-            {
-                transform.Rotate(0, 0, rotation * Time.deltaTime);
-            }
-            ElapsedTime += Time.deltaTime;
+            ProcessPreAttack();
         }
-        else if (prepTime <= 0f)
+        if (!isPrepped) return;
+        ProcessAttack();
+
+        if (ElapsedTime > cur_lifeTime)
+        {
+            ProcessPostAttack();
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
+        var closestPoint = col.ClosestPoint(transform.position);
+        col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
+
+        if (isPrepped && cur_hasCollision)
+        {
+            ProcessPostAttack();
+        }
+        
+    }
+
+    private void ProcessPreAttack()
+    {
+        var step = pre_speed * Time.deltaTime;
+        transform.position += -transform.right * step;
+        if (pre_rotation != 0f)
+        {
+            transform.Rotate(0, 0, pre_rotation * Time.deltaTime);
+        }
+        if (pre_lifeTime <= 0f)
+        {
+            isPrepped = true;
+        }
+        pre_lifeTime -= Time.deltaTime;
+    }
+
+    private void ProcessAttack()
+    {
+        if (cur_targetType != TargetType.TowardsNearestMouse)
+        {
+            //var step = cur_speed * Time.deltaTime;
+            //transform.position += -transform.right * step;
+            if (cur_rotation != 0f)
+            {
+                transform.Rotate(0, 0, cur_rotation * Time.deltaTime);
+            }
+            //ElapsedTime += Time.deltaTime;
+        }
+        else
         {
             if (!hasDestinationPos)
             {
+                Debug.Log((Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition));
                 Vector2 bulletPos = transform.position;
                 //Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 var dir = bulletPos - destinationPos;
@@ -62,32 +130,41 @@ public class ProjectileController : MonoBehaviour
                 hasDestinationPos = true;
             }
 
-            var step = speed * Time.deltaTime;
-            transform.position += -transform.right * step;
-            ElapsedTime += Time.deltaTime;
-        }
-        else
-        {
-            var step = prepSpeed * Time.deltaTime;
-            transform.position += -transform.right * step;
-            if (rotation != 0f)
-            {
-                transform.Rotate(0, 0, rotation * Time.deltaTime);
-            }
-            prepTime -= Time.deltaTime;
+            
         }
 
-        if (ElapsedTime > lifeTime)
-        {
-            Destroy(gameObject);
-        }
+        var step = cur_speed * Time.deltaTime;
+        transform.position += -transform.right * step;
+        ElapsedTime += Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void ProcessPostAttack()
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
-        var closestPoint = col.ClosestPoint(transform.position);
-        col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
         Destroy(gameObject);
+        switch (post_subWeapon)
+        {
+            case ProjectileWepSO projObj:
+                var projParts = projObj.weaponParts;
+                foreach (var part in projParts)
+                {
+                    var projInstance = Instantiate(part.weaponGameObject);
+                    projInstance.transform.position = transform.position;
+                    projInstance.transform.rotation = initDir * Quaternion.Euler(0f, 0f, part.cur_direction);
+
+                    part.UpdateValues(projInstance.GetComponent<ProjectileController>());
+                }
+                break;
+            case SphereWepSO sphereObj:
+                var sphereParts = sphereObj.weaponParts;
+                foreach (var part in sphereParts)
+                {
+                    var projInstance = Instantiate(part.weaponGameObject);
+                    projInstance.transform.position = transform.position;
+
+                    part.UpdateValues(projInstance.GetComponent<SphereController>());
+                }
+                break;
+        }
+        
     }
 }

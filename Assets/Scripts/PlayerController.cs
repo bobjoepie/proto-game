@@ -12,7 +12,7 @@ public class InventoryItem
     public Color color;
     public string name;
     public int amount;
-    public CustomProjectileAttack projectile2;
+    public WeaponSO weapon;
 }
 
 public class PlayerController : MonoBehaviour
@@ -88,22 +88,24 @@ public class PlayerController : MonoBehaviour
         childSpriteRenderer.color = origColor;
     }
 
-    public void PickupItem2(string item, SpriteRenderer spriteRenderer, CustomProjectileAttack projectilePickup = null)
+    public void PickupItem(GameObject item, WeaponSO weaponPickup)
     {
-        //pickupList.Add(item);
-        Debug.Log($"Picked up {projectilePickup.name}");
-        //GameMenuManager.Instance.SetInventoryItem(0, item, spriteRenderer);
+        //pickupList.Add(itemName);
+        Debug.Log($"Picked up {weaponPickup.name}");
+        //GameMenuManager.Instance.SetInventoryItem(0, itemName, spriteRenderer);
+        var spriteRenderer = item.GetComponent<SpriteRenderer>();
         var newItem = new InventoryItem
         {
-            name = projectilePickup.name,
+            name = weaponPickup.name,
             sprite = spriteRenderer.sprite,
             color = spriteRenderer.color,
             amount = 1,
-            projectile2 = projectilePickup
+            weapon = weaponPickup
         };
         if (inventoryList.Select(i => i.name).ToList().Contains(newItem.name)) return;
         inventoryList.Add(newItem);
         GameMenuManager.Instance.SetInventoryItem2(inventoryList);
+        Destroy(item);
     }
 
     public void CheckEquipmentInputs()
@@ -213,13 +215,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        PlayerActions.equippedProjectile2 = null;
+        PlayerActions.equippedWeapon = null;
         if (EquippedItem != null)
         {
-            if (EquippedItem.projectile2 != null)
+            if (EquippedItem.weapon != null)
             {
-                PlayerActions.equippedProjectile2 = EquippedItem.projectile2;
-                Debug.Log("projectile equipped");
+                PlayerActions.equippedWeapon = EquippedItem.weapon;
+                //Debug.Log("projectile equipped");
             }
             Debug.Log($"Equipped {EquippedItem.name}");
         }
