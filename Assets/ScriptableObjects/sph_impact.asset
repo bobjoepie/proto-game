@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7e7c0ffd5fb1c498697ffb1922be9e, type: 3}
+  m_Name: sph_impact
+  m_EditorClassIdentifier: 
+  name: Shot Impact
+  description: Basic impact
+  cooldown: 0
+  weaponParts:
+  - label: Explosion
+    weaponType: 2
+    collisionType: 1
+    weaponGameObject: {fileID: 2575580043271617909, guid: 160a1e60ed85c82468924b18ba29c36b, type: 3}
+    damage: 0
+    cur_lifeTime: 0.1
+    cur_speed: 5
+    pre_lifeTime: 0
+    post_subWeapon: {fileID: 0}

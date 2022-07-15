@@ -36,7 +36,7 @@ MonoBehaviour:
     pre_spread: 0
     pre_rotation: -180
     pre_rotationSpeed: 0
-    post_subWeapon: {fileID: 0}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 2
     weaponType: 0
     collisionType: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     pre_spread: 0
     pre_rotation: -90
     pre_rotationSpeed: 0
-    post_subWeapon: {fileID: 0}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 3
     weaponType: 0
     collisionType: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     pre_spread: 0
     pre_rotation: 180
     pre_rotationSpeed: 0
-    post_subWeapon: {fileID: 0}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 4
     weaponType: 0
     collisionType: 0
@@ -99,4 +99,4 @@ MonoBehaviour:
     pre_spread: 0
     pre_rotation: 90
     pre_rotationSpeed: 0
-    post_subWeapon: {fileID: 0}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
