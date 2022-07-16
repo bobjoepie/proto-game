@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,22 +43,20 @@ public class PlayerActionsController : MonoBehaviour
         Vector2 mousePos = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
         var dir = playerPos - mousePos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        
-        switch (equippedWeapon)
-        {
-            case ProjectileWepSO projObj:
-                var weaponParts = projObj.weaponParts;
-                foreach (var part in weaponParts)
-                {
-                    var projInstance = Instantiate(part.weaponGameObject);
-                    projInstance.transform.position = transform.position;
-                    projInstance.transform.rotation = Quaternion.Euler(0f, 0f, angle + part.pre_direction);
+        var rotToMouse = Quaternion.Euler(0f, 0f, angle);
 
-                    part.UpdateValues(projInstance.GetComponent<ProjectileController>());
-                }
-                yield return new WaitForSeconds(projObj.cooldown);
-                break;
+        dynamic weaponParts = WeaponSO.ConvertWeaponToParts(equippedWeapon);
+
+        for (int i = 0; i < equippedWeapon.amount; i++)
+        {
+            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, rotToMouse);
+
+            if (equippedWeapon.amountBurstTime > 0f)
+            {
+                yield return new WaitForSeconds(equippedWeapon.amountBurstTime);
+            }
         }
+        yield return new WaitForSeconds(equippedWeapon.cooldown);
         CanAttack = true;
     }
 }

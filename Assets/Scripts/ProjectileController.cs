@@ -40,8 +40,8 @@ public class ProjectileController : MonoBehaviour
     public bool hasDestinationPos;
     private Vector2 destinationPos;
 
-    private Quaternion initDir;
-    private Vector2 initPos;
+    public Quaternion initDir;
+    public Vector2 initPos;
 
     private bool isPrepped;
     private bool isFinished;
@@ -66,6 +66,7 @@ public class ProjectileController : MonoBehaviour
             ProcessPreAttack();
         }
         if (!isPrepped) return;
+
         ProcessAttack();
 
         if (ElapsedTime > cur_lifeTime)
@@ -99,6 +100,7 @@ public class ProjectileController : MonoBehaviour
         if (pre_lifeTime <= 0f)
         {
             isPrepped = true;
+            transform.rotation = initDir * Quaternion.Euler(0f, 0f,cur_direction);
         }
         pre_lifeTime -= Time.deltaTime;
     }
@@ -107,21 +109,16 @@ public class ProjectileController : MonoBehaviour
     {
         if (cur_targetType != TargetType.TowardsNearestMouse)
         {
-            //var step = cur_speed * Time.deltaTime;
-            //transform.position += -transform.right * step;
             if (cur_rotation != 0f)
             {
                 transform.Rotate(0, 0, cur_rotation * Time.deltaTime);
             }
-            //ElapsedTime += Time.deltaTime;
         }
         else
         {
             if (!hasDestinationPos)
             {
-                Debug.Log((Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition));
                 Vector2 bulletPos = transform.position;
-                //Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 var dir = bulletPos - destinationPos;
                 var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
@@ -129,8 +126,6 @@ public class ProjectileController : MonoBehaviour
                 GetComponent<Collider2D>().enabled = true;
                 hasDestinationPos = true;
             }
-
-            
         }
 
         var step = cur_speed * Time.deltaTime;
@@ -141,30 +136,7 @@ public class ProjectileController : MonoBehaviour
     private void ProcessPostAttack()
     {
         Destroy(gameObject);
-        switch (post_subWeapon)
-        {
-            case ProjectileWepSO projObj:
-                var projParts = projObj.weaponParts;
-                foreach (var part in projParts)
-                {
-                    var projInstance = Instantiate(part.weaponGameObject);
-                    projInstance.transform.position = transform.position;
-                    projInstance.transform.rotation = initDir * Quaternion.Euler(0f, 0f, part.cur_direction);
-
-                    part.UpdateValues(projInstance.GetComponent<ProjectileController>());
-                }
-                break;
-            case SphereWepSO sphereObj:
-                var sphereParts = sphereObj.weaponParts;
-                foreach (var part in sphereParts)
-                {
-                    var projInstance = Instantiate(part.weaponGameObject);
-                    projInstance.transform.position = transform.position;
-
-                    part.UpdateValues(projInstance.GetComponent<SphereController>());
-                }
-                break;
-        }
-        
+        dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation);
     }
 }

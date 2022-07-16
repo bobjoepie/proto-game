@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SphereController : MonoBehaviour
 {
+    private Camera MainCamera;
+
     [Header("Properties")]
     public WeaponType weaponType;
     public CollisionType collisionType;
@@ -13,6 +16,7 @@ public class SphereController : MonoBehaviour
     [Header("Sphere Properties")]
     [Range(0, 5)] public float cur_lifeTime;
     [Range(0, 20)] public float cur_speed;
+    public TargetType cur_targetType;
 
     [Header("Pre-Attack")]
     [Range(0, 5)] public float pre_lifeTime;
@@ -22,8 +26,8 @@ public class SphereController : MonoBehaviour
 
     private float ElapsedTime;
 
-    private Quaternion initDir;
-    private Vector2 initPos;
+    public Quaternion initDir;
+    public Vector2 initPos;
 
     private bool isPrepped;
     private bool isFinished;
@@ -35,6 +39,18 @@ public class SphereController : MonoBehaviour
 
         initDir = transform.rotation;
         initPos = transform.position;
+
+        MainCamera = Camera.main;
+
+        switch (cur_targetType)
+        {
+            case TargetType.Self:
+                break;
+            case TargetType.TowardsMouse:
+            default:
+                transform.position = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -56,9 +72,10 @@ public class SphereController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
+        if (/*col.gameObject.CompareTag("Player") || */col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
         var closestPoint = col.ClosestPoint(transform.position);
         col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
+        col.gameObject.GetComponent<PlayerController>()?.TakeDamage(damage, closestPoint);
     }
 
     private void ProcessPreAttack()
@@ -80,5 +97,7 @@ public class SphereController : MonoBehaviour
     private void ProcessPostAttack()
     {
         Destroy(gameObject);
+        dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation);
     }
 }

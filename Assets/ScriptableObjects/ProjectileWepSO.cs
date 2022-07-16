@@ -27,7 +27,7 @@ public class ProjectilePart : WeaponPart
     public bool pre_hasCollision;
     [Range(0, 5)] public float pre_lifeTime;
     [Range(0, 20)] public float pre_speed;
-    [Range(-360, 360)] public float pre_direction;
+    //[Range(-360, 360)] public float pre_direction;
     [Range(0, 90)] public float pre_spread;
     [Range(-360, 360)] public float pre_rotation;
     [Range(0, 200)] public float pre_rotationSpeed;

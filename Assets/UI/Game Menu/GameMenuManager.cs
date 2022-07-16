@@ -120,7 +120,7 @@ public class GameMenuManager : VisualElement
         }
     }
 
-    public void SetInventoryItem2(List<InventoryItem> inventory)
+    public void SetInventoryItem(List<InventoryItem> inventory)
     {
         for (int i = 0; i < inventory.Count; i++)
         {

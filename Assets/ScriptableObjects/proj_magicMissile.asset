@@ -15,6 +15,8 @@ MonoBehaviour:
   name: Magic Missile
   description: 4 bolts homing to mouse for now
   cooldown: 1
+  amount: 1
+  amountBurstTime: 0
   weaponParts:
   - label: Shot 1
     weaponType: 0

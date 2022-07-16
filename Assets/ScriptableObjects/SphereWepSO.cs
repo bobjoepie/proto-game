@@ -16,6 +16,7 @@ public class SpherePart : WeaponPart
     [Header("Sphere Properties")]
     [Range(0, 5)] public float cur_lifeTime;
     [Range(0, 20)] public float cur_speed;
+    public TargetType cur_targetType;
 
     [Header("Pre-Attack")]
     [Range(0, 5)] public float pre_lifeTime;
@@ -32,6 +33,7 @@ public class SpherePart : WeaponPart
         
         instance.cur_lifeTime = this.cur_lifeTime;
         instance.cur_speed = this.cur_speed;
+        instance.cur_targetType = this.cur_targetType;
 
         instance.pre_lifeTime = this.pre_lifeTime;
 
