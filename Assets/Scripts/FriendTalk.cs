@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FriendTalk : MonoBehaviour
 {
-    [Range(5f, 10f)]
+    [Range(5f, 30f)]
     public float textSpeed;
     public string[] dialogue;
     public string[] dialogue2;

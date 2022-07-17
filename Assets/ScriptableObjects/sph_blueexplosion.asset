@@ -23,8 +23,12 @@ MonoBehaviour:
     collisionType: 1
     weaponGameObject: {fileID: 2575580043271617909, guid: fbd378c8a7bffae4aacc5695a6a6c198, type: 3}
     damage: 1
+    pre_direction: 0
+    weaponSpawn: 0
     cur_lifeTime: 0.1
     cur_speed: 5
-    cur_targetType: 1
+    cur_direction: 0
+    cur_targetType: 0
     pre_lifeTime: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 0}

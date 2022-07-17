@@ -109,7 +109,7 @@ public class GameMenuManager : VisualElement
     public void SetHealthBar(int curHealth, int maxHealth)
     {
         HealthBarText.text = curHealth + "/" + maxHealth;
-        HealthBar.style.width = Length.Percent(100f * (float)curHealth / (float)maxHealth);
+        HealthBar.style.width = Length.Percent(100f * curHealth / maxHealth);
     }
 
     public void ClearInventoryList()

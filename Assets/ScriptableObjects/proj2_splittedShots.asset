@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
   m_Name: proj2_splittedShots
   m_EditorClassIdentifier: 
-  name: Splitted
+  name: 
   description: 2nd part of Splitter
   cooldown: 0
   amount: 1
@@ -23,6 +23,8 @@ MonoBehaviour:
     collisionType: 0
     weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: 0
+    weaponSpawn: 0
     cur_hasCollision: 0
     cur_lifeTime: 0.25
     cur_speed: 10
@@ -34,16 +36,18 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: 0
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}
   - label: Shot 2
     weaponType: 0
     collisionType: 0
     weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: 0
+    weaponSpawn: 0
     cur_hasCollision: 0
     cur_lifeTime: 0.25
     cur_speed: 10
@@ -55,8 +59,8 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: 0
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}

@@ -21,7 +21,7 @@ public class PlayerActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && equippedWeapon != null)
+        if (Input.GetKey(KeyCode.Mouse0) && equippedWeapon is not null)
         {
             PerformAttack();
         }
@@ -40,7 +40,7 @@ public class PlayerActionsController : MonoBehaviour
         CanAttack = false;
 
         Vector2 playerPos = transform.position;
-        Vector2 mousePos = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         var dir = playerPos - mousePos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         var rotToMouse = Quaternion.Euler(0f, 0f, angle);

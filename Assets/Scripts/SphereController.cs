@@ -5,52 +5,56 @@ using UnityEngine;
 
 public class SphereController : MonoBehaviour
 {
-    private Camera MainCamera;
-
     [Header("Properties")]
     public WeaponType weaponType;
     public CollisionType collisionType;
     public GameObject weaponGameObject;
     public int damage;
+    public SpawnLocation weaponSpawn;
 
     [Header("Sphere Properties")]
     [Range(0, 5)] public float cur_lifeTime;
     [Range(0, 20)] public float cur_speed;
+    [Range(-360, 360)] public float cur_direction;
     public TargetType cur_targetType;
 
     [Header("Pre-Attack")]
     [Range(0, 5)] public float pre_lifeTime;
+    [Range(-360, 360)] public float pre_direction;
+    public TargetType pre_targetType;
 
     [Header("Post-Attack")]
     public WeaponSO post_subWeapon;
+
+    private Camera MainCamera;
 
     private float ElapsedTime;
 
     public Quaternion initDir;
     public Vector2 initPos;
+    public Vector2 initMousePos;
 
     private bool isPrepped;
-    private bool isFinished;
 
     // Start is called before the first frame update
     void Start()
     {
         ElapsedTime = 0f;
+        MainCamera = Camera.main;
+        initMousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        switch (weaponSpawn)
+        {
+            case SpawnLocation.MousePoint:
+                transform.position = initMousePos;
+                break;
+            case SpawnLocation.None:
+            default:
+                break;
+        }
 
         initDir = transform.rotation;
         initPos = transform.position;
-
-        MainCamera = Camera.main;
-
-        switch (cur_targetType)
-        {
-            case TargetType.Self:
-                break;
-            case TargetType.TowardsMouse:
-            default:
-                transform.position = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
-                break;
-        }
     }
 
     // Update is called once per frame
@@ -82,7 +86,7 @@ public class SphereController : MonoBehaviour
     {
         if (pre_lifeTime <= 0f)
         {
-            isPrepped = true;
+            InitAttack();
         }
         pre_lifeTime -= Time.deltaTime;
     }
@@ -99,5 +103,30 @@ public class SphereController : MonoBehaviour
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
         WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation);
+    }
+
+    private void InitAttack()
+    {
+        isPrepped = true;
+        switch (cur_targetType)
+        {
+            case TargetType.TowardsMouse:
+                Vector2 bulletPos = transform.position;
+                Vector2 mousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+                var dir = bulletPos - mousePos;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+                break;
+            case TargetType.TowardsInitialMouse:
+                Vector2 bulletPos2 = transform.position;
+                var dir2 = bulletPos2 - initMousePos;
+                var angle2 = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle2));
+                break;
+            case TargetType.None:
+            default:
+                transform.rotation = initDir * Quaternion.Euler(0f, 0f, cur_direction);
+                break;
+        }
     }
 }

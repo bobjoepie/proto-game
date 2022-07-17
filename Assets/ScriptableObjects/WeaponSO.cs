@@ -30,6 +30,9 @@ public abstract class WeaponSO : ScriptableObject
             case SphereWepSO sphereObj:
                 weaponParts = sphereObj.weaponParts;
                 break;
+            case LineWepSO lineObj:
+                weaponParts = lineObj.weaponParts;
+                break;
         }
         return weaponParts;
     }
@@ -38,11 +41,22 @@ public abstract class WeaponSO : ScriptableObject
     {
         foreach (WeaponPart part in weaponParts)
         {
-            var wepInstance = Instantiate(part.weaponGameObject);
-            wepInstance.transform.position = position;
-            wepInstance.transform.rotation = rotation * Quaternion.Euler(0f, 0f, part.pre_direction);
+            switch (part.weaponSpawn)
+            {
+                case SpawnLocation.ClosestEnemy:
+                    break;
+                case SpawnLocation.ClosestMouse:
+                    break;
+                case SpawnLocation.Single:
+                    break;
+                default:
+                    var wepInstance = Instantiate(part.weaponGameObject);
+                    wepInstance.transform.position = position;
+                    wepInstance.transform.rotation = rotation * Quaternion.Euler(0f, 0f, part.pre_direction);
 
-            part.UpdateValues(wepInstance);
+                    part.UpdateValues(wepInstance);
+                    break;
+            }
         }
     }
 }
@@ -50,22 +64,35 @@ public abstract class WeaponSO : ScriptableObject
 public enum WeaponType
 {
     Projectile,
-    Single,
+    Single, //TODO
     Sphere,
-    Cone,
-    Line,
-    Conjure
+    Cone, //TODO
+    Line, //TODO
 }
 
 public enum TargetType
 {
+    None,
     TowardsMouse,
-    Self,
-    TowardsNearestEnemy,
-    TowardsNearestMouse
+    Self, //TODO
+    TowardsNearestEnemy, //TODO
+    TowardsNearestMouse, //TODO
+    TowardsInitialMouse,
+    TowardsInitialEnemy, //TODO
 }
 
-public enum CollisionType
+public enum SpawnLocation
+{
+    None,
+    Self,
+    MousePoint,
+    ClosestEnemy, //TODO
+    ClosestMouse, //TODO
+    Single, //TODO
+    CustomPosition, //TODO
+}
+
+public enum CollisionType //TODO
 {
     Enemy,
     All,
@@ -84,16 +111,20 @@ public class WeaponPart
     public GameObject weaponGameObject;
     public int damage;
     [Range(-360, 360)] public float pre_direction;
+    public SpawnLocation weaponSpawn;
 
     public void UpdateValues(GameObject wepInstance)
     {
         switch (this)
         {
             case ProjectilePart proj:
-                proj.UpdateValues(wepInstance.GetComponent<ProjectileController>());
+                proj.UpdateValues(wepInstance.GetComponentInChildren<ProjectileController>());
                 break;
             case SpherePart sphere:
-                sphere.UpdateValues(wepInstance.GetComponent<SphereController>());
+                sphere.UpdateValues(wepInstance.GetComponentInChildren<SphereController>());
+                break;
+            case LinePart line:
+                line.UpdateValues(wepInstance.GetComponentInChildren<LineController>());
                 break;
         }
     }

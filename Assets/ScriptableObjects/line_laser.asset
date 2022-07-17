@@ -9,35 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
-  m_Name: proj_grenade
+  m_Script: {fileID: 11500000, guid: c80929404061bca49bad3946564396a4, type: 3}
+  m_Name: line_laser
   m_EditorClassIdentifier: 
-  name: Grenade
-  description: Throw a grenade
+  name: Laser
+  description: Laser beam from player to mouse
   cooldown: 1
   amount: 1
   amountBurstTime: 0
   weaponParts:
-  - label: Grenade
-    weaponType: 0
+  - label: Laser
+    weaponType: 4
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: 923258ac5414c224c9f06fa68725853b, type: 3}
-    damage: 0
+    weaponGameObject: {fileID: 5568248250909122663, guid: 562244ea49d33f04980e1362b57ed0af, type: 3}
+    damage: 1
     pre_direction: 0
     weaponSpawn: 0
     cur_hasCollision: 0
-    cur_lifeTime: 1
-    cur_speed: 5
+    cur_lifeTime: 0.05
+    cur_width: 0.5
     cur_direction: 0
     cur_spread: 0
     cur_rotation: 0
     cur_rotationSpeed: 0
-    cur_targetType: 0
-    pre_hasCollision: 0
+    cur_targetType: 5
     pre_lifeTime: 0
-    pre_speed: 0
-    pre_spread: 0
-    pre_rotation: 0
-    pre_rotationSpeed: 0
-    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3dec6cc35bf3c534c90c7f4270964032, type: 2}

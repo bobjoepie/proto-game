@@ -27,14 +27,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 origPos;
     private Color origColor;
     private SpriteRenderer childSpriteRenderer;
-    private List<string> pickupList;
     private List<InventoryItem> inventoryList;
 
     [SerializeField] 
     private InventoryItem EquippedItem;
     private PlayerActionsController PlayerActions;
 
-    private Dictionary<int, KeyCode> inventoryKeys = new()
+    private readonly Dictionary<int, KeyCode> inventoryKeys = new()
     {
         { 0, KeyCode.Alpha1 },
         { 1, KeyCode.Alpha2 },
@@ -57,8 +56,7 @@ public class PlayerController : MonoBehaviour
 
         childSpriteRenderer = childSprite.GetComponent<SpriteRenderer>();
         origColor = childSpriteRenderer.color;
-
-        pickupList = new List<string>();
+        
         inventoryList = new List<InventoryItem>();
 
         PlayerActions = GetComponent<PlayerActionsController>();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
   m_Name: proj_splitter
   m_EditorClassIdentifier: 
-  name: Splitter
+  name: Split
   description: On hit, splits into multiple projectiles
   cooldown: 0.5
   amount: 1
@@ -23,6 +23,7 @@ MonoBehaviour:
     collisionType: 0
     weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: 0
     cur_hasCollision: 1
     cur_lifeTime: 0.5
     cur_speed: 10
@@ -34,7 +35,6 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: 0
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
