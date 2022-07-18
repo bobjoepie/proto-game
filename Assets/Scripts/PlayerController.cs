@@ -12,7 +12,7 @@ public class InventoryItem
     public Color color;
     public string name;
     public int amount;
-    public WeaponSO weapon;
+    public PickupSO pickupObj;
 }
 
 public class PlayerController : MonoBehaviour
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 origPos;
     private Color origColor;
     private SpriteRenderer childSpriteRenderer;
-    private List<InventoryItem> inventoryList;
+    private InventoryItem[] inventoryList;
 
     [SerializeField] 
     private InventoryItem EquippedItem;
@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
 
         childSpriteRenderer = childSprite.GetComponent<SpriteRenderer>();
         origColor = childSpriteRenderer.color;
-        
-        inventoryList = new List<InventoryItem>();
+
+        inventoryList = new InventoryItem[10];
 
         PlayerActions = GetComponent<PlayerActionsController>();
     }
@@ -100,22 +100,56 @@ public class PlayerController : MonoBehaviour
         childSpriteRenderer.color = origColor;
     }
 
-    public void PickupItem(GameObject item, WeaponSO weaponPickup)
+    public void Pickup(GameObject item, PickupSO pickupObj)
     {
-        Debug.Log($"Picked up {weaponPickup.name}");
-        var spriteRenderer = item.GetComponent<SpriteRenderer>();
-        var newItem = new InventoryItem
+        var spriteRenderer = item.GetComponentInChildren<SpriteRenderer>();
+        InventoryItem newItem;
+        switch (pickupObj)
         {
-            name = weaponPickup.name,
-            sprite = spriteRenderer.sprite,
-            color = spriteRenderer.color,
-            amount = 1,
-            weapon = weaponPickup
-        };
-        if (inventoryList.Select(i => i.name).ToList().Contains(newItem.name)) return;
-        inventoryList.Add(newItem);
-        GameMenuManager.Instance.SetInventoryItem(inventoryList);
-        Destroy(item);
+            case WeaponSO weaponObj:
+                newItem = new InventoryItem
+                {
+                    name = weaponObj.name,
+                    sprite = spriteRenderer.sprite,
+                    color = spriteRenderer.color,
+                    amount = 1,
+                    pickupObj = weaponObj,
+                };
+                break;
+            case ItemSO itemObj:
+                newItem = new InventoryItem
+                {
+                    name = itemObj.name,
+                    sprite = spriteRenderer.sprite,
+                    color = spriteRenderer.color,
+                    amount = 1,
+                    pickupObj = itemObj,
+                };
+                break;
+            default:
+                return;
+        }
+        
+        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItem.name)) return;
+
+        bool pickedUp = false;
+        for (int i = 0; i < inventoryList.Length; i++)
+        {
+            if (inventoryList[i] == null)
+            {
+                inventoryList[i] = newItem;
+                Debug.Log($"Picked up {pickupObj.name}");
+                GameMenuManager.Instance.SetInventoryItem(inventoryList);
+                Destroy(item);
+                pickedUp = true;
+                break;
+            }
+        }
+
+        if (!pickedUp)
+        {
+            Debug.Log("Inventory is full!");
+        }
     }
 
     private void CheckEquipmentInputs()
@@ -134,11 +168,19 @@ public class PlayerController : MonoBehaviour
         if (!foundKey) return;
 
         PlayerActions.equippedWeapon = null;
-        if (EquippedItem != null)
+        PlayerActions.equippedItem = null;
+        if (EquippedItem == null) return;
+
+        if (EquippedItem.pickupObj != null)
         {
-            if (EquippedItem.weapon != null)
+            switch (EquippedItem.pickupObj)
             {
-                PlayerActions.equippedWeapon = EquippedItem.weapon;
+                case WeaponSO weaponObj:
+                    PlayerActions.equippedWeapon = weaponObj;
+                    break;
+                case ItemSO itemObj:
+                    PlayerActions.equippedItem = itemObj;
+                    break;
             }
             Debug.Log($"Equipped {EquippedItem.name}");
         }

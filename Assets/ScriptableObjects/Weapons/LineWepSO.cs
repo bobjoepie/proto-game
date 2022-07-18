@@ -16,6 +16,7 @@ public class LinePart : WeaponPart
     [Header("Line Properties")]
     public bool cur_hasCollision;
     [Range(0, 5)] public float cur_lifeTime;
+    [Range(0, 20)] public float cur_maxDistance;
     [Range(0, 20)] public float cur_width;
     [Range(-360, 360)] public float cur_direction;
     [Range(0, 90)] public float cur_spread;
@@ -36,8 +37,10 @@ public class LinePart : WeaponPart
     public WeaponSO post_subWeapon;
 
 
-    public void UpdateValues(LineController instance)
+    public void UpdateValues(LineController instance, int iterationNum)
     {
+        instance.iterationNum = iterationNum + 1;
+
         instance.damage = this.damage;
         instance.collisionType = this.collisionType;
         instance.weaponType = this.weaponType;
@@ -45,6 +48,7 @@ public class LinePart : WeaponPart
 
         instance.cur_hasCollision = this.cur_hasCollision;
         instance.cur_lifeTime = this.cur_lifeTime;
+        instance.cur_maxDistance = this.cur_maxDistance;
         instance.cur_width = this.cur_width;
         instance.cur_direction = this.cur_direction;
         instance.cur_spread = this.cur_spread;

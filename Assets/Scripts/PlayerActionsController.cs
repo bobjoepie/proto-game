@@ -8,14 +8,20 @@ public class PlayerActionsController : MonoBehaviour
 {
     private Camera MainCamera;
     private bool CanAttack;
+    private bool CanUseItem;
+
+    public Coroutine usingWeapon;
+    public Coroutine usingItem;
     
     public WeaponSO equippedWeapon;
+    public ItemSO equippedItem;
 
     // Start is called before the first frame update
     void Start()
     {
         MainCamera = Camera.main;
         CanAttack = true;
+        CanUseItem = true;
     }
 
     // Update is called once per frame
@@ -25,13 +31,17 @@ public class PlayerActionsController : MonoBehaviour
         {
             PerformAttack();
         }
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && equippedItem is not null)
+        {
+            TryUseItem();
+        }
     }
 
     private void PerformAttack()
     {
         if (CanAttack)
         {
-            StartCoroutine(Attack());
+            usingWeapon = StartCoroutine(Attack());
         }
     }
 
@@ -58,5 +68,23 @@ public class PlayerActionsController : MonoBehaviour
         }
         yield return new WaitForSeconds(equippedWeapon.cooldown);
         CanAttack = true;
+        usingWeapon = null;
+    }
+
+    private void TryUseItem()
+    {
+        if (CanUseItem)
+        {
+            usingItem = StartCoroutine(UseItem());
+        }
+    }
+
+    IEnumerator UseItem()
+    {
+        CanUseItem = false;
+        Debug.Log("Used Item");
+        yield return new WaitForSeconds(equippedItem.cooldown);
+        CanUseItem = true;
+        usingItem = null;
     }
 }

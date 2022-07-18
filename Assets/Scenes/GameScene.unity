@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6631236128054058977, guid: 280c18efcca4a8f4e9dfa66da2c444d9, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 01671036a55009d479db7b60ea1d8d35, type: 2}
     - target: {fileID: 8310671449323089756, guid: 280c18efcca4a8f4e9dfa66da2c444d9, type: 3}
       propertyPath: m_Name
       value: weapon_burst
@@ -355,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6654684502556865988, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 44aa561efad18c3489d0315405544fb7, type: 2}
     - target: {fileID: 4434036764684693227, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
       propertyPath: m_Name
       value: v2_weapon_explosiveBullet
@@ -823,6 +831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2575311020255377203, guid: 5f07a0b6aafa1814daff9d827184504a, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 049917c2872074241b1047ab6c6ecd23, type: 2}
     - target: {fileID: 8310671449323089756, guid: 5f07a0b6aafa1814daff9d827184504a, type: 3}
       propertyPath: m_Name
       value: weapon_curved
@@ -985,6 +997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6631236128054058977, guid: 2fb6b14413f94d1478308f6546b00c61, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: ae9e1a887ce19f9498d18ed4a3f161b8, type: 2}
     - target: {fileID: 8310671449323089756, guid: 2fb6b14413f94d1478308f6546b00c61, type: 3}
       propertyPath: m_Name
       value: weapon_magicmissile
@@ -1362,7 +1378,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -2381,6 +2397,10 @@ PrefabInstance:
       value: weapon_spreadshot
       objectReference: {fileID: 0}
     - target: {fileID: 9108311531058695528, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    - target: {fileID: 9108311531058695528, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
       propertyPath: weaponPickup
       value: 
       objectReference: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
@@ -2556,7 +2576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075819963
 GameObject:
@@ -2657,6 +2677,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4382052613571190933, guid: c72d53c28148612488204a2c766db7b5, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: fc807d1bbbf61664b8763b188e833b41, type: 2}
     - target: {fileID: 8310671449323089756, guid: c72d53c28148612488204a2c766db7b5, type: 3}
       propertyPath: m_Name
       value: weapon_slowmoving
@@ -2671,12 +2695,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6654684502556865988, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: fd814dcff943a154b93a05a0a9cbadbd, type: 2}
+    - target: {fileID: -6654684502556865988, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
       propertyPath: weaponPickup
       value: 
       objectReference: {fileID: 11400000, guid: fd814dcff943a154b93a05a0a9cbadbd, type: 2}
     - target: {fileID: 4434036764684693227, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
       propertyPath: m_Name
       value: weapon_explosiveBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434036764684693227, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
+      propertyPath: m_TagString
+      value: Uncollidable
       objectReference: {fileID: 0}
     - target: {fileID: 8239322779772186584, guid: 4eaa109427018ab409a58047e7b00f23, type: 3}
       propertyPath: m_RootOrder
@@ -3061,6 +3093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_rapid
       objectReference: {fileID: 0}
+    - target: {fileID: 8468302141553660355, guid: 7c8b95c341a7b0f4589c545d3ed0e280, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: bed5c7fdfa7537b4ba20cb552a36e663, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8b95c341a7b0f4589c545d3ed0e280, type: 3}
 --- !u!1001 &1490365378
@@ -3572,6 +3608,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6631236128054058977, guid: 1e9038bb390082e4db7d8329404ae091, type: 3}
+      propertyPath: pickupObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 680dd168531e79442a4e76d1a9594ac8, type: 2}
     - target: {fileID: 8310671449323089756, guid: 1e9038bb390082e4db7d8329404ae091, type: 3}
       propertyPath: m_Name
       value: weapon_splitter
@@ -4011,7 +4051,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1235873692800054108, guid: 6dd0569874aaa2141aab9ef2fc783f97, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1235873692800054108, guid: 6dd0569874aaa2141aab9ef2fc783f97, type: 3}
       propertyPath: m_LocalScale.x
@@ -4417,6 +4457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5749074884580890335, guid: bb047f86003fea240a77195143763420, type: 3}
+      propertyPath: itemToSpawn
+      value: 
+      objectReference: {fileID: 7465297169885440247, guid: 787b0d137fe82f942a276a00b8435f9e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb047f86003fea240a77195143763420, type: 3}
 --- !u!1001 &5314039534096884515
@@ -4432,7 +4476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314039534081832100, guid: b2a464d20c502c742a57a117c198d95a, type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5314039534081832100, guid: b2a464d20c502c742a57a117c198d95a, type: 3}
       propertyPath: m_LocalPosition.x

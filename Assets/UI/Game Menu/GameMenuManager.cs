@@ -120,11 +120,15 @@ public class GameMenuManager : VisualElement
         }
     }
 
-    public void SetInventoryItem(List<InventoryItem> inventory)
+    public void SetInventoryItem(InventoryItem[] inventory)
     {
-        for (int i = 0; i < inventory.Count; i++)
+        for (int i = 0; i < inventory.Length; i++)
         {
             InventoryItem item = inventory[i];
+            if (item == null)
+            {
+                return;
+            }
             var inventorySlot = InventoryList[i];
             inventorySlot.text = item.name;
             inventorySlot.style.backgroundImage = new StyleBackground(item.sprite);

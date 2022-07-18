@@ -11,6 +11,7 @@ public class ProjectileController : MonoBehaviour
     public GameObject weaponGameObject;
     public int damage;
     public SpawnLocation weaponSpawn;
+    public int iterationNum;
 
     [Header("Projectile Properties")]
     public bool cur_hasCollision;
@@ -131,7 +132,7 @@ public class ProjectileController : MonoBehaviour
     {
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, iterationNum);
     }
 
     private void InitAttack()

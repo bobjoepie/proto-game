@@ -10,10 +10,12 @@ public class LineController : MonoBehaviour
     public GameObject weaponGameObject;
     public int damage;
     public SpawnLocation weaponSpawn;
+    public int iterationNum;
 
     [Header("Line Properties")]
     public bool cur_hasCollision;
     [Range(0, 5)] public float cur_lifeTime;
+    [Range(0, 20)] public float cur_maxDistance;
     [Range(0, 20)] public float cur_width;
     [Range(-360, 360)] public float cur_direction;
     [Range(0, 90)] public float cur_spread; //TODO
@@ -58,32 +60,50 @@ public class LineController : MonoBehaviour
 
         initDir = transform.rotation;
         initPos = transform.position;
-
+        Vector2 bulletPos;
+        Vector2 destPos;
+        Vector2 dir;
+        float angle;
+        float length;
         // Line must spawn in start due to position issues with scaling, may need another method later
         switch (cur_targetType)
         {
             case TargetType.TowardsMouse:
-                Vector2 bulletPos = transform.position;
-                Vector2 mousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
-                var dir = bulletPos - mousePos;
-                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                bulletPos = transform.position;
+                destPos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+                dir = bulletPos - destPos;
+                angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
-                var length2 = -1 * Vector2.Distance(bulletPos, mousePos);
-                transform.parent.localScale = new Vector3(length2, cur_width, transform.localScale.z);
+                length = -1 * Vector2.Distance(bulletPos, destPos);
+                transform.parent.localScale = new Vector3(length, cur_width, transform.localScale.z);
                 break;
             case TargetType.TowardsInitialMouse:
-                Vector2 bulletPos2 = transform.position;
-                var dir2 = bulletPos2 - initMousePos;
-                var angle2 = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg;
-                transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle2));
+                bulletPos = transform.position;
+                dir = bulletPos - initMousePos;
+                angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
-                var length = -1 * Vector2.Distance(bulletPos2, initMousePos);
+                length = -1 * Vector2.Distance(bulletPos, initMousePos);
                 transform.parent.localScale = new Vector3(length, cur_width, transform.localScale.z);
                 break;
             case TargetType.None:
             default:
+                
                 transform.rotation = initDir * Quaternion.Euler(0f, 0f, cur_direction);
+                var mask = 1 << LayerMask.GetMask("Player", "Projectile");
+                var hit = Physics2D.CircleCast(transform.position, cur_width/2, -transform.right, cur_maxDistance, mask);
+
+                if (hit.collider != null)
+                {
+                    length = -1 * Vector2.Distance(transform.position, hit.point);
+                    transform.parent.localScale = new Vector3(length, cur_width, transform.localScale.z);
+                }
+                else
+                {
+                    length = -1 * cur_maxDistance;
+                    transform.parent.localScale = new Vector3(length, cur_width, transform.localScale.z);
+                }
                 break;
         }
     }
@@ -140,7 +160,7 @@ public class LineController : MonoBehaviour
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
         var lineEnd = GetComponentInChildren<LineEnd>().transform.position;
-        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd, gameObject.transform.rotation);
+        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd, gameObject.transform.rotation, iterationNum);
     }
 
     private void InitAttack()

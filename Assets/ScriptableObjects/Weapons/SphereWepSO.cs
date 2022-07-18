@@ -27,8 +27,10 @@ public class SpherePart : WeaponPart
     public WeaponSO post_subWeapon;
 
 
-    public void UpdateValues(SphereController instance)
+    public void UpdateValues(SphereController instance, int iterationNum)
     {
+        instance.iterationNum = iterationNum + 1;
+
         instance.damage = this.damage;
         instance.collisionType = this.collisionType;
         instance.weaponType = this.weaponType;

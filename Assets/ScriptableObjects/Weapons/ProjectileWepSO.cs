@@ -36,8 +36,10 @@ public class ProjectilePart : WeaponPart
     [Header("Post-Attack")]
     public WeaponSO post_subWeapon;
     
-    public void UpdateValues(ProjectileController instance)
+    public void UpdateValues(ProjectileController instance, int iterationNum)
     {
+        instance.iterationNum = iterationNum + 1;
+
         instance.damage = this.damage;
         instance.collisionType = this.collisionType;
         instance.weaponType = this.weaponType;

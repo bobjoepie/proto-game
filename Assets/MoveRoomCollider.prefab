@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1235873692800054115}
   - component: {fileID: 1235873692800054114}
   - component: {fileID: 1235873692800054109}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MoveRoomCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

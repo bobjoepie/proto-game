@@ -27,6 +27,7 @@ MonoBehaviour:
     weaponSpawn: 0
     cur_hasCollision: 0
     cur_lifeTime: 0.05
+    cur_maxDistance: 10
     cur_width: 0.5
     cur_direction: 0
     cur_spread: 0

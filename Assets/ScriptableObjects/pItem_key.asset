@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52bd1e1561ea3ad4a8f446b5f56d5fc9, type: 3}
-  m_Name: Item1
+  m_Script: {fileID: 11500000, guid: 9bfe7dae199826143958a49fe8bc367d, type: 3}
+  m_Name: pItem_key
   m_EditorClassIdentifier: 
-  recipe:
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  name: Key
+  description: Generic key
+  cooldown: 1
+  amount: 1
+  itemParts:
+  - label: Key
+    itemType: 0
+    placeHolderNum: 4

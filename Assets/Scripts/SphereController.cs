@@ -11,6 +11,7 @@ public class SphereController : MonoBehaviour
     public GameObject weaponGameObject;
     public int damage;
     public SpawnLocation weaponSpawn;
+    public int iterationNum;
 
     [Header("Sphere Properties")]
     [Range(0, 5)] public float cur_lifeTime;
@@ -102,7 +103,7 @@ public class SphereController : MonoBehaviour
     {
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, iterationNum);
     }
 
     private void InitAttack()

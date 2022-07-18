@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public abstract class WeaponSO : ScriptableObject
+public abstract class WeaponSO : PickupSO
 {
     public string name;
     [TextArea(3, 5)]
@@ -37,8 +37,12 @@ public abstract class WeaponSO : ScriptableObject
         return weaponParts;
     }
 
-    public static void InstantiateWeaponParts(WeaponPart[] weaponParts, Vector3 position, Quaternion rotation)
+    public static void InstantiateWeaponParts(WeaponPart[] weaponParts, Vector3 position, Quaternion rotation, int iterationNum = 0)
     {
+        if (iterationNum >= 5)
+        {
+            return;
+        }
         foreach (WeaponPart part in weaponParts)
         {
             switch (part.weaponSpawn)
@@ -54,7 +58,7 @@ public abstract class WeaponSO : ScriptableObject
                     wepInstance.transform.position = position;
                     wepInstance.transform.rotation = rotation * Quaternion.Euler(0f, 0f, part.pre_direction);
 
-                    part.UpdateValues(wepInstance);
+                    part.UpdateValues(wepInstance, iterationNum);
                     break;
             }
         }
@@ -113,18 +117,18 @@ public class WeaponPart
     [Range(-360, 360)] public float pre_direction;
     public SpawnLocation weaponSpawn;
 
-    public void UpdateValues(GameObject wepInstance)
+    public void UpdateValues(GameObject wepInstance, int iterationNum)
     {
         switch (this)
         {
             case ProjectilePart proj:
-                proj.UpdateValues(wepInstance.GetComponentInChildren<ProjectileController>());
+                proj.UpdateValues(wepInstance.GetComponentInChildren<ProjectileController>(), iterationNum);
                 break;
             case SpherePart sphere:
-                sphere.UpdateValues(wepInstance.GetComponentInChildren<SphereController>());
+                sphere.UpdateValues(wepInstance.GetComponentInChildren<SphereController>(), iterationNum);
                 break;
             case LinePart line:
-                line.UpdateValues(wepInstance.GetComponentInChildren<LineController>());
+                line.UpdateValues(wepInstance.GetComponentInChildren<LineController>(), iterationNum);
                 break;
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2845255425634611346}
   - component: {fileID: 6898701552196433649}
   - component: {fileID: 9174513715277321398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -99,9 +99,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded309339a1616499f7108d70f65e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lifeTime: 1
+  weaponType: 0
+  collisionType: 0
+  weaponGameObject: {fileID: 0}
   damage: 1
+  weaponSpawn: 0
+  cur_hasCollision: 0
+  cur_lifeTime: 0
+  cur_speed: 0
+  cur_direction: 0
+  cur_spread: 0
+  cur_rotation: 0
+  cur_rotationSpeed: 0
+  cur_targetType: 0
+  pre_hasCollision: 0
+  pre_lifeTime: 0
+  pre_speed: 0
+  pre_direction: 0
+  pre_spread: 0
+  pre_rotation: 0
+  pre_rotationSpeed: 0
+  pre_targetType: 0
+  post_subWeapon: {fileID: 0}
+  initDir: {x: 0, y: 0, z: 0, w: 0}
+  initPos: {x: 0, y: 0}
+  initMousePos: {x: 0, y: 0}
 --- !u!58 &6898701552196433649
 CircleCollider2D:
   m_ObjectHideFlags: 0

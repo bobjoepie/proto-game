@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7812359856586780467}
   - component: {fileID: 4023816079027052672}
   - component: {fileID: 1701829799798433398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     name: 
     amount: 0
-    projectile: {fileID: 0}
+    weapon: {fileID: 0}
 --- !u!114 &7812359856586780467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,10 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2381a047a6fea4dbef1600a8064d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.5
-  baseProjectile: {fileID: 11400000, guid: e65c5c5e5011e7b42bd4373a5fecb10e, type: 2}
-  bulletDamage: 1
-  equippedProjectile: {fileID: 0}
+  equippedWeapon: {fileID: 0}
 --- !u!50 &4023816079027052672
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6352870522302643937}
   - component: {fileID: 5250203677405476815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7812359856302530011}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: CrosshairHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +237,7 @@ GameObject:
   - component: {fileID: 7812359856508205500}
   - component: {fileID: 7812359856508205501}
   - component: {fileID: 7812359856508205502}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: CrosshairObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}

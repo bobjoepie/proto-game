@@ -40,7 +40,7 @@ MonoBehaviour:
     pre_rotation: -180
     pre_rotationSpeed: 0
     pre_targetType: 0
-    post_subWeapon: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 2
     weaponType: 0
     collisionType: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     pre_rotation: -90
     pre_rotationSpeed: 0
     pre_targetType: 0
-    post_subWeapon: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 3
     weaponType: 0
     collisionType: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     pre_rotation: 180
     pre_rotationSpeed: 0
     pre_targetType: 0
-    post_subWeapon: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
   - label: Shot 4
     weaponType: 0
     collisionType: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
     pre_rotation: 90
     pre_rotationSpeed: 0
     pre_targetType: 0
-    post_subWeapon: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    post_subWeapon: {fileID: 11400000, guid: 90f1456b9a9c23943a912fd514d48bdc, type: 2}
