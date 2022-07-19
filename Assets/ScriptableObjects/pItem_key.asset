@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe7dae199826143958a49fe8bc367d, type: 3}
   m_Name: pItem_key
   m_EditorClassIdentifier: 
+  internalName: basic_key
   name: Key
   description: Generic key
   cooldown: 1

@@ -6,15 +6,14 @@ using UnityEngine.Serialization;
 
 public class PlayerActionsController : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerController player;
     private Camera MainCamera;
     private bool CanAttack;
     private bool CanUseItem;
 
     public Coroutine usingWeapon;
     public Coroutine usingItem;
-    
-    public WeaponSO equippedWeapon;
-    public ItemSO equippedItem;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +26,11 @@ public class PlayerActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && equippedWeapon is not null)
+        if (Input.GetKey(KeyCode.Mouse0) && player.equippedWeapon is not null)
         {
             PerformAttack();
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && equippedItem is not null)
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && player.equippedItem is not null)
         {
             TryUseItem();
         }
@@ -54,19 +53,20 @@ public class PlayerActionsController : MonoBehaviour
         var dir = playerPos - mousePos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         var rotToMouse = Quaternion.Euler(0f, 0f, angle);
+        var weaponObj = player.equippedWeapon;
 
-        dynamic weaponParts = WeaponSO.ConvertWeaponToParts(equippedWeapon);
+        dynamic weaponParts = WeaponSO.ConvertWeaponToParts(weaponObj);
 
-        for (int i = 0; i < equippedWeapon.amount; i++)
+        for (int i = 0; i < weaponObj.amount; i++)
         {
             WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, rotToMouse);
 
-            if (equippedWeapon.amountBurstTime > 0f)
+            if (weaponObj.amountBurstTime > 0f)
             {
-                yield return new WaitForSeconds(equippedWeapon.amountBurstTime);
+                yield return new WaitForSeconds(weaponObj.amountBurstTime);
             }
         }
-        yield return new WaitForSeconds(equippedWeapon.cooldown);
+        yield return new WaitForSeconds(weaponObj.cooldown);
         CanAttack = true;
         usingWeapon = null;
     }
@@ -82,8 +82,21 @@ public class PlayerActionsController : MonoBehaviour
     IEnumerator UseItem()
     {
         CanUseItem = false;
-        Debug.Log("Used Item");
-        yield return new WaitForSeconds(equippedItem.cooldown);
+        var itemObj = player.equippedItem;
+        Debug.Log($"Used Item {itemObj.name}!");
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        foreach (var col in colliders)
+        {
+            var checkItemComp = col.GetComponent<ItemChecker>();
+            var item = checkItemComp?.itemToCheck;
+            if (item is not null && item == player.equippedItem)
+            {
+                checkItemComp.MatchedItem(player);
+                break;
+            }
+            
+        }
+        yield return new WaitForSeconds(itemObj.cooldown);
         CanUseItem = true;
         usingItem = null;
     }

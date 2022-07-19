@@ -58,8 +58,11 @@ MonoBehaviour:
     sprite: {fileID: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     name: 
+    internalName: 
     amount: 0
-    weapon: {fileID: 0}
+    pickupObj: {fileID: 0}
+  equippedWeapon: {fileID: 0}
+  equippedItem: {fileID: 0}
 --- !u!114 &7812359856586780467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2381a047a6fea4dbef1600a8064d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
+  player: {fileID: 4023816079027052673}
 --- !u!50 &4023816079027052672
 Rigidbody2D:
   serializedVersion: 4

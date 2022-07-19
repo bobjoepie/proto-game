@@ -11,6 +11,7 @@ public class InventoryItem
     public Sprite sprite;
     public Color color;
     public string name;
+    public string internalName;
     public int amount;
     public PickupSO pickupObj;
 }
@@ -31,7 +32,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] 
     private InventoryItem EquippedItem;
-    private PlayerActionsController PlayerActions;
+    [SerializeField]
+
+    public WeaponSO equippedWeapon;
+    public ItemSO equippedItem;
 
     private readonly Dictionary<int, KeyCode> inventoryKeys = new()
     {
@@ -58,8 +62,6 @@ public class PlayerController : MonoBehaviour
         origColor = childSpriteRenderer.color;
 
         inventoryList = new InventoryItem[10];
-
-        PlayerActions = GetComponent<PlayerActionsController>();
     }
 
     // Update is called once per frame
@@ -110,6 +112,7 @@ public class PlayerController : MonoBehaviour
                 newItem = new InventoryItem
                 {
                     name = weaponObj.name,
+                    internalName = weaponObj.internalName,
                     sprite = spriteRenderer.sprite,
                     color = spriteRenderer.color,
                     amount = 1,
@@ -120,6 +123,7 @@ public class PlayerController : MonoBehaviour
                 newItem = new InventoryItem
                 {
                     name = itemObj.name,
+                    internalName = itemObj.internalName,
                     sprite = spriteRenderer.sprite,
                     color = spriteRenderer.color,
                     amount = 1,
@@ -167,8 +171,8 @@ public class PlayerController : MonoBehaviour
 
         if (!foundKey) return;
 
-        PlayerActions.equippedWeapon = null;
-        PlayerActions.equippedItem = null;
+        equippedWeapon = null;
+        equippedItem = null;
         if (EquippedItem == null) return;
 
         if (EquippedItem.pickupObj != null)
@@ -176,10 +180,10 @@ public class PlayerController : MonoBehaviour
             switch (EquippedItem.pickupObj)
             {
                 case WeaponSO weaponObj:
-                    PlayerActions.equippedWeapon = weaponObj;
+                    equippedWeapon = weaponObj;
                     break;
                 case ItemSO itemObj:
-                    PlayerActions.equippedItem = itemObj;
+                    equippedItem = itemObj;
                     break;
             }
             Debug.Log($"Equipped {EquippedItem.name}");
