@@ -11,7 +11,7 @@ public class ItemChecker : MonoBehaviour
     public void MatchedItem(PlayerController player)
     {
         //TeleportOther(player.gameObject);
-        ChangeScene("Stage1");
+        ChangeScene("Stage1_Cutscene");
     }
 
     public void TeleportOther(GameObject actor) 

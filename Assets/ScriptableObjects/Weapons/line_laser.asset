@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80929404061bca49bad3946564396a4, type: 3}
   m_Name: line_laser
   m_EditorClassIdentifier: 
+  internalName: 
   name: Laser
   description: Laser beam from player to mouse
   cooldown: 1
@@ -33,6 +34,6 @@ MonoBehaviour:
     cur_spread: 0
     cur_rotation: 0
     cur_rotationSpeed: 0
-    cur_targetType: 5
+    cur_targetType: 0
     pre_lifeTime: 0
     post_subWeapon: {fileID: 11400000, guid: 3dec6cc35bf3c534c90c7f4270964032, type: 2}

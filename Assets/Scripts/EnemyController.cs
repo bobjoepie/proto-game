@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else
+        else if (damage > 0)
         {
             StartCoroutine(SpriteKnockback(closestPoint));
         }

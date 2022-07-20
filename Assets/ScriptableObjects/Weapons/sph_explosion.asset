@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7e7c0ffd5fb1c498697ffb1922be9e, type: 3}
   m_Name: sph_explosion
   m_EditorClassIdentifier: 
+  internalName: 
   name: Explosion
   description: Explosion effect
   cooldown: 1
