@@ -66,36 +66,11 @@ public class InitializeScene : MonoBehaviour
             {
                 Vector2 pos = zoom * (new Vector2(x, y)) + shift;
                 var noise = Mathf.PerlinNoise(pos.x, pos.y);
-                var cell = column[y];
-                //if (cell == 1)
-                //{
-                //    Debug.Log($"{x}, {y} contains {cell}");
-                //}
+
                 if (noise < noiseLevel)
                 {
                     mapGridObj.tileGrid[x][y].tileObj = Instantiate(tileObj, new Vector3(x, y, 0), Quaternion.identity);
                 }
-                //if (Random.Range(0, 4) != 3)
-                //{
-                //    mapGridObj.tileGrid[x][y].tileObj = Instantiate(tileObj, new Vector3(x, y, 0), Quaternion.identity);
-                //    if (Random.Range(0, 20) == 0)
-                //    {
-                //        Instantiate(itemObj, new Vector3(x, y, 0), Quaternion.identity);
-                //    }
-                //    else if (Random.Range(0, 20) == 0)
-                //    {
-                //        var enemy = Instantiate(enemyObj, new Vector3(x, y, 0), Quaternion.identity);
-                //        if (Random.Range(0, 10) == 0)
-                //        {
-                //            enemy.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                //            enemy.health = 50;
-                //        }
-                //    }
-                //    else if (Random.Range(0, 20) == 0)
-                //    {
-                //        Instantiate(boxObj, new Vector3(x, y, 0), Quaternion.identity);
-                //    }
-                //}
             }
         }
     }
@@ -128,7 +103,6 @@ public class InitializeScene : MonoBehaviour
                 {
                     if (Random.Range(0, 4) != 3)
                     {
-                        mapGridObj.tileGrid[x][y].tileObj = Instantiate(tileObj, new Vector3(x, y, 0), Quaternion.identity);
                         if (Random.Range(0, 20) == 0)
                         {
                             Instantiate(itemObj, new Vector3(x, y, 0), Quaternion.identity);
