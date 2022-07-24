@@ -17,6 +17,9 @@ public class GameMenuManager : VisualElement
 
     private VisualElement HealthBar;
     private Label HealthBarText;
+
+    private VisualElement StatsWindow;
+    private VisualElement PauseMenu;
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
 
     public GameMenuManager()
@@ -52,6 +55,9 @@ public class GameMenuManager : VisualElement
             )
             .ToList();
         ClearInventoryList();
+
+        StatsWindow = this.Q("stat-window");
+        PauseMenu = this.Q("menu-screen");
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -158,5 +164,17 @@ public class GameMenuManager : VisualElement
             slot.style.borderRightWidth = new StyleFloat(0f);
             slot.style.borderTopWidth = new StyleFloat(0f);
         }
+    }
+
+    public void ToggleStatsWindow()
+    {
+        StatsWindow.ToggleInClassList("stat-window");
+        StatsWindow.ToggleInClassList("stat-window-active");
+    }
+
+    public void TogglePauseMenu()
+    {
+        PauseMenu.ToggleInClassList("menu-window");
+        PauseMenu.ToggleInClassList("menu-window-active");
     }
 }

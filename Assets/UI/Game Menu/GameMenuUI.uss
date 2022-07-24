@@ -1,3 +1,49 @@
 .screen {
     flex-grow: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.stat-window {
+    opacity: 0;
+    transition-duration: 500ms;
+    visibility: visible;
+    display: flex;
+}
+
+.stat-window-active {
+    transition-property: all;
+    transition-duration: 750ms;
+    transition-timing-function: ease;
+    translate: 500px 0;
+    background-color: rgba(219, 219, 219, 0.71);
+}
+
+.stat-window-active > #stat-button:hover {
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+    opacity: 0.5;
+}
+
+.stat-window > VisualElement {
+    opacity: 0;
+    transition-property: all;
+    transition-duration: 500ms;
+}
+
+.stat-window-active > VisualElement {
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 750ms;
+    background-color: rgba(46, 46, 46, 0.65);
+}
+
+.menu-window {
+    display: none;
+}
+
+.menu-window-active {
+    display: flex;
 }

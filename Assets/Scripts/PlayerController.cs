@@ -73,6 +73,14 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0);
 
         CheckEquipmentInputs();
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            GameMenuManager.Instance.ToggleStatsWindow();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameMenuManager.Instance.TogglePauseMenu();
+        }
     }
 
     public void TakeDamage(int damage, Vector2 closestPoint)

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Game%20Menu/GameMenuUI.uss?fileID=7433441132597879392&amp;guid=e320e857c0386414ba3fffcbedf9cbe4&amp;type=3#GameMenuUI" />
+    <ui:VisualElement name="game-stats-screen" class="screen" style="align-items: stretch; display: flex; visibility: visible;">
+        <ui:VisualElement name="stats-window-holder" style="position: absolute; width: 100%; height: 100%; align-items: flex-start; justify-content: center; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px; opacity: 1;">
+            <ui:VisualElement name="stats-window" class="stat-window" style="width: 200px; height: 400px; left: -50px; display: flex; visibility: visible;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
