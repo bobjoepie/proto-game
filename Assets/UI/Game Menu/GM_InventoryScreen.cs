@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GM_MenuScreen : VisualElement
+public class GM_InventoryScreen : VisualElement
 {
-    public new class UxmlFactory : UxmlFactory<GM_MenuScreen, UxmlTraits> {}
+    public new class UxmlFactory : UxmlFactory<GM_InventoryScreen, UxmlTraits> {}
 
-    public GM_MenuScreen()
+    public GM_InventoryScreen()
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -20,7 +19,7 @@ public class GM_MenuScreen : VisualElement
 
     public void ToggleView()
     {
-        this.ToggleInClassList("menu-screen");
-        this.ToggleInClassList("menu-screen-active");
+        this.ToggleInClassList("inventory-screen");
+        this.ToggleInClassList("inventory-screen-active");
     }
 }

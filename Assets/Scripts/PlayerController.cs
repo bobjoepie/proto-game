@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             GameMenuManager.Instance.ToggleStatsWindow();
+            GameMenuManager.Instance.ToggleInventoryWindow();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
