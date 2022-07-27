@@ -5,14 +5,14 @@
     height: 100%;
 }
 
-.stat-window {
+.skill-prompt {
     opacity: 0;
     transition-duration: 500ms;
     visibility: visible;
     display: flex;
 }
 
-.stat-window-active {
+.skill-prompt-active {
     transition-property: all;
     transition-duration: 750ms;
     transition-timing-function: ease;
@@ -20,20 +20,20 @@
     background-color: rgba(219, 219, 219, 0.71);
 }
 
-.stat-window-active > #stat-button:hover {
+.skill-prompt-active > #skill-button:hover {
     transition-property: all;
     transition-duration: 250ms;
     transition-timing-function: ease;
     opacity: 0.5;
 }
 
-.stat-window > VisualElement {
+.skill-prompt > * {
     opacity: 0;
     transition-property: all;
     transition-duration: 500ms;
 }
 
-.stat-window-active > VisualElement {
+.skill-prompt-active > * {
     opacity: 1;
     transition-property: all;
     transition-duration: 750ms;

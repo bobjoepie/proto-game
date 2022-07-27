@@ -4934,6 +4934,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4023816079027052673, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
+      propertyPath: expToLevel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023816079027052673, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
       propertyPath: knockbackDist
       value: 0.5
       objectReference: {fileID: 0}

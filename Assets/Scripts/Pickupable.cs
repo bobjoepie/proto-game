@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickupable : MonoBehaviour
 {
     public PickupSO pickupObj;
+    public int amount = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

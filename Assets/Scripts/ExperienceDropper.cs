@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDropper : MonoBehaviour
+public class ExperienceDropper : MonoBehaviour
 {
-    public GameObject itemToSpawn;
-
+    public GameObject expToSpawn;
     private bool IsQuitting = false;
 
     private void OnDestroy()
     {
         // TODO: Buggy, move this script to interface and don't use OnDestroy instantiation
-        SpawnItem(itemToSpawn);
+        SpawnItem(expToSpawn);
     }
 
     private void OnApplicationQuit()
@@ -23,8 +22,7 @@ public class ItemDropper : MonoBehaviour
     {
         if (!IsQuitting)
         {
-            Instantiate(itemToSpawn, transform.position, Quaternion.identity);
+            Instantiate(expToSpawn, transform.position, Quaternion.identity);
         }
     }
-
 }

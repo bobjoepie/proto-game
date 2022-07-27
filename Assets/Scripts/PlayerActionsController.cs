@@ -66,7 +66,7 @@ public class PlayerActionsController : MonoBehaviour
                 yield return new WaitForSeconds(weaponObj.amountBurstTime);
             }
         }
-        yield return new WaitForSeconds(weaponObj.cooldown);
+        yield return new WaitForSeconds(weaponObj.cooldown * player.cooldownRate);
         CanAttack = true;
         usingWeapon = null;
     }

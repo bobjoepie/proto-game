@@ -52,8 +52,12 @@ MonoBehaviour:
   speed: 4
   health: 100
   maxHealth: 100
+  cooldownRate: 1
   knockbackDist: 0.25
   childSprite: {fileID: 4726815180969301790}
+  curLevel: 1
+  curExperience: 0
+  expToLevel: 100
   EquippedItem:
     sprite: {fileID: 0}
     color: {r: 0, g: 0, b: 0, a: 0}

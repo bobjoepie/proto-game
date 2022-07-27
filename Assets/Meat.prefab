@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5314039534081832107}
   - component: {fileID: -3935130513349997399}
   - component: {fileID: 4833525644056277330}
-  - component: {fileID: -2854377070794659587}
+  - component: {fileID: 6392028421663973918}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Enemy
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
---- !u!114 &-2854377070794659587
+--- !u!114 &6392028421663973918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5314039534081832102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eec44b77eb92f041876efbf4fc041da, type: 3}
+  m_Script: {fileID: 11500000, guid: f2c06366ce564044584c2418de49a94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToSpawn: {fileID: 8310671449323089756, guid: 71ad50f529fa90841a5be8ef76a43447, type: 3}
+  expToSpawn: {fileID: 9163764187687296639, guid: c4558a53691a34747930099e02f6f700, type: 3}

@@ -17,10 +17,13 @@ public class GameMenuManager : VisualElement
 
     private VisualElement HealthBar;
     private Label HealthBarText;
-
-    private VisualElement StatsWindow;
+    
     private GM_MenuScreen PauseMenu;
     private GM_InventoryScreen InventoryScreen;
+    public GM_ExpBar ExperienceBar { get; private set; }
+    public GM_LevelDisplay LevelDisplay { get; private set; }
+    public GM_SkillPrompt SkillPrompt { get; private set; }
+
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
 
     public GameMenuManager()
@@ -32,7 +35,7 @@ public class GameMenuManager : VisualElement
     void OnGeometryChange(GeometryChangedEvent evt)
     {
         DialogueView = this.Q("DialogueView");
-        GameHudView = this.Q("GameHUDView");
+        GameHudView = this.Q("game-hud-screen");
 
         DialogueText = (Label)this.Q("dialogue-text");
         DialogueBox = this.Q("dialogue-box");
@@ -56,10 +59,12 @@ public class GameMenuManager : VisualElement
             )
             .ToList();
         ClearInventoryList();
-
-        StatsWindow = this.Q("stat-window");
+        
         PauseMenu = (GM_MenuScreen)this.Q("menu-screen");
         InventoryScreen = (GM_InventoryScreen)this.Q("inventory-screen");
+        ExperienceBar = (GM_ExpBar)this.Q("exp-bar");
+        LevelDisplay = (GM_LevelDisplay)this.Q("level-display");
+        SkillPrompt = (GM_SkillPrompt)this.Q("skill-screen");
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -166,12 +171,6 @@ public class GameMenuManager : VisualElement
             slot.style.borderRightWidth = new StyleFloat(0f);
             slot.style.borderTopWidth = new StyleFloat(0f);
         }
-    }
-
-    public void ToggleStatsWindow()
-    {
-        StatsWindow.ToggleInClassList("stat-window");
-        StatsWindow.ToggleInClassList("stat-window-active");
     }
 
     public void TogglePauseMenu()

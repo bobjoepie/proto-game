@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public int health;
     public int maxHealth;
+    public float cooldownRate = 1;
     public float knockbackDist;
     public GameObject childSprite;
+    public int curLevel;
+    public int curExperience;
+    public int expToLevel;
 
     private Rigidbody2D rb;
     private Vector2 origPos;
@@ -75,7 +79,6 @@ public class PlayerController : MonoBehaviour
         CheckEquipmentInputs();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            GameMenuManager.Instance.ToggleStatsWindow();
             GameMenuManager.Instance.ToggleInventoryWindow();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
@@ -139,6 +142,15 @@ public class PlayerController : MonoBehaviour
                     pickupObj = itemObj,
                 };
                 break;
+            case ExpSO expObj:
+                curExperience += expObj.amount;
+                if (curExperience >= expToLevel)
+                {
+                    HandleLevelUp();
+                }
+                GameMenuManager.Instance.ExperienceBar.SetEXPBar(curExperience,expToLevel);
+                Destroy(item);
+                return;
             default:
                 return;
         }
@@ -208,6 +220,15 @@ public class PlayerController : MonoBehaviour
             EquippedItem = inventoryList[i];
             GameMenuManager.Instance.SelectItem(i);
         }
+    }
+
+    private void HandleLevelUp()
+    {
+        curExperience -= expToLevel;
+        curLevel += 1;
+        expToLevel += 100;
+        GameMenuManager.Instance.LevelDisplay.SetLevel(curLevel);
+        GameMenuManager.Instance.SkillPrompt.AddToSkillQueue(this);
     }
 
 }
