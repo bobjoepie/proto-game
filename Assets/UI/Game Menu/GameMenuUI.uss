@@ -61,3 +61,97 @@
     visibility: visible;
     display: flex;
 }
+
+.modal-interact-box {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.69);
+    position: absolute;
+    top: auto;
+    left: auto;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: visible;
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+}
+
+.modal-interact-box-active {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.69);
+    position: absolute;
+    top: auto;
+    left: auto;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: visible;
+}
+
+.modal-label {
+    color: rgb(0, 0, 0);
+    -unity-font-style: bold;
+    font-size: 24px;
+    white-space: normal;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.modal-speech-box {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.69);
+    width: 400px;
+    height: 150px;
+    position: absolute;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: visible;
+}
+
+.shop-window {
+    opacity: 0;
+    transition-duration: 250ms;
+    visibility: hidden;
+    display: none;
+}
+
+.shop-window-active {
+    opacity: 1;
+    transition-duration: 250ms;
+    visibility: visible;
+    display: flex;
+}

@@ -11,9 +11,11 @@ public class PlayerActionsController : MonoBehaviour
     private Camera MainCamera;
     private bool CanAttack;
     private bool CanUseItem;
+    private bool CanInteract;
 
     public Coroutine usingWeapon;
     public Coroutine usingItem;
+    public Coroutine isInteracting;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class PlayerActionsController : MonoBehaviour
         MainCamera = Camera.main;
         CanAttack = true;
         CanUseItem = true;
+        CanInteract = true;
     }
 
     // Update is called once per frame
@@ -33,6 +36,10 @@ public class PlayerActionsController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Mouse1) && player.equippedItem is not null)
         {
             TryUseItem();
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            TryInteract();
         }
     }
 
@@ -99,5 +106,33 @@ public class PlayerActionsController : MonoBehaviour
         yield return new WaitForSeconds(itemObj.cooldown);
         CanUseItem = true;
         usingItem = null;
+    }
+
+    private void TryInteract()
+    {
+        if (CanInteract)
+        {
+            isInteracting = StartCoroutine(Interact());
+        }
+    }
+
+    IEnumerator Interact()
+    {
+        CanInteract = false;
+        List<Collider2D> contacts = new List<Collider2D>();
+        var count = player.playerCollider.GetContacts(contacts);
+        //Debug.Log(count);
+        foreach (var contact in contacts)
+        {
+            if (!contact.isTrigger) continue;
+            var interactable = contact.GetComponent<InteractablePopup>();
+            if (interactable != null)
+            {
+                UIDocManager.Instance.ShopMenu.ToggleShopWindow();
+            }
+        }
+        yield return new WaitForSeconds(1f);
+        CanInteract = true;
+        isInteracting = null;
     }
 }

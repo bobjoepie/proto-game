@@ -2,6 +2,18 @@
     <ui:Template name="DialogueView" src="project://database/Assets/UI/Game%20Menu/DialogueView.uxml?fileID=9197481963319205126&amp;guid=1d234f9c00b7f8b4bbb9ce2105167f62&amp;type=3#DialogueView" />
     <Style src="project://database/Assets/UI/Game%20Menu/GameMenuUI.uss?fileID=7433441132597879392&amp;guid=e320e857c0386414ba3fffcbedf9cbe4&amp;type=3#GameMenuUI" />
     <GameMenuManager name="GameMenuManager" class="screen" style="display: flex;">
+        <GM_Modals name="modals" class="screen">
+            <ui:VisualElement name="modal-speech-box-origin" style="align-items: center; justify-content: center; position: absolute;">
+                <ui:VisualElement name="modal-speech-box" class="modal-speech-box" style="display: none;">
+                    <ui:Label text="Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. " display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="modal-interact-box-origin" style="position: absolute; justify-content: center; align-items: center;">
+                <ui:VisualElement name="modal-interact-box" class="modal-interact-box" style="left: auto; top: auto;">
+                    <ui:Label text="Press E to interact" display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </GM_Modals>
         <ui:Instance template="DialogueView" name="DialogueView" class="screen" style="display: none; visibility: visible;" />
         <ui:VisualElement name="game-hud-screen" class="screen" style="justify-content: flex-end; align-items: center; display: flex;">
             <ui:VisualElement name="game-toolbar-holder" class="screen" style="position: absolute; flex-shrink: 1; width: 100%; height: 100%; justify-content: center; align-items: flex-end;">
@@ -87,6 +99,22 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </GM_InventoryScreen>
+        <GM_ShopMenu name="shop-screen" class="screen" style="justify-content: center; align-items: center;">
+            <ui:VisualElement name="shop-window" class="shop-window" style="position: relative; height: 60%; width: 60%; background-color: rgba(100, 100, 100, 0.88); border-top-left-radius: 45px; border-bottom-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; align-items: stretch; justify-content: flex-start; flex-direction: row; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%;">
+                <ui:VisualElement name="shop-left-page" style="width: 100%; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%; margin-right: 2%;">
+                    <ui:VisualElement name="content" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 500%; background-color: rgb(65, 65, 65); margin-bottom: 5%;" />
+                    <ui:VisualElement name="header" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 100%; background-color: rgb(65, 65, 65);">
+                        <ui:Label text="Left Header" display-tooltip-when-elided="true" style="width: 100%; height: 100%; -unity-text-align: middle-center; font-size: 48px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="shop-right-page" style="width: 100%; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%;">
+                    <ui:VisualElement name="content" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 500%; background-color: rgb(65, 65, 65); margin-bottom: 5%;" />
+                    <ui:VisualElement name="header" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 100%; background-color: rgb(65, 65, 65);">
+                        <ui:Label text="Right Header" display-tooltip-when-elided="true" style="width: 100%; height: 100%; -unity-text-align: middle-center; font-size: 48px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </GM_ShopMenu>
         <GM_MenuScreen name="menu-screen" class="screen menu-screen" style="align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.39);">
             <ui:VisualElement name="menu-window" style="background-color: rgba(219, 219, 219, 0.71); width: 25%; height: auto; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; flex-grow: 0;">
                 <ui:Label text="GAME PAUSED" display-tooltip-when-elided="true" name="Label" style="-unity-text-align: upper-center; background-color: rgba(10, 10, 10, 0.62); font-size: 48px; color: rgb(233, 233, 233); -unity-font-style: bold; white-space: normal; padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px; margin-bottom: 10%; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(36, 36, 36);" />

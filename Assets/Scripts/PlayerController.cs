@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public int expToLevel;
 
     private Rigidbody2D rb;
+    public Collider2D playerCollider;
     private Vector2 origPos;
     private Color origColor;
     private SpriteRenderer childSpriteRenderer;
@@ -36,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] 
     private InventoryItem EquippedItem;
-    [SerializeField]
 
+    [SerializeField]
     public WeaponSO equippedWeapon;
     public ItemSO equippedItem;
 
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
         origPos = childSprite.transform.localPosition;
         health = maxHealth;
 
