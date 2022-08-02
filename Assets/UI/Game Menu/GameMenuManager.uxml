@@ -3,14 +3,14 @@
     <Style src="project://database/Assets/UI/Game%20Menu/GameMenuUI.uss?fileID=7433441132597879392&amp;guid=e320e857c0386414ba3fffcbedf9cbe4&amp;type=3#GameMenuUI" />
     <GameMenuManager name="GameMenuManager" class="screen" style="display: flex;">
         <GM_Modals name="modals" class="screen">
-            <ui:VisualElement name="modal-speech-box-origin" style="align-items: center; justify-content: center; position: absolute;">
-                <ui:VisualElement name="modal-speech-box" class="modal-speech-box" style="display: none;">
-                    <ui:Label text="Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. " display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
+            <ui:VisualElement name="modal-interact-box-origin" style="position: absolute; justify-content: center; align-items: center;">
+                <ui:VisualElement name="modal-interact-box" class="modal-interact-box">
+                    <ui:Label text="Press E to interact" display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="modal-interact-box-origin" style="position: absolute; justify-content: center; align-items: center;">
-                <ui:VisualElement name="modal-interact-box" class="modal-interact-box" style="left: auto; top: auto;">
-                    <ui:Label text="Press E to interact" display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
+            <ui:VisualElement name="modal-speech-box-origin" style="align-items: center; justify-content: center; position: absolute;">
+                <ui:VisualElement name="modal-speech-box" class="modal-speech-box">
+                    <ui:Label text="Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. " display-tooltip-when-elided="true" name="modal-label" class="modal-label" style="color: rgb(204, 127, 14);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </GM_Modals>

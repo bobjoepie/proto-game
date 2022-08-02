@@ -37,7 +37,7 @@ public class PlayerActionsController : MonoBehaviour
         {
             TryUseItem();
         }
-        else if (Input.GetKey(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             TryInteract();
         }
@@ -120,18 +120,18 @@ public class PlayerActionsController : MonoBehaviour
     {
         CanInteract = false;
         List<Collider2D> contacts = new List<Collider2D>();
-        var count = player.playerCollider.GetContacts(contacts);
-        //Debug.Log(count);
+        player.playerCollider.GetContacts(contacts);
+
         foreach (var contact in contacts)
         {
             if (!contact.isTrigger) continue;
             var interactable = contact.GetComponent<InteractablePopup>();
             if (interactable != null)
             {
-                UIDocManager.Instance.ShopMenu.ToggleShopWindow();
+                interactable.Activate();
+                yield return new WaitForSeconds(1f);
             }
         }
-        yield return new WaitForSeconds(1f);
         CanInteract = true;
         isInteracting = null;
     }

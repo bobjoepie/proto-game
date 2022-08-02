@@ -106,7 +106,6 @@
 }
 
 .modal-label {
-    color: rgb(0, 0, 0);
     -unity-font-style: bold;
     font-size: 24px;
     white-space: normal;
@@ -116,6 +115,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    color: rgba(0, 0, 0, 255);
 }
 
 .modal-speech-box {
@@ -123,14 +123,12 @@
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.69);
-    width: 400px;
-    height: 150px;
+    background-color: rgba(255, 255, 255, 0.87);
     position: absolute;
-    border-left-width: 10px;
-    border-right-width: 10px;
-    border-top-width: 10px;
-    border-bottom-width: 10px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
     border-left-color: rgb(0, 0, 0);
     border-right-color: rgb(0, 0, 0);
     border-top-color: rgb(0, 0, 0);
@@ -140,6 +138,35 @@
     padding-top: 15px;
     padding-bottom: 15px;
     overflow: visible;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-speech-box-active {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(41, 29, 8);
+    position: absolute;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(89, 65, 31);
+    border-right-color: rgb(89, 65, 31);
+    border-top-color: rgb(89, 65, 31);
+    border-bottom-color: rgb(89, 65, 31);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: visible;
+    justify-content: center;
+    align-items: center;
 }
 
 .shop-window {
