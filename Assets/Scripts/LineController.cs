@@ -8,6 +8,7 @@ public class LineController : MonoBehaviour
     public WeaponType weaponType;
     public CollisionType collisionType;
     public GameObject weaponGameObject;
+    public Transform lineEnd;
     public int damage;
     public SpawnLocation weaponSpawn;
     public int iterationNum;
@@ -157,10 +158,9 @@ public class LineController : MonoBehaviour
 
     private void ProcessPostAttack()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        var lineEnd = GetComponentInChildren<LineEnd>().transform.position;
-        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd, gameObject.transform.rotation, iterationNum);
+        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd.position, gameObject.transform.rotation, iterationNum);
     }
 
     private void InitAttack()

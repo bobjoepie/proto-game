@@ -55,7 +55,6 @@ public class GM_Modals : VisualElement
     {
         speechModal.ToggleInClassList("modal-speech-box");
         speechModal.ToggleInClassList("modal-speech-box-active");
-        Debug.Log("toggle");
     }
 
     public void ChangeSpeechModalText(string text)

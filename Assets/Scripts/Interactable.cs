@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractablePopup : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class Interactable : MonoBehaviour
 {
     public string message;
     private Camera MainCamera;
@@ -13,6 +14,8 @@ public class InteractablePopup : MonoBehaviour
     public InteractableType modalType;
     public string speechModalMessage;
     public float fadeTime;
+    public PickupSO pickupSO;
+    public int quantity;
 
     private void Start()
     {
@@ -45,7 +48,7 @@ public class InteractablePopup : MonoBehaviour
         docManager.Modals.MoveSpeechModal(screenPos);
     }
 
-    public void Activate()
+    public void Activate(PlayerController player)
     {
         switch (modalType)
         {
@@ -57,6 +60,9 @@ public class InteractablePopup : MonoBehaviour
                 break;
             case InteractableType.Shop:
                 docManager.ShopMenu.ToggleShopWindow();
+                break;
+            case InteractableType.Pickup:
+                player.Pickup2(this);
                 break;
             default:
                 break;
@@ -72,6 +78,11 @@ public class InteractablePopup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        var player = col.GetComponent<PlayerController>();
+        if (player == null)
+        {
+            return;
+        }
         docManager.Modals.ToggleInteractModal();
         docManager.Modals.ChangeInteractModalText(message);
         IsInteractModalActive = true;
@@ -79,6 +90,11 @@ public class InteractablePopup : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        var player = other.GetComponent<PlayerController>();
+        if (player == null)
+        {
+            return;
+        }
         IsInteractModalActive = false;
         docManager.Modals.ToggleInteractModal();
         switch (modalType)
@@ -87,6 +103,8 @@ public class InteractablePopup : MonoBehaviour
                 break;
             case InteractableType.Shop:
                 docManager.ShopMenu.DisableShopWindow();
+                break;
+            case InteractableType.Pickup:
                 break;
             default:
                 break;
@@ -98,4 +116,6 @@ public enum InteractableType
 {
     Message,
     Shop,
+    Pickup,
+
 }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
   m_Name: proj_basic
   m_EditorClassIdentifier: 
+  internalName: 
+  pickupSprite: {fileID: 21300000, guid: 6c20e71fffa0b054d892bc92ee258c1b, type: 3}
   name: Basic
   description: Basic single shot
   cooldown: 0.5

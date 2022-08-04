@@ -125,10 +125,10 @@ public class PlayerActionsController : MonoBehaviour
         foreach (var contact in contacts)
         {
             if (!contact.isTrigger) continue;
-            var interactable = contact.GetComponent<InteractablePopup>();
+            var interactable = contact.GetComponent<Interactable>();
             if (interactable != null)
             {
-                interactable.Activate();
+                interactable.Activate(player);
                 yield return new WaitForSeconds(1f);
             }
         }

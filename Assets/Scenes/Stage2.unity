@@ -512,8 +512,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1723982591
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2768,6 +2768,14 @@ PrefabInstance:
       propertyPath: docManager
       value: 
       objectReference: {fileID: 998104663}
+    - target: {fileID: 5131814451949299394, guid: 250a0db6520b94445b42969df0ced109, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131814451949299394, guid: 250a0db6520b94445b42969df0ced109, type: 3}
+      propertyPath: m_TagString
+      value: Uncollidable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250a0db6520b94445b42969df0ced109, type: 3}
 --- !u!1001 &7793308263614698418
@@ -2826,9 +2834,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7793308264551349539, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
+      propertyPath: pickupSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+    - target: {fileID: 7793308264551349539, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
+      propertyPath: quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793308264551349539, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
+      propertyPath: modalType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793308264551349539, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
       propertyPath: docManager
       value: 
       objectReference: {fileID: 998104663}
+    - target: {fileID: 7793308264551349565, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793308264551349565, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
+      propertyPath: m_TagString
+      value: Uncollidable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7523972efcb5d964aa0f2501312c41bc, type: 3}
 --- !u!1001 &7961615960273382355
@@ -2838,6 +2866,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7961615960408697576, guid: 331fd3dcc8b0cf4468418971499085d8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961615960408697576, guid: 331fd3dcc8b0cf4468418971499085d8, type: 3}
+      propertyPath: m_TagString
+      value: Uncollidable
+      objectReference: {fileID: 0}
     - target: {fileID: 7961615960408697582, guid: 331fd3dcc8b0cf4468418971499085d8, type: 3}
       propertyPath: docManager
       value: 

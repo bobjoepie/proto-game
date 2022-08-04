@@ -12,7 +12,7 @@ public class InventoryItem
     public Color color;
     public string name;
     public string internalName;
-    public int amount;
+    public int quantity;
     public PickupSO pickupObj;
 }
 
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private InventoryItem[] inventoryList;
 
     [SerializeField] 
-    private InventoryItem EquippedItem;
+    private InventoryItem ActiveInventoryItem;
 
     [SerializeField]
     public WeaponSO equippedWeapon;
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         childSpriteRenderer.color = origColor;
     }
 
-    public void Pickup(GameObject item, PickupSO pickupObj)
+    public void Pickup(GameObject item, PickupSO pickupObj, Interactable interactableObj = null)
     {
         var spriteRenderer = item.GetComponentInChildren<SpriteRenderer>();
         InventoryItem newItem;
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
                     internalName = weaponObj.internalName,
                     sprite = spriteRenderer.sprite,
                     color = spriteRenderer.color,
-                    amount = 1,
+                    quantity = 1,
                     pickupObj = weaponObj,
                 };
                 break;
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
                     internalName = itemObj.internalName,
                     sprite = spriteRenderer.sprite,
                     color = spriteRenderer.color,
-                    amount = 1,
+                    quantity = 1,
                     pickupObj = itemObj,
                 };
                 break;
@@ -151,7 +151,19 @@ public class PlayerController : MonoBehaviour
                     HandleLevelUp();
                 }
                 GameMenuManager.Instance.ExperienceBar.SetEXPBar(curExperience,expToLevel);
-                Destroy(item);
+                if (interactableObj != null)
+                {
+                    interactableObj.quantity -= 1;
+                    if (interactableObj.quantity <= 0)
+                    {
+                        Destroy(item);
+                    }
+                }
+                else
+                {
+                    Destroy(item);
+                }
+                
                 return;
             default:
                 return;
@@ -168,6 +180,74 @@ public class PlayerController : MonoBehaviour
                 Debug.Log($"Picked up {pickupObj.name}");
                 GameMenuManager.Instance.SetInventoryItem(inventoryList);
                 Destroy(item);
+                pickedUp = true;
+                break;
+            }
+        }
+
+        if (!pickedUp)
+        {
+            Debug.Log("Inventory is full!");
+        }
+    }
+
+    public void Pickup2(Interactable interactableObj)
+    {
+        var spriteRenderer = interactableObj.GetComponentInChildren<SpriteRenderer>();
+        InventoryItem newItem;
+        switch (interactableObj.pickupSO)
+        {
+            case WeaponSO weaponObj:
+                newItem = new InventoryItem
+                {
+                    name = weaponObj.name,
+                    internalName = weaponObj.internalName,
+                    sprite = weaponObj.pickupSprite,
+                    color = Color.white,
+                    quantity = 1,
+                    pickupObj = weaponObj,
+                };
+                break;
+            case ItemSO itemObj:
+                newItem = new InventoryItem
+                {
+                    name = itemObj.name,
+                    internalName = itemObj.internalName,
+                    sprite = itemObj.pickupSprite,
+                    color = Color.white,
+                    quantity = 1,
+                    pickupObj = itemObj,
+                };
+                break;
+            case ExpSO expObj:
+                curExperience += expObj.amount;
+                if (curExperience >= expToLevel)
+                {
+                    HandleLevelUp();
+                }
+                GameMenuManager.Instance.ExperienceBar.SetEXPBar(curExperience, expToLevel);
+                return;
+            default:
+                return;
+        }
+        
+        interactableObj.quantity -= 1;
+        if (interactableObj.quantity <= 0)
+        {
+            Destroy(interactableObj.gameObject);
+        }
+
+        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItem.name)) return;
+
+        bool pickedUp = false;
+        for (int i = 0; i < inventoryList.Length; i++)
+        {
+            if (inventoryList[i] == null)
+            {
+                inventoryList[i] = newItem;
+                Debug.Log($"Picked up {interactableObj.pickupSO.name}");
+                GameMenuManager.Instance.SetInventoryItem(inventoryList);
+                Destroy(interactableObj);
                 pickedUp = true;
                 break;
             }
@@ -196,11 +276,11 @@ public class PlayerController : MonoBehaviour
 
         equippedWeapon = null;
         equippedItem = null;
-        if (EquippedItem == null) return;
+        if (ActiveInventoryItem == null) return;
 
-        if (EquippedItem.pickupObj != null)
+        if (ActiveInventoryItem.pickupObj != null)
         {
-            switch (EquippedItem.pickupObj)
+            switch (ActiveInventoryItem.pickupObj)
             {
                 case WeaponSO weaponObj:
                     equippedWeapon = weaponObj;
@@ -209,17 +289,17 @@ public class PlayerController : MonoBehaviour
                     equippedItem = itemObj;
                     break;
             }
-            Debug.Log($"Equipped {EquippedItem.name}");
+            Debug.Log($"Equipped {ActiveInventoryItem.name}");
         }
     }
 
     private void CheckNum(int i)
     {
         GameMenuManager.Instance.ClearSelectedItem();
-        EquippedItem = null;
+        ActiveInventoryItem = null;
         if (inventoryList.ElementAtOrDefault(i) != null)
         {
-            EquippedItem = inventoryList[i];
+            ActiveInventoryItem = inventoryList[i];
             GameMenuManager.Instance.SelectItem(i);
         }
     }
