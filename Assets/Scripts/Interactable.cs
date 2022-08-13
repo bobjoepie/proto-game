@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     private Camera MainCamera;
     private bool IsInteractModalActive;
     private bool IsSpeechModalActive;
-    public UIDocManager docManager;
+    private UIDocManager docManager;
     public InteractableType modalType;
     public string speechModalMessage;
     public float fadeTime;
@@ -22,6 +22,8 @@ public class Interactable : MonoBehaviour
         MainCamera = Camera.main;
         IsInteractModalActive = false;
         IsSpeechModalActive = false;
+
+        docManager = UIDocManager.Instance;
     }
 
     private void Update()

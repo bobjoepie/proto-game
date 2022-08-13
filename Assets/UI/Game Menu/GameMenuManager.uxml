@@ -108,7 +108,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </GM_ShopMenu>
-        <GM_SkillPrompt name="skill-screen" class="screen" style="justify-content: center; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px;">
+        <GM_SkillPrompt name="skill-screen" class="screen" style="justify-content: center; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px; top: -2px; left: 0;">
             <ui:VisualElement name="skill-prompt" class="skill-prompt" style="left: -500px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; flex-grow: 0; flex-direction: column; width: 200px; height: 400px;">
                 <ui:Button text="Skill1" display-tooltip-when-elided="true" focusable="false" name="skill-button" style="width: 100%; height: 100%; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 36px; -unity-font-style: bold; white-space: normal; position: relative; flex-shrink: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; background-color: rgba(88, 88, 88, 0.78); color: rgb(255, 255, 255);" />
                 <ui:Button text="Skill2" display-tooltip-when-elided="true" focusable="false" name="skill-button" style="width: 100%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 10px; margin-bottom: 0; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 36px; -unity-font-style: bold; white-space: normal; flex-shrink: 1; background-color: rgba(88, 88, 88, 0.78); color: rgb(255, 255, 255);" />
@@ -125,5 +125,9 @@
                 <ui:Button text="Exit to Main Menu" display-tooltip-when-elided="true" focusable="false" style="-unity-text-align: middle-center; white-space: nowrap; height: auto; font-size: 36px; -unity-font-style: bold; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px;" />
             </ui:VisualElement>
         </GM_MenuScreen>
+        <GM_EventLogger name="event-logger-screen" class="screen" style="justify-content: center; align-items: center;">
+            <ui:ListView focusable="true" show-border="false" name="event-log-list" style="background-color: rgba(166, 87, 87, 0.46); width: 350px; height: 200px; position: absolute; top: 820px; left: 74px;" />
+            <ui:VisualElement name="event-logger-window" style="position: absolute; left: 74px; top: 820px; width: 350px; height: 200px; background-color: rgba(166, 87, 87, 0.46);" />
+        </GM_EventLogger>
     </GameMenuManager>
 </ui:UXML>
