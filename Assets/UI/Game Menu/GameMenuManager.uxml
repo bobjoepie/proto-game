@@ -2,13 +2,21 @@
     <ui:Template name="DialogueView" src="project://database/Assets/UI/Game%20Menu/DialogueView.uxml?fileID=9197481963319205126&amp;guid=1d234f9c00b7f8b4bbb9ce2105167f62&amp;type=3#DialogueView" />
     <Style src="project://database/Assets/UI/Game%20Menu/GameMenuUI.uss?fileID=7433441132597879392&amp;guid=e320e857c0386414ba3fffcbedf9cbe4&amp;type=3#GameMenuUI" />
     <GameMenuManager name="GameMenuManager" class="screen" style="display: flex;">
+        <GM_Selector name="selector-screen" class="screen">
+            <ui:VisualElement name="hover-selector-origin" style="position: absolute; align-items: center; justify-content: center; display: flex; visibility: visible; left: 610px; top: 508px; height: 0; width: 0;">
+                <ui:VisualElement name="hover-selector" class="hover-selector" />
+            </ui:VisualElement>
+            <ui:VisualElement name="selector-origin" style="position: absolute; align-items: center; justify-content: center; display: flex; visibility: visible; left: 610px; top: 508px; height: 0; width: 0;">
+                <ui:VisualElement name="selector" class="selector" />
+            </ui:VisualElement>
+        </GM_Selector>
         <GM_Modals name="modals" class="screen">
-            <ui:VisualElement name="modal-interact-box-origin" style="position: absolute; justify-content: center; align-items: center;">
+            <ui:VisualElement name="modal-interact-box-origin" style="position: absolute; justify-content: center; align-items: center; display: flex; visibility: visible;">
                 <ui:VisualElement name="modal-interact-box" class="modal-interact-box">
                     <ui:Label text="Press E to interact" display-tooltip-when-elided="true" name="modal-label" class="modal-label" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="modal-speech-box-origin" style="align-items: center; justify-content: center; position: absolute;">
+            <ui:VisualElement name="modal-speech-box-origin" style="align-items: center; justify-content: center; position: absolute; display: flex; visibility: visible;">
                 <ui:VisualElement name="modal-speech-box" class="modal-speech-box">
                     <ui:Label text="Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. " display-tooltip-when-elided="true" name="modal-label" class="modal-label" style="color: rgb(204, 127, 14);" />
                 </ui:VisualElement>
@@ -93,7 +101,7 @@
             </ui:VisualElement>
         </GM_InventoryScreen>
         <GM_ShopMenu name="shop-screen" class="screen" style="justify-content: center; align-items: center;">
-            <ui:VisualElement name="shop-window" class="shop-window" style="position: relative; height: 60%; width: 60%; background-color: rgba(100, 100, 100, 0.88); border-top-left-radius: 45px; border-bottom-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; align-items: stretch; justify-content: flex-start; flex-direction: row; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%;">
+            <ui:VisualElement name="shop-window" class="shop-window" style="height: 60%; width: 60%; background-color: rgba(100, 100, 100, 0.88); border-top-left-radius: 45px; border-bottom-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; align-items: stretch; justify-content: flex-start; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%; flex-direction: row;">
                 <ui:VisualElement name="shop-left-page" style="width: 100%; padding-left: 1.5%; padding-right: 1.5%; padding-top: 1.5%; padding-bottom: 1.5%; margin-right: 2%;">
                     <ui:VisualElement name="content" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 500%; background-color: rgb(65, 65, 65); margin-bottom: 5%;" />
                     <ui:VisualElement name="header" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: 100%; background-color: rgb(65, 65, 65);">

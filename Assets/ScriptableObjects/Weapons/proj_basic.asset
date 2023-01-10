@@ -28,7 +28,7 @@ MonoBehaviour:
     pre_direction: 0
     weaponSpawn: 0
     cur_hasCollision: 1
-    cur_lifeTime: 1
+    cur_lifeTime: 2
     cur_speed: 10
     cur_direction: 0
     cur_spread: 0

@@ -52,6 +52,7 @@ public class Interactable : MonoBehaviour
 
     public void Activate(PlayerController player)
     {
+        Debug.Log(modalType);
         switch (modalType)
         {
             case InteractableType.Message when IsSpeechModalActive == false:

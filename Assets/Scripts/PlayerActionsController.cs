@@ -112,6 +112,7 @@ public class PlayerActionsController : MonoBehaviour
     {
         if (CanInteract)
         {
+            Debug.Log("E");
             isInteracting = StartCoroutine(Interact());
         }
     }

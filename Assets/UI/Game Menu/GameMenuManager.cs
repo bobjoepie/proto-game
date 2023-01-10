@@ -23,6 +23,7 @@ public class GameMenuManager : VisualElement
     public GM_ExpBar ExperienceBar { get; private set; }
     public GM_LevelDisplay LevelDisplay { get; private set; }
     public GM_SkillPrompt SkillPrompt { get; private set; }
+    public GM_Selector Selector { get; private set; }
 
     public new class UxmlFactory : UxmlFactory<GameMenuManager, UxmlTraits> { }
 
@@ -65,6 +66,7 @@ public class GameMenuManager : VisualElement
         ExperienceBar = (GM_ExpBar)this.Q("exp-bar");
         LevelDisplay = (GM_LevelDisplay)this.Q("level-display");
         SkillPrompt = (GM_SkillPrompt)this.Q("skill-screen");
+        Selector = this.Q<GM_Selector>();
 
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }

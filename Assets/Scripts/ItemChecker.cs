@@ -6,12 +6,26 @@ using UnityEngine.SceneManagement;
 public class ItemChecker : MonoBehaviour
 {
     public ItemSO itemToCheck;
+    public ItemCheckerAction action;
     public Vector2 teleportDestination;
+    public List<Sprite> sprites;
+    public int spriteIndex;
     //TODO: modular actions when matched item
     public void MatchedItem(PlayerController player)
     {
         //TeleportOther(player.gameObject);
-        ChangeScene("Stage1_Cutscene");
+        switch (action)
+        {
+            case ItemCheckerAction.Teleport:
+                ChangeScene("Stage1_Cutscene");
+                break;
+            case ItemCheckerAction.ChangeSprite:
+                ChangeSprite();
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public void TeleportOther(GameObject actor) 
@@ -24,4 +38,19 @@ public class ItemChecker : MonoBehaviour
         //Object.FindObjectOfType<AudioManager>().backgroundMusic.Stop();
         SceneManager.LoadSceneAsync(sceneName);
     }
+
+    public void ChangeSprite()
+    {
+        spriteIndex++;
+        if (spriteIndex >= sprites.Count) return;
+        var sprite = sprites[spriteIndex];
+        var spriteObj = GetComponentInChildren<SpriteRenderer>();
+        spriteObj.sprite = sprite;
+    }
+}
+
+public enum ItemCheckerAction
+{
+    Teleport,
+    ChangeSprite
 }

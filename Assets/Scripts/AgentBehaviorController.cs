@@ -33,22 +33,16 @@ public class AgentBehaviorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        var player = col.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            playerTarget = player;
-            currentBehavior = AgentBehaviorType.Active;
-        }
+        if (!col.TryGetComponent<PlayerController>(out var player)) return;
+        playerTarget = player;
+        currentBehavior = AgentBehaviorType.Active;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            playerTarget = null;
-            currentBehavior = AgentBehaviorType.Idle;
-        } 
+        if (!other.TryGetComponent<PlayerController>(out var player)) return;
+        playerTarget = player;
+        currentBehavior = AgentBehaviorType.Active;
     }
 }
 

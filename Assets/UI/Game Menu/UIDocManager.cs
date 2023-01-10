@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,6 +15,7 @@ public class UIDocManager : MonoBehaviour
     public GM_EventLogger EventLogger { get; private set; }
     public ListView EventLoggerList;
     public VisualTreeAsset EventLoggerListEntry;
+    public GM_Selector Selector { get; private set; }
 
     private void OnEnable()
     {
@@ -29,6 +29,7 @@ public class UIDocManager : MonoBehaviour
         ShopMenu = gameMenuManager.Q<GM_ShopMenu>();
         EventLogger = gameMenuManager.Q<GM_EventLogger>();
         EventLoggerList = EventLogger.Q<ListView>();
+        Selector = gameMenuManager.Q<GM_Selector>();
         FillEventLogger();
     }
 
