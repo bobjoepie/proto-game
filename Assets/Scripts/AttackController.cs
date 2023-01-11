@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -9,6 +6,7 @@ public class AttackController : MonoBehaviour
 {
     public WeaponSO weaponSO;
     public dynamic weaponParts;
+    public LayerMask mask;
 
     private void Awake()
     {
@@ -25,7 +23,7 @@ public class AttackController : MonoBehaviour
     {
         for (int i = 0; i < weaponSO.amount; i++)
         {
-            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, transform.position.AngleTowards2D(targetPos));
+            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, transform.position.AngleTowards2D(targetPos), mask.ToLayer());
 
             if (weaponSO.amountBurstTime > 0f)
             {

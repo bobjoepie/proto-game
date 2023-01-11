@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,6 +5,7 @@ public class LeashController : MonoBehaviour
 {
     public BossController bossController;
     public GameObject leashAnchorObj;
+    public GameObject lookTowardsObj;
 
     public bool rotateTowardsAnchor;
     [Range(0, 20)] public float minLeashRange = 0;
@@ -31,10 +30,14 @@ public class LeashController : MonoBehaviour
             var dist = minLeashRange - curLeashDistance;
             var targetPos = gameObject.transform.position - (dir.normalized * dist);
             Sequence s = DOTween.Sequence();
-            s.Append(transform.DOMove(targetPos, 0.05f));
-            if (rotateTowardsAnchor)
+            s.Append(transform.DOMove(targetPos, 0.005f));
+            if (lookTowardsObj != null)
             {
-                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(leashAnchorObj.transform.position), 0.05f));
+                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(lookTowardsObj.transform.position), 0.005f));
+            }
+            else if (rotateTowardsAnchor)
+            {
+                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(leashAnchorObj.transform.position), 0.005f));
             }
             s.Play()
                 .OnComplete(() =>
@@ -49,10 +52,14 @@ public class LeashController : MonoBehaviour
             var dist = curLeashDistance - maxLeashRange;
             var targetPos = gameObject.transform.position - (dir.normalized * dist);
             Sequence s = DOTween.Sequence();
-            s.Append(transform.DOMove(targetPos, 0.05f));
-            if (rotateTowardsAnchor)
+            s.Append(transform.DOMove(targetPos, 0.005f));
+            if (lookTowardsObj != null)
             {
-                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(leashAnchorObj.transform.position), 0.05f));
+                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(lookTowardsObj.transform.position),0.005f));
+            }
+            else if (rotateTowardsAnchor)
+            {
+                s.Join(transform.DORotateQuaternion(transform.position.AngleTowards2D(leashAnchorObj.transform.position), 0.005f));
             }
             s.Play()
                 .OnComplete(() =>

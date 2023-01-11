@@ -1,14 +1,15 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AppendageController : MonoBehaviour
 {
+    public int appendageHp;
     public BossController bossController;
     public List<AttackController> attacks;
 
     public bool detach;
+    public bool affectsBossHp;
 
     private void Awake()
     {
@@ -23,9 +24,18 @@ public class AppendageController : MonoBehaviour
             bossController.Register(this);
         }
 
-        foreach (Transform child in transform)
+        var children = transform.GetComponentsInChildren<Transform>()
+            .Where(t => t.gameObject.GetComponent<HitboxController>() == null);
+        foreach (Transform child in children)
         {
             child.tag = "Uncollidable";
+        }
+
+        var hitboxes = transform.GetComponentsInChildren<HitboxController>();
+        foreach (HitboxController hitbox in hitboxes)
+        {
+            hitbox.gameObject.layer = LayerMask.NameToLayer("EnemyHitbox");
+            hitbox.bossController = bossController;
         }
         
         if (detach)

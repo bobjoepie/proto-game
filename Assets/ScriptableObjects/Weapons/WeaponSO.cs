@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -37,7 +35,7 @@ public abstract class WeaponSO : PickupSO
         return weaponParts;
     }
 
-    public static void InstantiateWeaponParts(WeaponPart[] weaponParts, Vector3 position, Quaternion rotation, int iterationNum = 0)
+    public static void InstantiateWeaponParts(WeaponPart[] weaponParts, Vector3 position, Quaternion rotation, int? layer, int iterationNum = 0)
     {
         if (iterationNum >= 5)
         {
@@ -57,6 +55,15 @@ public abstract class WeaponSO : PickupSO
                     var wepInstance = Instantiate(part.weaponGameObject);
                     wepInstance.transform.position = position;
                     wepInstance.transform.rotation = rotation * Quaternion.Euler(0f, 0f, part.pre_direction);
+                    if (layer != null)
+                    {
+                        wepInstance.layer = (int)layer;
+                        var children = wepInstance.GetComponentsInChildren<Transform>(includeInactive: true);
+                        foreach (var child in children)
+                        {
+                            child.gameObject.layer = (int)layer;
+                        }
+                    }
 
                     part.UpdateValues(wepInstance, iterationNum);
                     break;

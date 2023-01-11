@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SphereController : MonoBehaviour
@@ -81,6 +78,7 @@ public class SphereController : MonoBehaviour
         var closestPoint = col.ClosestPoint(transform.position);
         col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
         col.gameObject.GetComponent<PlayerController>()?.TakeDamage(damage, closestPoint);
+        col.gameObject.GetComponent<HitboxController>()?.TakeDamage(damage);
     }
 
     private void ProcessPreAttack()
@@ -103,7 +101,7 @@ public class SphereController : MonoBehaviour
     {
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, iterationNum);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, gameObject.layer, iterationNum);
     }
 
     private void InitAttack()

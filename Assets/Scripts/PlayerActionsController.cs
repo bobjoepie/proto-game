@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerActionsController : MonoBehaviour
 {
@@ -66,7 +64,8 @@ public class PlayerActionsController : MonoBehaviour
 
         for (int i = 0; i < weaponObj.amount; i++)
         {
-            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, rotToMouse);
+            var layer = LayerMask.NameToLayer("PlayerProjectile");
+            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, rotToMouse, layer);
 
             if (weaponObj.amountBurstTime > 0f)
             {

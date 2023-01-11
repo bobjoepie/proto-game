@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LineController : MonoBehaviour
@@ -92,7 +90,7 @@ public class LineController : MonoBehaviour
             default:
                 
                 transform.rotation = initDir * Quaternion.Euler(0f, 0f, cur_direction);
-                var mask = 1 << LayerMask.GetMask("Player", "Projectile");
+                var mask = 1 << LayerMask.GetMask("Player", "PlayerProjectile");
                 var hit = Physics2D.CircleCast(transform.position, cur_width/2, -transform.right, cur_maxDistance, mask);
 
                 if (hit.collider != null)
@@ -132,6 +130,7 @@ public class LineController : MonoBehaviour
         if (/*col.gameObject.CompareTag("Player") || */col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
         var closestPoint = col.ClosestPoint(transform.position);
         col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
+        col.gameObject.GetComponent<HitboxController>()?.TakeDamage(damage);
 
         switch (isPrepped)
         {
@@ -160,7 +159,7 @@ public class LineController : MonoBehaviour
     {
         Destroy(transform.parent.gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd.position, gameObject.transform.rotation, iterationNum);
+        WeaponSO.InstantiateWeaponParts(weaponParts, lineEnd.position, gameObject.transform.rotation, gameObject.layer, iterationNum);
     }
 
     private void InitAttack()

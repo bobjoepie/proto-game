@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -90,6 +87,7 @@ public class ProjectileController : MonoBehaviour
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
         var closestPoint = col.ClosestPoint(transform.position);
         col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
+        if (col.TryGetComponent<HitboxController>(out var hitbox)) hitbox.TakeDamage(damage);
 
         switch (isPrepped)
         {
@@ -132,7 +130,7 @@ public class ProjectileController : MonoBehaviour
     {
         Destroy(gameObject);
         dynamic weaponParts = WeaponSO.ConvertWeaponToParts(post_subWeapon);
-        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, iterationNum);
+        WeaponSO.InstantiateWeaponParts(weaponParts, gameObject.transform.position, gameObject.transform.rotation, gameObject.layer, iterationNum);
     }
 
     private void InitAttack()

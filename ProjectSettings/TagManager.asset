@@ -15,11 +15,11 @@ TagManager:
   - Water
   - UI
   - Player
-  - Projectile
+  - PlayerProjectile
   - Item
   - ActionRadius
-  - 
-  - 
+  - EnemyHitbox
+  - EnemyProjectile
   - 
   - 
   - 

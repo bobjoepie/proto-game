@@ -275,6 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71904957}
   - component: {fileID: 71904958}
+  - component: {fileID: 71904959}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -313,6 +314,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &71904959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71904956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &89995425
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89995426}
   - component: {fileID: 89995427}
+  - component: {fileID: 89995428}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -361,6 +376,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &89995428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89995425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &166173418
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413429343}
   - component: {fileID: 413429344}
+  - component: {fileID: 413429345}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -546,6 +575,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &413429345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413429342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &447310635
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447310636}
   - component: {fileID: 447310637}
+  - component: {fileID: 447310638}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -604,6 +647,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &447310638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447310635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &466042057
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +805,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &585744899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 585744900}
+  m_Layer: 0
+  m_Name: Front
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &585744900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585744899}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 848839192}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &586311507 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4023816079027052673, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
@@ -12782,7 +12868,7 @@ Transform:
   m_Children:
   - {fileID: 599420844}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &675411750
 GameObject:
@@ -12842,6 +12928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695001611}
   - component: {fileID: 695001612}
+  - component: {fileID: 695001613}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -12890,6 +12977,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &695001613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695001610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &702428144
 GameObject:
   m_ObjectHideFlags: 0
@@ -13036,14 +13135,13 @@ Transform:
   - {fileID: 733569003}
   - {fileID: 1652469033}
   - {fileID: 1164057827}
-  - {fileID: 1798196112}
   - {fileID: 1863729821}
   - {fileID: 1457771479}
   - {fileID: 904281983}
   - {fileID: 1347403271}
   - {fileID: 1123733828}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &779615548
 MonoBehaviour:
@@ -13057,13 +13155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d73b02cd403074a8a0646e4cd59332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 25
   appendages: []
   CanAttack: 1
   target: {fileID: 0}
-  minLeashRange: 5
-  maxLeashRange: 8
-  actionSpeed: 0.05
+  minLeashRange: 7
+  maxLeashRange: 12
+  actionSpeed: 1
+  movementSpeed: 1.2
+  rotationSpeed: 10
 --- !u!50 &779615549
 Rigidbody2D:
   serializedVersion: 4
@@ -13143,6 +13243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 822932284}
   - component: {fileID: 822932285}
+  - component: {fileID: 822932286}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -13181,6 +13282,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &822932286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822932283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &848839191
 GameObject:
   m_ObjectHideFlags: 0
@@ -13214,6 +13328,8 @@ Transform:
   - {fileID: 1249910035}
   - {fileID: 1257522719}
   - {fileID: 166173419}
+  - {fileID: 1798196112}
+  - {fileID: 585744900}
   m_Father: {fileID: 779615545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13229,9 +13345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 0
+  affectsBossHp: 1
 --- !u!1001 &879098452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13245,7 +13363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023816079027052678, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4023816079027052678, guid: 768513cec7ca12441a487560bfc6476d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13401,7 +13519,7 @@ Transform:
   - {fileID: 1176610753}
   - {fileID: 1055202743}
   m_Father: {fileID: 779615545}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &904281984
 MonoBehaviour:
@@ -13417,9 +13535,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 1612795761}
+  lookTowardsObj: {fileID: 1531714485}
   rotateTowardsAnchor: 1
   minLeashRange: 0
-  maxLeashRange: 0.7
+  maxLeashRange: 0.3
 --- !u!114 &904281985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13433,6 +13552,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &904281986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13445,9 +13567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 1
 --- !u!1 &984162569
 GameObject:
   m_ObjectHideFlags: 0
@@ -13489,6 +13613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009077157}
   - component: {fileID: 1009077158}
+  - component: {fileID: 1009077159}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -13537,6 +13662,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1009077159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009077156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1055202742
 GameObject:
   m_ObjectHideFlags: 0
@@ -13889,7 +14026,7 @@ Transform:
   - {fileID: 984162570}
   - {fileID: 1067431904}
   m_Father: {fileID: 779615545}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1123733829
 MonoBehaviour:
@@ -13905,9 +14042,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 1055202742}
+  lookTowardsObj: {fileID: 226045086}
   rotateTowardsAnchor: 1
   minLeashRange: 0
-  maxLeashRange: 0.3
+  maxLeashRange: 0.1
 --- !u!114 &1123733830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13921,6 +14059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1123733831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13933,9 +14074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 1
 --- !u!1 &1164057826
 GameObject:
   m_ObjectHideFlags: 0
@@ -14029,6 +14172,63 @@ Transform:
   m_Father: {fileID: 904281983}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1232691073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.067446
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.29586673
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485985222166534485, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310671449323089756, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
+      propertyPath: m_Name
+      value: weapon_spreadshot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 815c346dff7f62949a9acabc398d920b, type: 3}
 --- !u!1 &1249910034
 GameObject:
   m_ObjectHideFlags: 0
@@ -14039,6 +14239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249910035}
   - component: {fileID: 1249910037}
+  - component: {fileID: 1249910038}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -14087,6 +14288,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &1249910038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249910034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &1257522718
 GameObject:
   m_ObjectHideFlags: 0
@@ -14097,6 +14311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1257522719}
   - component: {fileID: 1257522720}
+  - component: {fileID: 1257522721}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -14145,6 +14360,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 5.5}
   m_EdgeRadius: 0
+--- !u!114 &1257522721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257522718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1292147577
 GameObject:
   m_ObjectHideFlags: 0
@@ -14214,7 +14441,7 @@ Transform:
   - {fileID: 466042058}
   - {fileID: 1292147578}
   m_Father: {fileID: 779615545}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1347403272
 MonoBehaviour:
@@ -14230,9 +14457,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 1176610752}
+  lookTowardsObj: {fileID: 226045086}
   rotateTowardsAnchor: 1
   minLeashRange: 0
-  maxLeashRange: 0.3
+  maxLeashRange: 0.1
 --- !u!114 &1347403273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14246,6 +14474,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1347403274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14258,9 +14489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 1
 --- !u!1 &1389660082
 GameObject:
   m_ObjectHideFlags: 0
@@ -14271,6 +14504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389660083}
   - component: {fileID: 1389660084}
+  - component: {fileID: 1389660085}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -14319,6 +14553,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &1389660085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389660082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1408289863
 GameObject:
   m_ObjectHideFlags: 0
@@ -14329,6 +14575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408289864}
   - component: {fileID: 1408289865}
+  - component: {fileID: 1408289866}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -14377,6 +14624,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1408289866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408289863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427357706
 GameObject:
   m_ObjectHideFlags: 0
@@ -14387,6 +14646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427357707}
   - component: {fileID: 1427357708}
+  - component: {fileID: 1427357709}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -14425,6 +14685,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1427357709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427357706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &1457771478
 GameObject:
   m_ObjectHideFlags: 0
@@ -14463,7 +14736,7 @@ Transform:
   - {fileID: 1531714486}
   - {fileID: 1612795762}
   m_Father: {fileID: 779615545}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1457771480
 MonoBehaviour:
@@ -14479,9 +14752,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 702428144}
+  lookTowardsObj: {fileID: 517098876}
   rotateTowardsAnchor: 1
   minLeashRange: 0
-  maxLeashRange: 0.5
+  maxLeashRange: 0.3
 --- !u!114 &1457771481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14495,6 +14769,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1457771482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14507,9 +14784,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 1
+--- !u!1001 &1485291113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2733984854709943610, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_Name
+      value: GameUIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733984854709943611, guid: c9db8748187ba874594752f18a76b74a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9db8748187ba874594752f18a76b74a, type: 3}
 --- !u!1 &1531714485
 GameObject:
   m_ObjectHideFlags: 0
@@ -14821,9 +15157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 0
 --- !u!114 &1652469035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14837,6 +15175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 2973e10181592834c8e9bf3049b45ff6, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1652469036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14851,6 +15192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 733569002}
+  lookTowardsObj: {fileID: 0}
   rotateTowardsAnchor: 0
   minLeashRange: 0
   maxLeashRange: 0.3
@@ -14911,6 +15253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798196112}
+  - component: {fileID: 1798196113}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -14925,14 +15268,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798196111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5000005, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.5000024, y: -1.0000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 779615545}
-  m_RootOrder: 6
+  m_Father: {fileID: 848839192}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798196113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798196111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4aa7aa31728e434084456d2491956c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1.5
+  duration: 1
+  ease: 4
+  loopType: 1
 --- !u!1 &1861861077
 GameObject:
   m_ObjectHideFlags: 0
@@ -14943,6 +15302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861861078}
   - component: {fileID: 1861861079}
+  - component: {fileID: 1861861080}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -14991,6 +15351,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1861861080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861861077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863729817
 GameObject:
   m_ObjectHideFlags: 0
@@ -15024,9 +15396,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 1798196111}
+  lookTowardsObj: {fileID: 585744899}
   rotateTowardsAnchor: 1
   minLeashRange: 0
-  maxLeashRange: 0.5
+  maxLeashRange: 0.3
 --- !u!114 &1863729819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15040,6 +15413,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1863729820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15052,9 +15428,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 1
 --- !u!4 &1863729821
 Transform:
   m_ObjectHideFlags: 0
@@ -15074,7 +15452,7 @@ Transform:
   - {fileID: 517098877}
   - {fileID: 702428145}
   m_Father: {fileID: 779615545}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1885356749
 GameObject:
@@ -15086,6 +15464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1885356750}
   - component: {fileID: 1885356751}
+  - component: {fileID: 1885356752}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -15134,6 +15513,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1885356752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885356749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &1923169905
 GameObject:
   m_ObjectHideFlags: 0
@@ -15144,6 +15536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923169906}
   - component: {fileID: 1923169907}
+  - component: {fileID: 1923169908}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -15192,6 +15585,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1923169908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923169905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce82ad3fb83f5941b0ae4c57dac02d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossController: {fileID: 0}
 --- !u!1 &1936692166
 GameObject:
   m_ObjectHideFlags: 0
@@ -15202,6 +15608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1936692167}
   - component: {fileID: 1936692168}
+  - component: {fileID: 1936692169}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -15250,6 +15657,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1936692169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936692166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbb33cd57ff8e5499ac137ef392aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1985521039
 GameObject:
   m_ObjectHideFlags: 0
@@ -15294,7 +15713,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003636350
 GameObject:
@@ -15346,9 +15765,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb5074d4c23994393cd82a6e720d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appendageHp: 0
   bossController: {fileID: 0}
   attacks: []
   detach: 1
+  affectsBossHp: 0
 --- !u!114 &2003636353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15362,6 +15783,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 152da086344e5f245acf647c492da280, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &2003636354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15376,6 +15800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossController: {fileID: 0}
   leashAnchorObj: {fileID: 1604527470}
+  lookTowardsObj: {fileID: 0}
   rotateTowardsAnchor: 0
   minLeashRange: 0
   maxLeashRange: 0.3

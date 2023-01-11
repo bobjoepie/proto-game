@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class PoloUtils
@@ -44,6 +42,12 @@ public static class PoloUtils
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         var rotToTarget = Quaternion.Euler(0f, 0f, angle);
         return rotToTarget;
+    }
+
+    public static int ToLayer(this LayerMask mask)
+    {
+        var layer = (int)Mathf.Log(mask.value, 2);
+        return layer;
     }
 }
 
