@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
   - component: {fileID: 4382052613571190933}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: weapon_slowmoving
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}
@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupObj: {fileID: 11400000, guid: fc807d1bbbf61664b8763b188e833b41, type: 2}
+  amount: 1

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
   - component: {fileID: 6631236128054058977}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: weapon_splitter
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}
@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupObj: {fileID: 11400000, guid: 680dd168531e79442a4e76d1a9594ac8, type: 2}
+  amount: 1

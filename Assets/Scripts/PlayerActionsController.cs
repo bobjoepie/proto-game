@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerActionsController : MonoBehaviour
 {
     [SerializeField]
-    private PlayerController player;
+    private PlayerControllerOld player;
     private Camera MainCamera;
     private bool CanAttack;
     private bool CanUseItem;

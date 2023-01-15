@@ -48,7 +48,7 @@ public class Interactable : MonoBehaviour
         docManager.Modals.MoveSpeechModal(screenPos);
     }
 
-    public void Activate(PlayerController player)
+    public void Activate(PlayerControllerOld player)
     {
         Debug.Log(modalType);
         switch (modalType)
@@ -79,7 +79,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        var player = col.GetComponent<PlayerController>();
+        var player = col.GetComponent<PlayerControllerOld>();
         if (player == null)
         {
             return;
@@ -91,7 +91,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        var player = other.GetComponent<PlayerController>();
+        var player = other.GetComponent<PlayerControllerOld>();
         if (player == null)
         {
             return;

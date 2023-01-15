@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3629904571603707376}
   - component: {fileID: 7404877487863837712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
   - component: {fileID: 9108311531058695528}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: weapon_laser
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}
@@ -200,3 +200,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupObj: {fileID: 11400000, guid: d583e3de95d226f4ab948b0ec98b7ee1, type: 2}
+  amount: 1

@@ -10,7 +10,7 @@ public class ItemChecker : MonoBehaviour
     public List<Sprite> sprites;
     public int spriteIndex;
     //TODO: modular actions when matched item
-    public void MatchedItem(PlayerController player)
+    public void MatchedItem(PlayerControllerOld player)
     {
         //TeleportOther(player.gameObject);
         switch (action)

@@ -15,9 +15,7 @@ public class CrosshairController : MonoBehaviour
     void Update()
     {
         Vector2 parentPos = parentTransform.position;
-        Vector2 mousePos = (Vector2)MainCamera.ScreenToWorldPoint(Input.mousePosition);
-        var dir = parentPos - mousePos;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        parentTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        Vector2 mousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        parentTransform.rotation = parentPos.AngleTowards2D(mousePos);
     }
 }

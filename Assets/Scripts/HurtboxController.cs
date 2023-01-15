@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class HurtboxController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AppendageController appendageController;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        appendageController = transform.parent.GetComponent<AppendageController>();
+        gameObject.layer = appendageController.hurtboxLayer.ToLayer();
     }
 }

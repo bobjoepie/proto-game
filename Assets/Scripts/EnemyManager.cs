@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,21 +8,16 @@ public class EnemyManager : MonoBehaviour
     public List<BossController> bosses;
     public List<EnemyController> enemies;
 
-    private void OnEnable()
+    private void Awake()
     {
-        Instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     public void Register<T>(T entity)
@@ -49,5 +45,4 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
     }
-
 }

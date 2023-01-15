@@ -20,7 +20,7 @@ public class EnemyActionsController : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             var closestPoint = col.contacts[0].point;
-            col.gameObject.GetComponent<PlayerController>()?.TakeDamage(damage, closestPoint);
+            col.gameObject.GetComponent<PlayerControllerOld>()?.TakeDamage(damage, closestPoint);
         }
     }
 }

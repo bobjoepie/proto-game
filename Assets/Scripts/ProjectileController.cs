@@ -84,9 +84,7 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Uncollidable") || col.gameObject.CompareTag("Projectile")) return;
         var closestPoint = col.ClosestPoint(transform.position);
-        col.gameObject.GetComponent<EnemyController>()?.TakeDamage(damage, closestPoint);
         if (col.TryGetComponent<HitboxController>(out var hitbox)) hitbox.TakeDamage(damage);
 
         switch (isPrepped)

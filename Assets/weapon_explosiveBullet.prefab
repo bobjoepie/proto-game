@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7858454515248355074}
   - component: {fileID: 1559041050996701997}
   - component: {fileID: -6654684502556865988}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: weapon_explosiveBullet
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}
@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupObj: {fileID: 11400000, guid: 44aa561efad18c3489d0315405544fb7, type: 2}
+  amount: 1

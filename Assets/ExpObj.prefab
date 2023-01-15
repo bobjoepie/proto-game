@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6127369747262298474}
   - component: {fileID: 355615175177842710}
   - component: {fileID: 1464929328988982977}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: ExpObj
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}

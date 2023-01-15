@@ -1,11 +1,18 @@
+using System;
 using UnityEngine;
 
 public class HitboxController : MonoBehaviour
 {
-    public BossController bossController;
+    public AppendageController appendageController;
+
+    private void Awake()
+    {
+        appendageController = transform.parent.GetComponent<AppendageController>();
+        gameObject.layer = appendageController.hitboxLayer.ToLayer();
+    }
 
     public void TakeDamage(int damage)
     {
-        bossController.TakeDamage(damage);
+        appendageController.TakeDamage(damage);
     }
 }

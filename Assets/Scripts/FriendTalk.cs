@@ -47,7 +47,7 @@ public class FriendTalk : MonoBehaviour
         if (!collision.CompareTag("Player") || IsTalking) return;
         Player = collision.gameObject;
         IsTalking = true;
-        Player.GetComponent<PlayerController>().speed = 0;
+        Player.GetComponent<PlayerControllerOld>().speed = 0;
         GameMenuManager.Instance.ShowDialogue();
     }
 
@@ -87,7 +87,7 @@ public class FriendTalk : MonoBehaviour
 
     private void EndDialogue()
     {
-        Player.GetComponent<PlayerController>().speed = 4;
+        Player.GetComponent<PlayerControllerOld>().speed = 4;
         Player = null;
         DialogueLine = 0;
         SayNext = true;

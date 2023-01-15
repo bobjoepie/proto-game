@@ -12,7 +12,7 @@ public class InitializeScene : MonoBehaviour
 
     public GameObject tileObj;
     public GameObject wallObj;
-    public PlayerController playerObj;
+    public PlayerControllerOld playerObj;
     public CameraFollow cameraFollow;
 
     public GameObject itemObj;
@@ -133,9 +133,9 @@ public class InitializeScene : MonoBehaviour
             var tile = mapGridObj.tileGrid[x][y].tileObj.GetComponent<Collider2D>();
             if (tile == null)
             {
-                PlayerController player = Instantiate(playerObj, new Vector3(x, y, 0), Quaternion.identity);
+                PlayerControllerOld player = Instantiate(playerObj, new Vector3(x, y, 0), Quaternion.identity);
                 CameraFollow camera = Instantiate(cameraFollow, new Vector3(x, y, 0), Quaternion.identity);
-                camera.player = player;
+                camera.target = player.transform;
                 placed = true;
                 break;
             }

@@ -16,16 +16,16 @@ TagManager:
   - UI
   - Player
   - PlayerProjectile
+  - PlayerHitbox
+  - PlayerHurtbox
   - Item
-  - ActionRadius
+  - EnemyActionRadius
   - EnemyHitbox
   - EnemyProjectile
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - EnemyHurtbox
+  - EnemyCollision
+  - PlayerCollision
+  - PlayerActionRadius
   - 
   - 
   - 

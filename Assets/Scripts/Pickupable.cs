@@ -7,7 +7,7 @@ public class Pickupable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var player = collision.GetComponentInChildren<PlayerController>();
+        var player = collision.GetComponentInChildren<PlayerControllerOld>();
         if (player != null)
         {
             player.Pickup(gameObject, pickupObj);

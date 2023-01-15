@@ -26,12 +26,12 @@ public class GM_SkillPrompt : VisualElement
         levelUpAmount = 0;
     }
 
-    public void AddToSkillQueue(PlayerController playerController)
+    public void AddToSkillQueue(PlayerControllerOld playerControllerOld)
     {
         if (levelUpAmount == 0)
         {
             ToggleSkillPrompt();
-            InitializeButtons(playerController);
+            InitializeButtons(playerControllerOld);
         }
         levelUpAmount += 1;
     }
@@ -42,15 +42,15 @@ public class GM_SkillPrompt : VisualElement
         skillPrompt.ToggleInClassList("skill-prompt-active");
     }
 
-    public void SkillButtonHandler(PlayerController player, int index)
+    public void SkillButtonHandler(PlayerControllerOld player, int index)
     {
         levelUpAmount -= 1;
         switch (index)
         {
             case 0:
                 player.maxHealth += 5;
-                player.health += 5;
-                GameMenuManager.Instance.SetHealthBar(player.health, player.maxHealth);
+                player.attributes.curHealth += 5;
+                GameMenuManager.Instance.SetHealthBar(player.attributes.curHealth, player.maxHealth);
                 break;
             case 1:
                 player.speed += 1;
@@ -74,7 +74,7 @@ public class GM_SkillPrompt : VisualElement
         }
     }
 
-    private void InitializeButtons(PlayerController playerController)
+    private void InitializeButtons(PlayerControllerOld playerControllerOld)
     {
         for (var i = 0; i < skillButtons.Count; i++)
         {
@@ -87,7 +87,7 @@ public class GM_SkillPrompt : VisualElement
                 2 => "Attack Speed +",
                 _ => "Blank"
             };
-            button.clickable = new Clickable(() => SkillButtonHandler(playerController, x));
+            button.clickable = new Clickable(() => SkillButtonHandler(playerControllerOld, x));
         }
     }
 

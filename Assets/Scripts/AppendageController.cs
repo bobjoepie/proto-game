@@ -5,39 +5,27 @@ using UnityEngine;
 public class AppendageController : MonoBehaviour
 {
     public int appendageHp;
-    public BossController bossController;
-    public List<AttackController> attacks;
+    public bool canTakeDamage;
+    public EntityController entityController;
+    public List<AttackController> attacks = new List<AttackController>();
 
     public bool detach;
-    public bool affectsBossHp;
+    public bool affectsEntityHP;
+    public LayerMask hitboxLayer;
+    public LayerMask hurtboxLayer;
+    public LayerMask collisionLayer;
 
-    private void Awake()
+    private void OnEnable()
     {
-        attacks = new List<AttackController>();
+        entityController = transform.root.GetComponent<EntityController>();
+        if (entityController != null)
+        {
+            entityController.Register(this);
+        }
     }
 
     void Start()
     {
-        bossController = transform.root.GetComponent<BossController>();
-        if (bossController != null)
-        {
-            bossController.Register(this);
-        }
-
-        var children = transform.GetComponentsInChildren<Transform>()
-            .Where(t => t.gameObject.GetComponent<HitboxController>() == null);
-        foreach (Transform child in children)
-        {
-            child.tag = "Uncollidable";
-        }
-
-        var hitboxes = transform.GetComponentsInChildren<HitboxController>();
-        foreach (HitboxController hitbox in hitboxes)
-        {
-            hitbox.gameObject.layer = LayerMask.NameToLayer("EnemyHitbox");
-            hitbox.bossController = bossController;
-        }
-        
         if (detach)
         {
             this.transform.parent = null;
@@ -47,9 +35,9 @@ public class AppendageController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        bossController.Unregister(this);
+        entityController.Unregister(this);
     }
 
     public void PerformAttacks(Vector2 targetPos)
@@ -58,6 +46,29 @@ public class AppendageController : MonoBehaviour
         {
             attack.Attack(targetPos).Forget();
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (canTakeDamage)
+        {
+            appendageHp -= damage;
+        }
+
+        if (affectsEntityHP)
+        {
+            entityController.TakeDamage(damage);
+        }
+
+        if (canTakeDamage && appendageHp <= 0)
+        {
+            DestroyAll();
+        }
+    }
+
+    public void DestroyAll()
+    {
+        Destroy(gameObject);
     }
 
     public void Register(AttackController attackController)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,9 +15,16 @@ public class UIDocManager : MonoBehaviour
     public VisualTreeAsset EventLoggerListEntry;
     public GM_Selector Selector { get; private set; }
 
-    private void OnEnable()
+    private void Awake()
     {
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
     
     void Start()

@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class BossBackScript : MonoBehaviour
+public class AnimatedAnchor : MonoBehaviour
 {
     [Range(0f,3f)] public float distance = 1f;
     [Range(0f,5f)] public float duration = 2.0f;

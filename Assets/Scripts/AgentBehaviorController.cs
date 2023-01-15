@@ -6,7 +6,7 @@ public class AgentBehaviorController : MonoBehaviour
     public BehaviorSO idleBehavior;
     public BehaviorSO activeBehavior;
     public CircleCollider2D behaviorRadius;
-    public PlayerController playerTarget;
+    public PlayerControllerOld playerTarget;
     public float speed;
 
     private void Start()
@@ -30,14 +30,14 @@ public class AgentBehaviorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.TryGetComponent<PlayerController>(out var player)) return;
+        if (!col.TryGetComponent<PlayerControllerOld>(out var player)) return;
         playerTarget = player;
         currentBehavior = AgentBehaviorType.Active;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.TryGetComponent<PlayerController>(out var player)) return;
+        if (!other.TryGetComponent<PlayerControllerOld>(out var player)) return;
         playerTarget = player;
         currentBehavior = AgentBehaviorType.Active;
     }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class LeashController : MonoBehaviour
 {
-    public BossController bossController;
     public GameObject leashAnchorObj;
     public GameObject lookTowardsObj;
 
@@ -12,11 +11,6 @@ public class LeashController : MonoBehaviour
     [Range(0, 20)] public float maxLeashRange = 20;
 
     private bool isMoving = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        bossController = transform.root.GetComponent<BossController>();
-    }
 
     // Update is called once per frame
     void Update()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -6,14 +7,16 @@ public class GameStateManager : MonoBehaviour
     public Selectable selectedObject;
     private bool selectionClearable;
 
-    private void OnEnable()
+    private void Awake()
     {
-        Instance = this;
-    }
-
-    void Start()
-    {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
     
     void Update()

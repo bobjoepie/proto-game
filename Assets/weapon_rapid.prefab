@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
   - component: {fileID: 8468302141553660355}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: weapon_rapid
   m_TagString: Uncollidable
   m_Icon: {fileID: 0}
@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupObj: {fileID: 11400000, guid: bed5c7fdfa7537b4ba20cb552a36e663, type: 2}
+  amount: 1
