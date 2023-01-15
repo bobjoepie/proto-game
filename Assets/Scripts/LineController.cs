@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LineController : MonoBehaviour
+public class LineController : Weapon
 {
     [Header("Properties")]
     public WeaponType weaponType;

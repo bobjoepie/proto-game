@@ -5,34 +5,23 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GM_BossHealthBar : VisualElement
+public class GM_VitalDisplay : VisualElement
 {
     private VisualElement HealthBar;
-    private Label BossName;
-    public new class UxmlFactory : UxmlFactory<GM_BossHealthBar, UxmlTraits> { }
+    private Label HealthLabel;
+    public new class UxmlFactory : UxmlFactory<GM_VitalDisplay, UxmlTraits> { }
 
-    public GM_BossHealthBar()
+    public GM_VitalDisplay()
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
 
     void OnGeometryChange(GeometryChangedEvent evt)
     {
-        HealthBar = this.Q("boss-health-bar-foreground");
-        BossName = (Label)this.Q("boss-name-label");
+        HealthBar = this.Q("health-bar-foreground");
+        HealthLabel = (Label)this.Q("health-bar-label");
         SetHealthBarAsync(100, 100).Forget();
         this.UnregisterCallback<GeometryChangedEvent>(OnGeometryChange);
-    }
-
-    public void SetName(string bossName)
-    {
-        SetNameAsync(bossName).Forget();
-    }
-
-    private async UniTaskVoid SetNameAsync(string bossName)
-    {
-        await UniTask.NextFrame();
-        BossName.text = bossName;
     }
 
     public void SetHealthBar(int curHealth, int maxHealth)
@@ -44,6 +33,7 @@ public class GM_BossHealthBar : VisualElement
     {
         await UniTask.NextFrame();
         HealthBar.style.width = Length.Percent(100f * curHealth / maxHealth);
+        HealthLabel.text = $"{curHealth} / {maxHealth}";
     }
 
     public void Enable()

@@ -1,6 +1,5 @@
 public class EnemyBehaviorSO : BehaviorSO
 {
-    public string name;
     public string description;
     public BehaviorType behaviorType;
 }

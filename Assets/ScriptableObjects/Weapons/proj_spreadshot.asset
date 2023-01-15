@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
   m_Name: proj_spreadshot
   m_EditorClassIdentifier: 
-  name: Spread
+  internalName: 
+  pickupSprite: {fileID: 0}
+  displaySprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
   description: Standard 3 bullet spread-shot
   cooldown: 0.5
   amount: 1
@@ -21,8 +23,10 @@ MonoBehaviour:
   - label: Shot 1
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: 30
+    weaponSpawn: 0
     cur_hasCollision: 1
     cur_lifeTime: 1
     cur_speed: 10
@@ -34,16 +38,18 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: 30
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}
   - label: Shot 2
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: 0
+    weaponSpawn: 0
     cur_hasCollision: 1
     cur_lifeTime: 1
     cur_speed: 10
@@ -55,16 +61,18 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: 0
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}
   - label: Shot 3
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
+    pre_direction: -30
+    weaponSpawn: 0
     cur_hasCollision: 1
     cur_lifeTime: 1
     cur_speed: 10
@@ -76,8 +84,8 @@ MonoBehaviour:
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
-    pre_direction: -30
     pre_spread: 0
     pre_rotation: 0
     pre_rotationSpeed: 0
+    pre_targetType: 0
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}

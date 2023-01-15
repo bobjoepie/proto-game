@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SphereController : MonoBehaviour
+public class SphereController : Weapon
 {
     [Header("Properties")]
     public WeaponType weaponType;

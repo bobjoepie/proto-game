@@ -7,16 +7,9 @@ public class GameStateManager : MonoBehaviour
     public Selectable selectedObject;
     private bool selectionClearable;
 
-    private void Awake()
+    private GameStateManager()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
     }
     
     void Update()

@@ -15,25 +15,36 @@ public class BossController : EntityController
     
     private bool isRotating = false;
     private Sequence movementSequence;
+    private GM_BossHealthBar bossHealthBarUI;
 
-    private void OnEnable()
+    private void Start()
     {
         if (EnemyManager.Instance != null)
         {
             EnemyManager.Instance.Register(this);
         }
+
+        if (UIDocManager2.Instance != null)
+        {
+            bossHealthBarUI = UIDocManager2.Instance.bossHealthBar;
+        }
     }
 
     private void Update()
     {
-        if (!actionRadiusController.targets.Any()) return;
-
-        if (!isRotating)
+        if (actionRadiusController.targets.Any())
         {
-            RotateTowardsTarget();
-        }
+            if (!isRotating)
+            {
+                RotateTowardsTarget();
+            }
 
-        MoveTowardsTarget();
+            MoveTowardsTarget();
+        }
+        else
+        {
+            // handle idle movement, actions, etc.
+        }
     }
 
     private void RotateTowardsTarget()
@@ -75,6 +86,12 @@ public class BossController : EntityController
                     break;
             }
         }
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        bossHealthBarUI.SetHealthBar(attributes.curHealth, attributes.maxHealth);
     }
 
     private void OnDisable()

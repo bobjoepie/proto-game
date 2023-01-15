@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
   - component: {fileID: 6631236128054058977}
-  m_Layer: 10
-  m_Name: weapon_basic
-  m_TagString: Uncollidable
+  m_Layer: 0
+  m_Name: weapon_magicmissile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3537736, g: 0.9333822, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86a78c11d29a01459b6ae7ffbe39acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupObj: {fileID: 11400000, guid: e504d7d059cd31440927d8f5d370729f, type: 2}
+  pickupObj: {fileID: 11400000, guid: ae9e1a887ce19f9498d18ed4a3f161b8, type: 2}
   amount: 1

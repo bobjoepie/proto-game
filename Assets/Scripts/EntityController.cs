@@ -11,6 +11,9 @@ public class EntityController : MonoBehaviour
     public ActionRadiusController actionRadiusController;
     public List<AppendageController> appendages = new List<AppendageController>();
 
+    public List<InventoryItem> inventory = new List<InventoryItem>();
+    public bool CanPickUpItems = false;
+
     public void Register<T>(T component) where T : MonoBehaviour
     {
         switch (component)
@@ -43,7 +46,7 @@ public class EntityController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         attributes.curHealth -= damage;
         if (attributes.curHealth <= 0)
@@ -62,6 +65,29 @@ public class EntityController : MonoBehaviour
             }
         }
         Destroy(gameObject);
+    }
+
+    public bool PickUpItem(Pickupable item)
+    {
+        if (!CanPickUpItems) return false;
+        var inventoryItem = new InventoryItem();
+        inventoryItem.displayName = item.pickupObj.name;
+        inventoryItem.quantity = item.amount;
+        inventoryItem.pickupObj = item.pickupObj;
+        AddToInventory(inventoryItem);
+        return true;
+    }
+
+    private void AddToInventory(InventoryItem item)
+    {
+        if (inventory.Any(i => i.pickupObj == item.pickupObj))
+        {
+            inventory.First(i => i.pickupObj == item.pickupObj).quantity += item.quantity;
+        }
+        else
+        {
+            inventory.Add(item);
+        }
     }
 }
 
@@ -87,10 +113,6 @@ public class EntityAttributes
     public int physRes;
     public int elemRes;
 
-    public WeaponSO equippedWeapon;
-    public ItemSO equippedItem;
-    public List<InventoryItem2> inventory = new List<InventoryItem2>();
-
     public EntityAttributes()
     {
 
@@ -98,7 +120,9 @@ public class EntityAttributes
 }
 
 [Serializable]
-public class InventoryItem2
+public class InventoryItem
 {
-
+    public string displayName;
+    public int quantity;
+    public PickupSO pickupObj;
 }

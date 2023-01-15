@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public abstract class ItemSO : PickupSO
 {
-    public string name;
     [TextArea(3, 5)]
     public string description;
     [Range(0, 1)]

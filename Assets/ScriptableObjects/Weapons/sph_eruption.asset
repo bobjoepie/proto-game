@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7e7c0ffd5fb1c498697ffb1922be9e, type: 3}
   m_Name: sph_eruption
   m_EditorClassIdentifier: 
-  name: Eruption
+  internalName: 
+  pickupSprite: {fileID: 0}
+  displaySprite: {fileID: 0}
   description: Spawn eruptions at mouse location
   cooldown: 1
   amount: 1
@@ -21,7 +23,7 @@ MonoBehaviour:
   - label: Eruption
     weaponType: 2
     collisionType: 1
-    weaponGameObject: {fileID: 2575580043271617909, guid: 8ba0c0692be3fc8478bdabe7d823d4f0, type: 3}
+    weaponGameObject: {fileID: 6836056790754676014, guid: 8ba0c0692be3fc8478bdabe7d823d4f0, type: 3}
     damage: 1
     pre_direction: 0
     weaponSpawn: 2

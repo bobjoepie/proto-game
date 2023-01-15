@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fb4c219f54c9e419eb88b659ad402b, type: 3}
   m_Name: proj_explosiveBullet
   m_EditorClassIdentifier: 
-  name: Explosive Bullet
+  internalName: 
+  pickupSprite: {fileID: 0}
+  displaySprite: {fileID: 0}
   description: Explosive shot
   cooldown: 1
   amount: 1
@@ -21,7 +23,7 @@ MonoBehaviour:
   - label: Explosive Bullet
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 0
     pre_direction: 0
     weaponSpawn: 0

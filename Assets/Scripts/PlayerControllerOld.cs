@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class InventoryItem
+public class InventoryItemOld
 {
     public Sprite sprite;
     public Color color;
@@ -31,10 +32,10 @@ public class PlayerControllerOld : EntityController
     private Vector2 origPos;
     private Color origColor;
     private SpriteRenderer childSpriteRenderer;
-    private InventoryItem[] inventoryList;
+    private InventoryItemOld[] inventoryList;
 
-    [SerializeField] 
-    private InventoryItem ActiveInventoryItem;
+    [FormerlySerializedAs("ActiveInventoryItem")] [SerializeField] 
+    private InventoryItemOld activeInventoryItemOld;
 
     [SerializeField]
     public WeaponSO equippedWeapon;
@@ -65,7 +66,7 @@ public class PlayerControllerOld : EntityController
         childSpriteRenderer = childSprite.GetComponent<SpriteRenderer>();
         origColor = childSpriteRenderer.color;
 
-        inventoryList = new InventoryItem[10];
+        inventoryList = new InventoryItemOld[10];
     }
 
     // Update is called once per frame
@@ -117,11 +118,11 @@ public class PlayerControllerOld : EntityController
     public void Pickup(GameObject item, PickupSO pickupObj, Interactable interactableObj = null)
     {
         var spriteRenderer = item.GetComponentInChildren<SpriteRenderer>();
-        InventoryItem newItem;
+        InventoryItemOld newItemOld;
         switch (pickupObj)
         {
             case WeaponSO weaponObj:
-                newItem = new InventoryItem
+                newItemOld = new InventoryItemOld
                 {
                     name = weaponObj.name,
                     internalName = weaponObj.internalName,
@@ -132,7 +133,7 @@ public class PlayerControllerOld : EntityController
                 };
                 break;
             case ItemSO itemObj:
-                newItem = new InventoryItem
+                newItemOld = new InventoryItemOld
                 {
                     name = itemObj.name,
                     internalName = itemObj.internalName,
@@ -167,14 +168,14 @@ public class PlayerControllerOld : EntityController
                 return;
         }
         
-        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItem.name)) return;
+        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItemOld.name)) return;
 
         bool pickedUp = false;
         for (int i = 0; i < inventoryList.Length; i++)
         {
             if (inventoryList[i] == null)
             {
-                inventoryList[i] = newItem;
+                inventoryList[i] = newItemOld;
                 Debug.Log($"Picked up {pickupObj.name}");
                 GameMenuManager.Instance.SetInventoryItem(inventoryList);
                 Destroy(item);
@@ -192,11 +193,11 @@ public class PlayerControllerOld : EntityController
     public void Pickup2(Interactable interactableObj)
     {
         var spriteRenderer = interactableObj.GetComponentInChildren<SpriteRenderer>();
-        InventoryItem newItem;
+        InventoryItemOld newItemOld;
         switch (interactableObj.pickupSO)
         {
             case WeaponSO weaponObj:
-                newItem = new InventoryItem
+                newItemOld = new InventoryItemOld
                 {
                     name = weaponObj.name,
                     internalName = weaponObj.internalName,
@@ -207,7 +208,7 @@ public class PlayerControllerOld : EntityController
                 };
                 break;
             case ItemSO itemObj:
-                newItem = new InventoryItem
+                newItemOld = new InventoryItemOld
                 {
                     name = itemObj.name,
                     internalName = itemObj.internalName,
@@ -235,14 +236,14 @@ public class PlayerControllerOld : EntityController
             Destroy(interactableObj.gameObject);
         }
 
-        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItem.name)) return;
+        if (inventoryList.Where(i => i != null).Select(it => it.name).ToList().Contains(newItemOld.name)) return;
 
         bool pickedUp = false;
         for (int i = 0; i < inventoryList.Length; i++)
         {
             if (inventoryList[i] == null)
             {
-                inventoryList[i] = newItem;
+                inventoryList[i] = newItemOld;
                 Debug.Log($"Picked up {interactableObj.pickupSO.name}");
                 GameMenuManager.Instance.SetInventoryItem(inventoryList);
                 Destroy(interactableObj);
@@ -274,11 +275,11 @@ public class PlayerControllerOld : EntityController
 
         equippedWeapon = null;
         equippedItem = null;
-        if (ActiveInventoryItem == null) return;
+        if (activeInventoryItemOld == null) return;
 
-        if (ActiveInventoryItem.pickupObj != null)
+        if (activeInventoryItemOld.pickupObj != null)
         {
-            switch (ActiveInventoryItem.pickupObj)
+            switch (activeInventoryItemOld.pickupObj)
             {
                 case WeaponSO weaponObj:
                     equippedWeapon = weaponObj;
@@ -287,17 +288,17 @@ public class PlayerControllerOld : EntityController
                     equippedItem = itemObj;
                     break;
             }
-            Debug.Log($"Equipped {ActiveInventoryItem.name}");
+            Debug.Log($"Equipped {activeInventoryItemOld.name}");
         }
     }
 
     private void CheckNum(int i)
     {
         GameMenuManager.Instance.ClearSelectedItem();
-        ActiveInventoryItem = null;
+        activeInventoryItemOld = null;
         if (inventoryList.ElementAtOrDefault(i) != null)
         {
-            ActiveInventoryItem = inventoryList[i];
+            activeInventoryItemOld = inventoryList[i];
             GameMenuManager.Instance.SelectItem(i);
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public abstract class WeaponSO : PickupSO
 {
-    public string name;
     [TextArea(3, 5)]
     public string description;
     [Range(0, 1)]
@@ -57,15 +56,14 @@ public abstract class WeaponSO : PickupSO
                     wepInstance.transform.rotation = rotation * Quaternion.Euler(0f, 0f, part.pre_direction);
                     if (layer != null)
                     {
-                        wepInstance.layer = (int)layer;
-                        var children = wepInstance.GetComponentsInChildren<Transform>(includeInactive: true);
-                        foreach (var child in children)
+                        wepInstance.gameObject.layer = (int)layer;
+                        foreach (Transform child in wepInstance.transform)
                         {
                             child.gameObject.layer = (int)layer;
                         }
                     }
 
-                    part.UpdateValues(wepInstance, iterationNum);
+                    part.UpdatePartValues(wepInstance, iterationNum);
                     break;
             }
         }
@@ -119,23 +117,23 @@ public class WeaponPart
     [Header("Properties")]
     public WeaponType weaponType;
     public CollisionType collisionType;
-    public GameObject weaponGameObject;
+    public Weapon weaponGameObject;
     public int damage;
     [Range(-360, 360)] public float pre_direction;
     public SpawnLocation weaponSpawn;
 
-    public void UpdateValues(GameObject wepInstance, int iterationNum)
+    public void UpdatePartValues(Weapon wepInstance, int iterationNum)
     {
         switch (this)
         {
             case ProjectilePart proj:
-                proj.UpdateValues(wepInstance.GetComponentInChildren<ProjectileController>(), iterationNum);
+                proj.UpdateValues(wepInstance as ProjectileController, iterationNum);
                 break;
             case SpherePart sphere:
-                sphere.UpdateValues(wepInstance.GetComponentInChildren<SphereController>(), iterationNum);
+                sphere.UpdateValues(wepInstance as SphereController, iterationNum);
                 break;
             case LinePart line:
-                line.UpdateValues(wepInstance.GetComponentInChildren<LineController>(), iterationNum);
+                line.UpdateValues(wepInstance as LineController, iterationNum);
                 break;
         }
     }

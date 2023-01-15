@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileController : Weapon
 {
     [Header("Properties")]
     public WeaponType weaponType;

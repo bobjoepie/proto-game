@@ -9,6 +9,8 @@ public class WeaponController : MonoBehaviour
 {
     public bool CanAttack = true;
     public EntityController entityController;
+    [Range(0f, 2f)] public float timeBetweenAttacks = 0.2f;
+    [Range(0f, 1f)] public float volleyDelay = 0f;
 
     private void Start()
     {
@@ -17,35 +19,28 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
+        HandleAttacks();
+    }
+
+    private void HandleAttacks()
+    {
         if (CanAttack)
         {
             CanAttack = false;
-            TryAttack(entityController.actionRadiusController, entityController.appendages, true).Forget();
+            TryAttack(entityController.actionRadiusController, entityController.appendages).Forget();
         }
     }
-    private async UniTaskVoid TryAttack(ActionRadiusController actionRadiusController, List<AppendageController> appendages, bool isTargeted = true)
-    {
-        await TryPerformAttacks(actionRadiusController, appendages, isTargeted);
-        await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-        CanAttack = true;
-    }
 
-    private async UniTask TryPerformAttacks(ActionRadiusController actionRadiusController, List<AppendageController> appendages, bool isTargeted = true)
+    private async UniTaskVoid TryAttack(ActionRadiusController actionRadiusController, List<AppendageController> appendages)
     {
         foreach (AppendageController appendage in appendages.ToList())
         {
-            if (isTargeted)
-            {
-                if (actionRadiusController == null || !actionRadiusController.targets.Any() ||
-                    appendage == null) return;
-                appendage.PerformAttacks(actionRadiusController.GetClosestTarget().position);
-                await UniTask.Delay(TimeSpan.FromSeconds(0.15f));
-            }
-            else
-            {
-                //appendage.PerformAttacks(actionRadiusController.GetClosestTarget().position);
-                await UniTask.Delay(TimeSpan.FromSeconds(0.15f));
-            }
+            if (!actionRadiusController.targets.Any() || appendage == null) continue;
+            appendage.PerformAttacks(actionRadiusController.GetClosestTarget().position);
+            await UniTask.Delay(TimeSpan.FromSeconds(volleyDelay));
         }
+
+        await UniTask.Delay(TimeSpan.FromSeconds(timeBetweenAttacks));
+        CanAttack = true;
     }
 }

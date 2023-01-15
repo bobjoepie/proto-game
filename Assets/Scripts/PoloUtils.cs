@@ -50,20 +50,5 @@ public static class PoloUtils
         var layer = (int)Mathf.Log(mask.value, 2);
         return layer;
     }
-
-    public interface IEntity
-    {
-        public Transform transform { get; }
-        public List<MonoBehaviour> behaviours { get; }
-        public void Register<T>(T component) where T : MonoBehaviour
-        {
-            behaviours.Add(component);
-        }
-
-        public void Unregister<T>(T component) where T : MonoBehaviour
-        {
-            behaviours.Remove(component);
-        }
-    }
 }
 

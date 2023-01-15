@@ -135,19 +135,19 @@ public class GameMenuManager : VisualElement
         }
     }
 
-    public void SetInventoryItem(InventoryItem[] inventory)
+    public void SetInventoryItem(InventoryItemOld[] inventory)
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            InventoryItem item = inventory[i];
-            if (item == null)
+            InventoryItemOld itemOld = inventory[i];
+            if (itemOld == null)
             {
                 return;
             }
             var inventorySlot = InventoryList[i];
-            inventorySlot.text = item.name;
-            inventorySlot.style.backgroundImage = new StyleBackground(item.sprite);
-            inventorySlot.style.unityBackgroundImageTintColor = item.color;
+            inventorySlot.text = itemOld.name;
+            inventorySlot.style.backgroundImage = new StyleBackground(itemOld.sprite);
+            inventorySlot.style.unityBackgroundImageTintColor = itemOld.color;
         }
     }
 

@@ -16,6 +16,7 @@ public enum KeyAction
 
     Use,
     SpaceKey,
+    EnterKey,
 
     Slot1,
     Slot2,
@@ -30,17 +31,23 @@ public enum KeyAction
 
     Tab,
     Escape,
+    Shift,
+    Ctrl,
+    Alt,
+
+    DialogueContinue,
+    DialogueSkip,
 }
 
 public static class DefaultActionMaps
 {
-    public static List<KeyAction> MouseKeyActions = new List<KeyAction>()
+    public static readonly List<KeyAction> MouseKeyActions = new List<KeyAction>()
     {
         KeyAction.LeftClick,
         KeyAction.RightClick,
     };
 
-    public static List<KeyAction> MovementKeyActions = new List<KeyAction>()
+    public static readonly List<KeyAction> MovementKeyActions = new List<KeyAction>()
     {
         KeyAction.Up,
         KeyAction.Left,
@@ -48,7 +55,7 @@ public static class DefaultActionMaps
         KeyAction.Right,
     };
 
-    public static List<KeyAction> NumberKeyActions = new List<KeyAction>()
+    public static readonly List<KeyAction> NumberKeyActions = new List<KeyAction>()
     {
         KeyAction.Slot1,
         KeyAction.Slot2,
@@ -62,56 +69,63 @@ public static class DefaultActionMaps
         KeyAction.Slot0,
     };
 
-    public static List<KeyAction> MenuKeyActions = new List<KeyAction>()
+    public static readonly List<KeyAction> MenuKeyActions = new List<KeyAction>()
     {
         KeyAction.Tab,
         KeyAction.Escape,
+    };
+
+    public static readonly List<KeyAction> DialogueKeyActions = new List<KeyAction>()
+    {
+        KeyAction.DialogueContinue,
+        KeyAction.DialogueSkip,
     };
 }
 
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
-    public Dictionary<EntityController, HashSet<KeyAction>> actionMaps = new Dictionary<EntityController, HashSet<KeyAction>>();
+
+    private readonly Dictionary<EntityController, HashSet<KeyAction>> actionMaps = new Dictionary<EntityController, HashSet<KeyAction>>();
 
     private readonly Dictionary<KeyAction, KeyCode> KeyActionMap = new Dictionary<KeyAction, KeyCode>()
     {
-        {KeyAction.LeftClick    ,       KeyCode.Mouse0},
-        {KeyAction.RightClick   ,       KeyCode.Mouse1},
+        {KeyAction.LeftClick            ,       KeyCode.Mouse0},
+        {KeyAction.RightClick           ,       KeyCode.Mouse1},
 
-        {KeyAction.Up           ,       KeyCode.W},
-        {KeyAction.Left         ,       KeyCode.A},
-        {KeyAction.Down         ,       KeyCode.S},
-        {KeyAction.Right        ,       KeyCode.D},
+        {KeyAction.Up                   ,       KeyCode.W},
+        {KeyAction.Left                 ,       KeyCode.A},
+        {KeyAction.Down                 ,       KeyCode.S},
+        {KeyAction.Right                ,       KeyCode.D},
 
-        {KeyAction.Use          ,       KeyCode.E},
-        {KeyAction.SpaceKey     ,       KeyCode.Space},
+        {KeyAction.Use                  ,       KeyCode.E},
+        {KeyAction.SpaceKey             ,       KeyCode.Space},
+        {KeyAction.EnterKey             ,       KeyCode.Return},
 
-        {KeyAction.Slot1        ,       KeyCode.Alpha1},
-        {KeyAction.Slot2        ,       KeyCode.Alpha2},
-        {KeyAction.Slot3        ,       KeyCode.Alpha3},
-        {KeyAction.Slot4        ,       KeyCode.Alpha4},
-        {KeyAction.Slot5        ,       KeyCode.Alpha5},
-        {KeyAction.Slot6        ,       KeyCode.Alpha6},
-        {KeyAction.Slot7        ,       KeyCode.Alpha7},
-        {KeyAction.Slot8        ,       KeyCode.Alpha8},
-        {KeyAction.Slot9        ,       KeyCode.Alpha9},
-        {KeyAction.Slot0        ,       KeyCode.Alpha0},
+        {KeyAction.Slot1                ,       KeyCode.Alpha1},
+        {KeyAction.Slot2                ,       KeyCode.Alpha2},
+        {KeyAction.Slot3                ,       KeyCode.Alpha3},
+        {KeyAction.Slot4                ,       KeyCode.Alpha4},
+        {KeyAction.Slot5                ,       KeyCode.Alpha5},
+        {KeyAction.Slot6                ,       KeyCode.Alpha6},
+        {KeyAction.Slot7                ,       KeyCode.Alpha7},
+        {KeyAction.Slot8                ,       KeyCode.Alpha8},
+        {KeyAction.Slot9                ,       KeyCode.Alpha9},
+        {KeyAction.Slot0                ,       KeyCode.Alpha0},
 
-        {KeyAction.Tab          ,       KeyCode.Tab},
-        {KeyAction.Escape       ,       KeyCode.Escape},
+        {KeyAction.Tab                  ,       KeyCode.Tab},
+        {KeyAction.Escape               ,       KeyCode.Escape},
+        {KeyAction.Shift                ,       KeyCode.LeftShift},
+        {KeyAction.Ctrl                 ,       KeyCode.LeftControl},
+        {KeyAction.Alt                  ,       KeyCode.LeftAlt},
+
+        {KeyAction.DialogueContinue     ,       KeyCode.Return},
+        {KeyAction.DialogueSkip         ,       KeyCode.Escape},
     };
 
-    private void Awake()
+    private InputManager()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
     }
 
     public bool PollKeyDown(EntityController entity, KeyAction action)
@@ -139,6 +153,14 @@ public class InputManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void Remap(KeyAction keyAction, KeyCode keyCode)
+    {
+        if (KeyActionMap.ContainsKey(keyAction))
+        {
+            KeyActionMap[keyAction] = keyCode;
+        }
     }
 
     public void Register<T>(T entity, List<KeyAction> actionMap)

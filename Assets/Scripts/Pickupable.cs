@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Pickupable : MonoBehaviour
@@ -5,12 +6,19 @@ public class Pickupable : MonoBehaviour
     public PickupSO pickupObj;
     public int amount = 1;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        var player = collision.GetComponentInChildren<PlayerControllerOld>();
-        if (player != null)
+        gameObject.layer = LayerMask.NameToLayer("Item");
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.transform.root.TryGetComponent<EntityController>(out var entity))
         {
-            player.Pickup(gameObject, pickupObj);
+            if (entity.PickUpItem(this))
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

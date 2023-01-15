@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1485985222166534485}
   - component: {fileID: 7225807051773141537}
   - component: {fileID: 16525500584300140}
-  - component: {fileID: 9108311531058695528}
-  m_Layer: 10
-  m_Name: weapon_spreadshot
-  m_TagString: Uncollidable
+  - component: {fileID: 4382052613571190933}
+  m_Layer: 0
+  m_Name: weapon_slowmoving
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8310671449323089756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.5424509, b: 0.6981132, a: 1}
+  m_Color: {r: 0.2316857, g: 0.5566038, b: 0.18640977, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &9108311531058695528
+--- !u!114 &4382052613571190933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86a78c11d29a01459b6ae7ffbe39acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupObj: {fileID: 11400000, guid: 152da086344e5f245acf647c492da280, type: 2}
+  pickupObj: {fileID: 11400000, guid: fc807d1bbbf61664b8763b188e833b41, type: 2}
   amount: 1

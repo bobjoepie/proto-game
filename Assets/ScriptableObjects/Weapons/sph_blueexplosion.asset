@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7e7c0ffd5fb1c498697ffb1922be9e, type: 3}
   m_Name: sph_blueexplosion
   m_EditorClassIdentifier: 
-  name: Blue Explosion
+  internalName: 
+  pickupSprite: {fileID: 0}
+  displaySprite: {fileID: 0}
   description: Blue explosion
   cooldown: 1
   amount: 1
@@ -21,7 +23,7 @@ MonoBehaviour:
   - label: Explosion
     weaponType: 2
     collisionType: 1
-    weaponGameObject: {fileID: 2575580043271617909, guid: fbd378c8a7bffae4aacc5695a6a6c198, type: 3}
+    weaponGameObject: {fileID: 6836056790754676014, guid: fbd378c8a7bffae4aacc5695a6a6c198, type: 3}
     damage: 1
     pre_direction: 0
     weaponSpawn: 0

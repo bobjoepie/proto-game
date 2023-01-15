@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null) return;
         var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var offset = mousePos - target.gameObject.transform.position;
         var clamp = Vector3.ClampMagnitude(offset, 3f);

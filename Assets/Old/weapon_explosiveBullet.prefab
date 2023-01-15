@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7858454515248355074}
   - component: {fileID: 1559041050996701997}
   - component: {fileID: -6654684502556865988}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: weapon_explosiveBullet
-  m_TagString: Uncollidable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

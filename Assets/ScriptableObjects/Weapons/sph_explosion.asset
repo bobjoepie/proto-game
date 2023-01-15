@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: sph_explosion
   m_EditorClassIdentifier: 
   internalName: 
-  name: Explosion
+  pickupSprite: {fileID: 0}
+  displaySprite: {fileID: 0}
   description: Explosion effect
   cooldown: 1
   amount: 1
@@ -22,7 +23,7 @@ MonoBehaviour:
   - label: Explosion
     weaponType: 2
     collisionType: 1
-    weaponGameObject: {fileID: 2575580043271617909, guid: 8ba0c0692be3fc8478bdabe7d823d4f0, type: 3}
+    weaponGameObject: {fileID: 6836056790754676014, guid: 8ba0c0692be3fc8478bdabe7d823d4f0, type: 3}
     damage: 5
     pre_direction: 0
     weaponSpawn: 0

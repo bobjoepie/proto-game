@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   internalName: 
   pickupSprite: {fileID: 21300000, guid: 6c20e71fffa0b054d892bc92ee258c1b, type: 3}
-  name: Basic
+  displaySprite: {fileID: 0}
   description: Basic single shot
   cooldown: 0.5
   amount: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
   - label: Basic Shot
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 6375080909173914051, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
     damage: 1
     pre_direction: 0
     weaponSpawn: 0

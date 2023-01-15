@@ -15,16 +15,9 @@ public class UIDocManager : MonoBehaviour
     public VisualTreeAsset EventLoggerListEntry;
     public GM_Selector Selector { get; private set; }
 
-    private void Awake()
+    private UIDocManager()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
     }
     
     void Start()
