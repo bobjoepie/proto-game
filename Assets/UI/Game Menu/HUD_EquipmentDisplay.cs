@@ -4,14 +4,14 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GM_EquipmentDisplay : VisualElement
+public class HUD_EquipmentDisplay : VisualElement
 {
     private VisualElement EquippedWeapon;
     private VisualElement EquippedWeaponIcon;
     private Label EquippedWeaponLabel;
-    public new class UxmlFactory : UxmlFactory<GM_EquipmentDisplay, UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<HUD_EquipmentDisplay, UxmlTraits> { }
 
-    public GM_EquipmentDisplay()
+    public HUD_EquipmentDisplay()
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }

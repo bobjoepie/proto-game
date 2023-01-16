@@ -87,6 +87,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     private readonly Dictionary<EntityController, HashSet<KeyAction>> actionMaps = new Dictionary<EntityController, HashSet<KeyAction>>();
+    private readonly Dictionary<EntityController, HashSet<KeyAction>> heldActionMaps = new Dictionary<EntityController, HashSet<KeyAction>>();
 
     private readonly Dictionary<KeyAction, KeyCode> KeyActionMap = new Dictionary<KeyAction, KeyCode>()
     {
@@ -163,6 +164,44 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void ToggleActionMaps(EntityController entity)
+    {
+        if (heldActionMaps.ContainsKey(entity))
+        {
+            ReleaseActionMap(entity);
+        }
+        else if (actionMaps.ContainsKey(entity))
+        {
+            HoldActionMap(entity);
+        }
+    }
+
+    public void HoldActionMap(EntityController entity)
+    {
+        if (heldActionMaps.ContainsKey(entity))
+        {
+            heldActionMaps[entity].UnionWith(actionMaps[entity]);
+        }
+        else
+        {
+            heldActionMaps.Add(entity, actionMaps[entity]);
+        }
+        actionMaps.Remove(entity);
+    }
+
+    public void ReleaseActionMap(EntityController entity)
+    {
+        if (actionMaps.ContainsKey(entity))
+        {
+            actionMaps[entity].UnionWith(heldActionMaps[entity]);
+        }
+        else
+        {
+            actionMaps.Add(entity, heldActionMaps[entity]);
+        }
+        heldActionMaps.Remove(entity);
+    }
+
     public void Register<T>(T entity, List<KeyAction> actionMap)
     {
         switch (entity)
@@ -180,6 +219,23 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void Register<T>(T entity, KeyAction action)
+    {
+        switch (entity)
+        {
+            case EntityController e:
+                if (actionMaps.ContainsKey(e))
+                {
+                    actionMaps[e].Add(action);
+                }
+                else
+                {
+                    actionMaps.Add(e, new HashSet<KeyAction>() { action });
+                }
+                break;
+        }
+    }
+
     public void Unregister<T>(T entity, List<KeyAction> actionMap = null)
     {
         switch (entity)
@@ -192,6 +248,19 @@ public class InputManager : MonoBehaviour
                 else if (actionMaps.ContainsKey(e))
                 {
                     actionMaps[e].ExceptWith(actionMap);
+                }
+                break;
+        }
+    }
+
+    public void Unregister<T>(T entity, KeyAction action)
+    {
+        switch (entity)
+        {
+            case EntityController e:
+                if (actionMaps.ContainsKey(e))
+                {
+                    actionMaps[e].Remove(action);
                 }
                 break;
         }

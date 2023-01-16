@@ -31,6 +31,8 @@ MonoBehaviour:
     cur_speed: 1.5
     cur_direction: 0
     cur_targetType: 0
+    cur_attackSound: {fileID: 0}
     pre_lifeTime: 0
     pre_targetType: 0
+    pre_attackSound: {fileID: 0}
     post_subWeapon: {fileID: 0}

@@ -19,6 +19,7 @@ public class ProjectileController : Weapon
     [Range(-360, 360)] public float cur_rotation;
     [Range(0, 200)] public float cur_rotationSpeed; //TODO
     public TargetType cur_targetType; //TODO
+    public AudioClip cur_attackSound;
 
     [Header("Pre-Attack")]
     public bool pre_hasCollision; //TODO
@@ -29,11 +30,13 @@ public class ProjectileController : Weapon
     [Range(-360, 360)] public float pre_rotation;
     [Range(0, 200)] public float pre_rotationSpeed; //TODO
     public TargetType pre_targetType;
+    public AudioClip pre_attackSound;
 
     [Header("Post-Attack")]
     public WeaponSO post_subWeapon;
 
     private Camera MainCamera;
+    private AudioManager audioManager;
 
     private float ElapsedTime;
 
@@ -48,6 +51,7 @@ public class ProjectileController : Weapon
     {
         ElapsedTime = 0f;
         MainCamera = Camera.main;
+        audioManager = AudioManager.Instance;
 
         initMousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         switch (weaponSpawn)
@@ -62,6 +66,10 @@ public class ProjectileController : Weapon
 
         initDir = transform.rotation;
         initPos = transform.position;
+        if (pre_attackSound != null)
+        {
+            audioManager.Play(pre_attackSound);
+        }
     }
 
     // Update is called once per frame
@@ -134,6 +142,11 @@ public class ProjectileController : Weapon
     private void InitAttack()
     {
         isPrepped = true;
+        if (cur_attackSound != null)
+        {
+            audioManager.Play(cur_attackSound);
+        }
+
         switch (cur_targetType)
         {
             case TargetType.TowardsMouse:

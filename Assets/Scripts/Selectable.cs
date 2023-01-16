@@ -6,7 +6,7 @@ public class Selectable : MonoBehaviour
     private Camera MainCamera;
     private bool IsHoverSelectorActive;
     private bool IsSelectorActive;
-    private UIDocManager docManager;
+    private UIDocManagerOld docManagerOld;
     private GameStateManager gameStateManager;
     //public InteractableType modalType;
     //public string speechModalMessage;
@@ -18,7 +18,7 @@ public class Selectable : MonoBehaviour
         IsHoverSelectorActive = false;
         IsSelectorActive = false;
 
-        docManager = UIDocManager.Instance;
+        docManagerOld = UIDocManagerOld.Instance;
         gameStateManager = GameStateManager.Instance;
         if (transform != transform.root)
         {
@@ -43,24 +43,24 @@ public class Selectable : MonoBehaviour
     private void MoveHoverSelector()
     {
         Vector2 screenPos = MainCamera.WorldToViewportPoint(transform.root.position);
-        docManager.Selector.MoveHoverSelector(screenPos);
+        docManagerOld.Selector.MoveHoverSelector(screenPos);
     }
 
     private void MoveSelector()
     {
         Vector2 screenPos = MainCamera.WorldToViewportPoint(transform.root.position);
-        docManager.Selector.MoveSelector(screenPos);
+        docManagerOld.Selector.MoveSelector(screenPos);
     }
 
     private void OnMouseEnter()
     {
-        docManager.Selector.ToggleHoverSelector();
+        docManagerOld.Selector.ToggleHoverSelector();
         IsHoverSelectorActive = true;
     }
 
     private void OnMouseExit()
     {
-        docManager.Selector.ToggleHoverSelector();
+        docManagerOld.Selector.ToggleHoverSelector();
         IsHoverSelectorActive = false;
     }
 
@@ -68,14 +68,14 @@ public class Selectable : MonoBehaviour
     {
         gameStateManager.ClearSelectedObject();
         gameStateManager.SetSelectedObject(this);
-        docManager.Selector.ToggleSelector();
+        docManagerOld.Selector.ToggleSelector();
         gameStateManager.DontClearThisFrame();
         IsSelectorActive = true;
     }
 
     public void ClearSelection()
     {
-        docManager.Selector.ToggleSelector();
+        docManagerOld.Selector.ToggleSelector();
         IsSelectorActive = false;
     }
 }

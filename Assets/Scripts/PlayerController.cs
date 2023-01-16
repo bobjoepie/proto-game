@@ -14,8 +14,9 @@ public class PlayerController : EntityController
 
     public bool CanUseItem;
 
-    private GM_EquipmentDisplay equipmentDisplay;
-    private GM_VitalDisplay vitalDisplay;
+    private HUD_EquipmentDisplay equipmentDisplay;
+    private HUD_VitalDisplay vitalDisplay;
+    private GM_PauseMenu pauseMenu;
 
     private void OnEnable()
     {
@@ -33,12 +34,16 @@ public class PlayerController : EntityController
     {
         attackController = GetComponent<AttackController>();
         mainCamera = Camera.main;
-        if (UIDocManager2.Instance != null)
+
+        if (UIDocManager.Instance != null)
         {
-            equipmentDisplay = UIDocManager2.Instance.equipmentDisplay;
-            vitalDisplay = UIDocManager2.Instance.vitalDisplay;
+            equipmentDisplay = UIDocManager.Instance.equipmentDisplay;
+            vitalDisplay = UIDocManager.Instance.vitalDisplay;
+            pauseMenu = UIDocManager.Instance.pauseMenu;
         }
+        vitalDisplay.Show();
         vitalDisplay.SetHealthBar(attributes.curHealth, attributes.maxHealth);
+        pauseMenu.Hide();
     }
 
     private void Update()
@@ -93,8 +98,18 @@ public class PlayerController : EntityController
         }
         else if (input.PollKeyDown(this, KeyAction.Escape))
         {
-            //GameMenuManager.Instance.TogglePauseMenu();
+            ToggleMenuActionMaps();
+            pauseMenu.ToggleView();
+            vitalDisplay.ToggleView();
+            // Pause game here, possibly move somewhere else
+            Time.timeScale = Time.timeScale > 0f ? 0f : 1f;
         }
+    }
+
+    private void ToggleMenuActionMaps()
+    {
+        input.ToggleActionMaps(this);
+        input.Register(this, KeyAction.Escape);
     }
 
     private void HandleEquipment()

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FriendTalk : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class FriendTalk : MonoBehaviour
     public float textSpeed;
     public string[] dialogue;
     public string[] dialogue2;
-    public AudioManager audioManager;
+    [FormerlySerializedAs("audioManager")] public AudioManagerOld audioManagerOld;
     public AudioClip audioClip;
     
     private int DialogueLine;

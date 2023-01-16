@@ -34,7 +34,7 @@ public class ItemChecker : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        //Object.FindObjectOfType<AudioManager>().backgroundMusic.Stop();
+        //Object.FindObjectOfType<AudioManagerOld>().backgroundMusic.Stop();
         SceneManager.LoadSceneAsync(sceneName);
     }
 

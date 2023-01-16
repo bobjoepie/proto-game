@@ -15,7 +15,7 @@ public class BossController : EntityController
     
     private bool isRotating = false;
     private Sequence movementSequence;
-    private GM_BossHealthBar bossHealthBarUI;
+    private HUD_BossHealthBar bossHealthBarUI;
 
     private void Start()
     {
@@ -24,9 +24,11 @@ public class BossController : EntityController
             EnemyManager.Instance.Register(this);
         }
 
-        if (UIDocManager2.Instance != null)
+        if (UIDocManager.Instance != null)
         {
-            bossHealthBarUI = UIDocManager2.Instance.bossHealthBar;
+            bossHealthBarUI = UIDocManager.Instance.bossHealthBar;
+            bossHealthBarUI.Show();
+            bossHealthBarUI.SetName(attributes.name);
         }
     }
 
@@ -100,5 +102,6 @@ public class BossController : EntityController
         {
             EnemyManager.Instance.Unregister(this);
         }
+        bossHealthBarUI.Hide();
     }
 }

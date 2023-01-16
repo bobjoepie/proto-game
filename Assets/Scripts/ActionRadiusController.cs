@@ -83,9 +83,14 @@ public class ActionRadiusController : MonoBehaviour
 
     public void SortTargets()
     {
-        targets = targets.OrderBy(
-            t => Vector2.Distance(transform.position, t.transform.position)
-        ).ToList();
+        try
+        {
+            targets = targets.OrderBy(
+                t => Vector2.Distance(transform.position, t.transform.position)
+            ).ToList();
+        }
+        catch
+        { }
     }
 
     private async UniTask AutoSortTargets()

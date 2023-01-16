@@ -24,8 +24,8 @@ public class MainMenuManager : VisualElement
 
     public void StartGameScene()
     {
-        Object.FindObjectOfType<AudioManager>().backgroundMusic.Stop();
-        SceneManager.LoadSceneAsync("GameScene");
+        Object.FindObjectOfType<AudioManagerOld>().backgroundMusic.Stop();
+        SceneManager.LoadSceneAsync("DemoScene");
     }
 
     public void QuitGame()

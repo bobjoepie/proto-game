@@ -5,13 +5,13 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GM_BossHealthBar : VisualElement
+public class HUD_BossHealthBar : VisualElement
 {
     private VisualElement HealthBar;
     private Label BossName;
-    public new class UxmlFactory : UxmlFactory<GM_BossHealthBar, UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<HUD_BossHealthBar, UxmlTraits> { }
 
-    public GM_BossHealthBar()
+    public HUD_BossHealthBar()
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -46,13 +46,37 @@ public class GM_BossHealthBar : VisualElement
         HealthBar.style.width = Length.Percent(100f * curHealth / maxHealth);
     }
 
-    public void Enable()
+    public void Show()
     {
-
+        ShowPauseMenuAsync().Forget();
     }
 
-    public void Disable()
+    private async UniTaskVoid ShowPauseMenuAsync()
     {
+        await UniTask.NextFrame();
+        this.style.visibility = new StyleEnum<Visibility>(Visibility.Visible);
+    }
 
+    public void Hide()
+    {
+        HidePauseMenuAsync().Forget();
+    }
+
+    private async UniTaskVoid HidePauseMenuAsync()
+    {
+        await UniTask.NextFrame();
+        this.style.visibility = new StyleEnum<Visibility>(Visibility.Hidden);
+    }
+
+    public void ToggleView()
+    {
+        if (this.style.visibility == Visibility.Visible)
+        {
+            HidePauseMenuAsync().Forget();
+        }
+        else
+        {
+            ShowPauseMenuAsync().Forget();
+        }
     }
 }

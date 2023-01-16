@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     private Camera MainCamera;
     private bool IsInteractModalActive;
     private bool IsSpeechModalActive;
-    private UIDocManager docManager;
+    private UIDocManagerOld docManagerOld;
     public InteractableType modalType;
     public string speechModalMessage;
     public float fadeTime;
@@ -21,7 +21,7 @@ public class Interactable : MonoBehaviour
         IsInteractModalActive = false;
         IsSpeechModalActive = false;
 
-        docManager = UIDocManager.Instance;
+        docManagerOld = UIDocManagerOld.Instance;
     }
 
     private void Update()
@@ -40,12 +40,12 @@ public class Interactable : MonoBehaviour
     private void MoveInteractModal()
     {
         Vector2 screenPos = MainCamera.WorldToViewportPoint(transform.position);
-        docManager.Modals.MoveInteractModal(screenPos);
+        docManagerOld.Modals.MoveInteractModal(screenPos);
     }
     private void MoveSpeechModal()
     {
         Vector2 screenPos = MainCamera.WorldToViewportPoint(transform.position);
-        docManager.Modals.MoveSpeechModal(screenPos);
+        docManagerOld.Modals.MoveSpeechModal(screenPos);
     }
 
     public void Activate(PlayerControllerOld player)
@@ -54,13 +54,13 @@ public class Interactable : MonoBehaviour
         switch (modalType)
         {
             case InteractableType.Message when IsSpeechModalActive == false:
-                docManager.Modals.ToggleSpeechModal();
-                docManager.Modals.ChangeSpeechModalText(speechModalMessage);
+                docManagerOld.Modals.ToggleSpeechModal();
+                docManagerOld.Modals.ChangeSpeechModalText(speechModalMessage);
                 IsSpeechModalActive = true;
                 StartCoroutine(DisableSpeechModal());
                 break;
             case InteractableType.Shop:
-                docManager.ShopMenu.ToggleShopWindow();
+                docManagerOld.ShopMenu.ToggleShopWindow();
                 break;
             case InteractableType.Pickup:
                 player.Pickup2(this);
@@ -73,7 +73,7 @@ public class Interactable : MonoBehaviour
     IEnumerator DisableSpeechModal()
     {
         yield return new WaitForSeconds(fadeTime);
-        docManager.Modals.ToggleSpeechModal();
+        docManagerOld.Modals.ToggleSpeechModal();
         IsSpeechModalActive = false;
     }
 
@@ -84,8 +84,8 @@ public class Interactable : MonoBehaviour
         {
             return;
         }
-        docManager.Modals.ToggleInteractModal();
-        docManager.Modals.ChangeInteractModalText(message);
+        docManagerOld.Modals.ToggleInteractModal();
+        docManagerOld.Modals.ChangeInteractModalText(message);
         IsInteractModalActive = true;
     }
 
@@ -97,13 +97,13 @@ public class Interactable : MonoBehaviour
             return;
         }
         IsInteractModalActive = false;
-        docManager.Modals.ToggleInteractModal();
+        docManagerOld.Modals.ToggleInteractModal();
         switch (modalType)
         {
             case InteractableType.Message:
                 break;
             case InteractableType.Shop:
-                docManager.ShopMenu.DisableShopWindow();
+                docManagerOld.ShopMenu.DisableShopWindow();
                 break;
             case InteractableType.Pickup:
                 break;

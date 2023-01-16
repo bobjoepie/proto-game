@@ -5,13 +5,13 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GM_VitalDisplay : VisualElement
+public class HUD_VitalDisplay : VisualElement
 {
     private VisualElement HealthBar;
     private Label HealthLabel;
-    public new class UxmlFactory : UxmlFactory<GM_VitalDisplay, UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<HUD_VitalDisplay, UxmlTraits> { }
 
-    public GM_VitalDisplay()
+    public HUD_VitalDisplay()
     {
         this.RegisterCallback<GeometryChangedEvent>(OnGeometryChange);
     }
@@ -36,13 +36,37 @@ public class GM_VitalDisplay : VisualElement
         HealthLabel.text = $"{curHealth} / {maxHealth}";
     }
 
-    public void Enable()
+    public void Show()
     {
-
+        ShowHealthBarAsync().Forget();
     }
 
-    public void Disable()
+    private async UniTaskVoid ShowHealthBarAsync()
     {
+        await UniTask.NextFrame();
+        this.style.visibility = new StyleEnum<Visibility>(Visibility.Visible);
+    }
 
+    public void Hide()
+    {
+        HideHealthBarAsync().Forget();
+    }
+
+    private async UniTaskVoid HideHealthBarAsync()
+    {
+        await UniTask.NextFrame();
+        this.style.visibility = new StyleEnum<Visibility>(Visibility.Hidden);
+    }
+
+    public void ToggleView()
+    {
+        if (this.style.visibility == Visibility.Visible)
+        {
+            HideHealthBarAsync().Forget();
+        }
+        else
+        {
+            ShowHealthBarAsync().Forget();
+        }
     }
 }

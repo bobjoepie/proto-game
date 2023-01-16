@@ -35,6 +35,7 @@ MonoBehaviour:
     cur_rotation: 0
     cur_rotationSpeed: 0
     cur_targetType: 0
+    cur_attackSound: {fileID: 8300000, guid: a3e211c77d3d39b4d8e5dae2ea66bd98, type: 3}
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
@@ -42,4 +43,5 @@ MonoBehaviour:
     pre_rotation: 0
     pre_rotationSpeed: 0
     pre_targetType: 0
+    pre_attackSound: {fileID: 0}
     post_subWeapon: {fileID: 11400000, guid: 3dec6cc35bf3c534c90c7f4270964032, type: 2}

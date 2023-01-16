@@ -16,10 +16,12 @@ public class SpherePart : WeaponPart
     [Range(0, 20)] public float cur_speed;
     [Range(-360, 360)] public float cur_direction;
     public TargetType cur_targetType;
+    public AudioClip cur_attackSound;
 
     [Header("Pre-Attack")]
     [Range(0, 5)] public float pre_lifeTime;
     public TargetType pre_targetType;
+    public AudioClip pre_attackSound;
 
     [Header("Post-Attack")]
     public WeaponSO post_subWeapon;
@@ -38,10 +40,12 @@ public class SpherePart : WeaponPart
         instance.cur_speed = this.cur_speed;
         instance.cur_direction = this.cur_direction;
         instance.cur_targetType = this.cur_targetType;
+        instance.cur_attackSound = this.cur_attackSound;
 
         instance.pre_lifeTime = this.pre_lifeTime;
         instance.pre_direction = this.pre_direction;
         instance.pre_targetType = this.pre_targetType;
+        instance.pre_attackSound = this.pre_attackSound;
 
         instance.post_subWeapon = this.post_subWeapon;
     }

@@ -15,16 +15,19 @@ public class SphereController : Weapon
     [Range(0, 20)] public float cur_speed;
     [Range(-360, 360)] public float cur_direction;
     public TargetType cur_targetType;
+    public AudioClip cur_attackSound;
 
     [Header("Pre-Attack")]
     [Range(0, 5)] public float pre_lifeTime;
     [Range(-360, 360)] public float pre_direction;
     public TargetType pre_targetType;
+    public AudioClip pre_attackSound;
 
     [Header("Post-Attack")]
     public WeaponSO post_subWeapon;
 
     private Camera MainCamera;
+    private AudioManager audioManager;
 
     private float ElapsedTime;
 
@@ -39,6 +42,8 @@ public class SphereController : Weapon
     {
         ElapsedTime = 0f;
         MainCamera = Camera.main;
+        audioManager = AudioManager.Instance;
+
         initMousePos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         switch (weaponSpawn)
@@ -53,6 +58,10 @@ public class SphereController : Weapon
 
         initDir = transform.rotation;
         initPos = transform.position;
+        if (pre_attackSound != null)
+        {
+            audioManager.Play(pre_attackSound);
+        }
     }
 
     // Update is called once per frame
@@ -104,6 +113,11 @@ public class SphereController : Weapon
     private void InitAttack()
     {
         isPrepped = true;
+        if (cur_attackSound != null)
+        {
+            audioManager.Play(cur_attackSound);
+        }
+
         switch (cur_targetType)
         {
             case TargetType.TowardsMouse:

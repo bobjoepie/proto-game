@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager Instance { get; private set; }
     public List<BossController> bosses = new List<BossController>();
     public List<EnemyController> enemies = new List<EnemyController>();
-    private UIDocManager2 uiDocManager2;
+    private UIDocManager uiDocManager;
 
     private EnemyManager()
     {
@@ -16,9 +16,9 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        if (UIDocManager2.Instance != null)
+        if (UIDocManager.Instance != null)
         {
-            uiDocManager2 = UIDocManager2.Instance;
+            uiDocManager = UIDocManager.Instance;
         }
     }
 
@@ -31,8 +31,6 @@ public class EnemyManager : MonoBehaviour
                 break;
             case BossController e:
                 bosses.Add(e);
-                uiDocManager2.bossHealthBar?.Enable();
-                uiDocManager2.bossHealthBar?.SetName(e.attributes.name);
                 break;
         }
     }
@@ -46,7 +44,6 @@ public class EnemyManager : MonoBehaviour
                 break;
             case BossController e:
                 bosses.Remove(e);
-                uiDocManager2.bossHealthBar?.Disable();
                 break;
         }
     }
