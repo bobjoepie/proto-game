@@ -23,18 +23,19 @@ MonoBehaviour:
   - label: Burst Shot
     weaponType: 0
     collisionType: 0
-    weaponGameObject: {fileID: 2845255425634611346, guid: e41e913067d49ce4ba1d34049ec50132, type: 3}
+    weaponGameObject: {fileID: 2845255425634611346, guid: 923258ac5414c224c9f06fa68725853b, type: 3}
     damage: 1
     pre_direction: 0
     weaponSpawn: 0
     cur_hasCollision: 1
     cur_lifeTime: 1
-    cur_speed: 10
+    cur_speed: 20
     cur_direction: 0
     cur_spread: 0
     cur_rotation: 0
     cur_rotationSpeed: 0
     cur_targetType: 0
+    cur_attackSound: {fileID: 8300000, guid: 82313d10f4c322c40ae355f878d893e9, type: 3}
     pre_hasCollision: 0
     pre_lifeTime: 0
     pre_speed: 0
@@ -42,4 +43,5 @@ MonoBehaviour:
     pre_rotation: 0
     pre_rotationSpeed: 0
     pre_targetType: 0
+    pre_attackSound: {fileID: 0}
     post_subWeapon: {fileID: 11400000, guid: 3e51a39100afe0c4aaeed5c33e88072e, type: 2}

@@ -4,15 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public enum AnimationState
+{
+    Idle,
+    Moving
+}
+
 public class PlayerController : EntityController
 {
     private InputManager input;
-    private AttackController attackController;
+    public AttackController attackController;
+    public Animator animator;
     private Camera mainCamera;
     public WeaponSO equippedWeapon;
     public ItemSO equippedItem;
 
     public bool CanUseItem;
+    public AnimationState state = AnimationState.Idle;
 
     private HUD_EquipmentDisplay equipmentDisplay;
     private HUD_VitalDisplay vitalDisplay;
@@ -32,7 +40,11 @@ public class PlayerController : EntityController
 
     private void Start()
     {
-        attackController = GetComponent<AttackController>();
+        if (attackController == null)
+        {
+            attackController = GetComponent<AttackController>();
+        }
+        
         mainCamera = Camera.main;
 
         if (UIDocManager.Instance != null)
@@ -83,11 +95,33 @@ public class PlayerController : EntityController
         }
 
         var movement = new Vector3(horizontal, vertical, 0).normalized;
-
+        if (horizontal != 0f || vertical != 0f)
+        {
+            ChangeAnimationState(AnimationState.Moving);
+        }
+        else
+        {
+            ChangeAnimationState(AnimationState.Idle);
+        }
         transform.position += new Vector3(
             movement.x * attributes.moveSpeed * Time.deltaTime, 
             movement.y * attributes.moveSpeed * Time.deltaTime, 
             0); 
+    }
+
+    private void ChangeAnimationState(AnimationState animState)
+    {
+        if (state == animState) return;
+        state = animState;
+        switch (state)
+        {
+            case AnimationState.Idle:
+                animator.Play("StoneGuyIdle");
+                break;
+            case AnimationState.Moving:
+                animator.Play("StoneGuy");
+                break;
+        }
     }
 
     private void HandleMenuing()
@@ -127,8 +161,7 @@ public class PlayerController : EntityController
     {
         if (input.PollKey(this, KeyAction.LeftClick) && equippedWeapon != null)
         {
-            var targetPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            attackController.Attack(targetPos).Forget();
+            attackController.Attack().Forget();
         }
     }
 

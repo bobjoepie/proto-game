@@ -13,7 +13,7 @@ public class AttackController : MonoBehaviour
 
     private void Awake()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = transform.root.GetComponent<PlayerController>();
         if (weaponParts == null && weaponSO != null)
         {
             weaponParts = WeaponSO.ConvertWeaponToParts(weaponSO);
@@ -25,7 +25,7 @@ public class AttackController : MonoBehaviour
         GetComponent<AppendageController>()?.Register(this);
     }
 
-    public async UniTaskVoid Attack(Vector2 targetPos)
+    public async UniTaskVoid Attack(Vector2? targetPos = null)
     {
         if (!CanAttack) return;
         CanAttack = false;
@@ -38,7 +38,8 @@ public class AttackController : MonoBehaviour
 
         for (int i = 0; i < weaponSO.amount; i++)
         {
-            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, transform.position.AngleTowards2D(targetPos), mask.ToLayer());
+            var rot = targetPos != null ? transform.position.AngleTowards2D((Vector2)targetPos) : transform.rotation;
+            WeaponSO.InstantiateWeaponParts(weaponParts, transform.position, rot, mask.ToLayer());
             if (weaponSO.amountBurstTime > 0f)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(weaponSO.amountBurstTime));
